@@ -127,7 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Abarrote.cpp" />
+    <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Producto.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Abarrote.h" />
+    <ClInclude Include="Carne.h" />
+    <ClInclude Include="Categoria.h" />
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Conserva.h" />
+    <ClInclude Include="Embutido.h" />
+    <ClInclude Include="Empaque.h" />
+    <ClInclude Include="Factura.h" />
+    <ClInclude Include="Fecha.h" />
+    <ClInclude Include="MenuMantenimiento.h" />
+    <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="MenuReportes.h" />
+    <ClInclude Include="MenuVentas.h" />
+    <ClInclude Include="Minisuper.h" />
+    <ClInclude Include="Perecedero.h" />
+    <ClInclude Include="Producto.h" />
+    <ClInclude Include="Product_Perecedero.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
