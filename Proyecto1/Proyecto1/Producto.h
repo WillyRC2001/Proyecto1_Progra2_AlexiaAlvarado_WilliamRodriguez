@@ -4,9 +4,9 @@
 
 class Producto {
 public:
-	Producto(Fecha*, string, string, string, double, string, int, int);
+	Producto(Fecha* fech, string cod, string nom_comerc, string descr, double precio, string categ , int existe, int limit);
 	virtual ~Producto();
-	string toString();
+	virtual string toString();
 private:
 	Fecha* fecha;
 	string codigo;
