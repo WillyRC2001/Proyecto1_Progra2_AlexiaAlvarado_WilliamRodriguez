@@ -13,5 +13,7 @@ Fecha::~Fecha()
 
 string Fecha::ToString()
 {
+	stringstream s; 
+	s << " " << dia << " / " << mes" / " << anio << endl;
 	return string();
 }

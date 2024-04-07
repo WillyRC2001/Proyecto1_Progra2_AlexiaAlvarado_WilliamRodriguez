@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Abarrote.cpp" />
     <ClCompile Include="Carne.cpp" />
+    <ClCompile Include="Conserva.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Carne.h" />
     <ClInclude Include="Categoria.h" />
     <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Conserva.h" />
     <ClInclude Include="Product_Conserva.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />

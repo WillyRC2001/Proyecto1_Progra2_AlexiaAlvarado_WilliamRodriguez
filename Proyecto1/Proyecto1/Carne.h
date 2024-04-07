@@ -3,7 +3,7 @@
 
 class Carne : public Product_Perecedero {
 public:
-	Carne(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, bool nacion, double pes,string nom_ani, string part_ani);
+	Carne(Fecha* fech, string cod, string nom_comerc, string descr, double precio, string categ, Categoria* categor, int existe, int limit, bool nacion, double pes,string nom_ani, string part_ani);
 	virtual ~Carne();
 	virtual string toString();
 private:

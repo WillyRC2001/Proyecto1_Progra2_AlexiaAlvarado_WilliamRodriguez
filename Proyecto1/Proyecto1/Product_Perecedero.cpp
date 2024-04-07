@@ -1,7 +1,7 @@
 #include "Product_Perecedero.h"
 
-Product_Perecedero::Product_Perecedero(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, bool nacion, double pes):
-	Producto(fech,cod,nom_comerc,descr,preci,categ,existe,limit), nacional(nacion), peso(pes)
+Product_Perecedero::Product_Perecedero(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor, int existe, int limit, bool nacion, double pes):
+	Producto(fech,cod,nom_comerc,descr,preci,categ,categor,existe,limit), nacional(nacion), peso(pes)
 {
 }
 

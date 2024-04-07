@@ -1,7 +1,7 @@
 #include "Product_Conserva.h"
 
-Product_Conserva::Product_Conserva(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, bool enva):
-	Producto(fech,cod,nom_comerc,descr,preci,categ,existe,limit),envasado(enva)
+Product_Conserva::Product_Conserva(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor, int existe, int limit, bool enva):
+	Producto(fech,cod,nom_comerc,descr,preci,categ,categor,existe,limit),envasado(enva)
 {
 }
 
