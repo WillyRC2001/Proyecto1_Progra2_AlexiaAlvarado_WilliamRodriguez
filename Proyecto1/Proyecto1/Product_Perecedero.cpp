@@ -1,20 +1,52 @@
 #include "Product_Perecedero.h"
 
-Product_Perecedero::Product_Perecedero(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor, int existe, int limit, bool nacion, double pes):
-	Producto(fech,cod,nom_comerc,descr,preci,categ,categor,existe,limit), nacional(nacion), peso(pes)
+Product_Perecedero::Product_Perecedero(string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor, int existe, int limit, Fecha* fech,bool nacion, double pes):
+	Producto(cod,nom_comerc,descr,preci,categ,categor,existe,limit, fech), nacional(nacion), peso(pes), percedero(new Percedero(fech))
 {
 }
 
 Product_Perecedero::~Product_Perecedero()
 {
+	delete percedero;
+}
+
+bool Product_Perecedero::getNacional() 
+{
+	return this->nacional;
+}
+
+double Product_Perecedero::getPeso() 
+{
+	return this->peso;
+}
+
+Percedero* Product_Perecedero::getPercedero() 
+{
+	return this->percedero;
+}
+
+void Product_Perecedero::setNacional(bool NacioN)
+{
+	this->nacional = NacioN;
+}
+
+void Product_Perecedero::setPeso(double pes)
+{
+	this->peso = pes;
+}
+
+void Product_Perecedero::setPercedero(Percedero* perced)
+{
+	this->percedero = perced;
 }
 
 string Product_Perecedero::toString()
 {
 	stringstream s;
 	s << Producto::toString();
-	s << "Producto Nacional: " << nacional << endl;
-	s << "Peso: " << peso << endl;
+	s << "Producto Nacional: " << (nacional ? "Si" : "No") <<endl;
+	s << "Peso: " << peso <<endl;
+	s << "Percedero: " << percedero->toString() << endl;
 	s << "----------------------------------" << endl;
 	return s.str();
 }

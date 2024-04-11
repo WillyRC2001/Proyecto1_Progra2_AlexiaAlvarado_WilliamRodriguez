@@ -8,9 +8,19 @@ Empaque::~Empaque()
 {
 }
 
+bool Empaque::getTripa()
+{
+	return this->tripa;
+}
+
+void Empaque::setTripa(bool trippa)
+{
+	this->tripa = trippa;
+}
+
 string Empaque::toString()
 {
-	stringstream s;
-	s << "Tripa: " << tripa << endl;
+	std::stringstream s;
+	s << "Tipo de empaque: " << (tripa ? "Tripa" : "Otro") << endl;
 	return s.str();
 }

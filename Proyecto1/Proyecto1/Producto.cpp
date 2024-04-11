@@ -1,10 +1,11 @@
 #include "Producto.h"
 
-Producto::Producto(Fecha* fech, string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor,int existe, int limit):
-	fecha(fech),codigo(cod),nombre_comercial(nom_comerc),
+Producto::Producto(string cod, string nom_comerc, string descr, double preci, string categ, Categoria* categor,int existe, int limit, Fecha* fech):
+	codigo(cod),nombre_comercial(nom_comerc),
 	descripion(descr),precio_costo(preci),categoria(categ), categoria2(categor),
-	existencia(existe),limite(limit)
+	existencia(existe),limite(limit), fecha(fech)
 {
+
 }
 
 Producto::~Producto()
@@ -101,6 +102,27 @@ void Producto::setLimite(int limiteProductos)
 	this->limite = limiteProductos; 
 }
 
+/*
+void Producto::establecerPrecioVenta(double precioVenta)
+{
+	this->precio_costo = precioVenta; 
+}
+
+void Producto::establecerCategoria(Categoria* cat)
+{
+	this->categoria2 = cat; 
+}
+*/
+bool Producto::verificarExistencia()
+{
+	//revise si esto esta bien jajaj
+	if (existencia > 0) {
+		return true; 
+	}
+	else 
+		return false;
+}
+
 string Producto::toString()
 {
 	stringstream s;
@@ -109,6 +131,7 @@ string Producto::toString()
 	s << "Nombre: " << nombre_comercial << endl;
 	s << "Precio: " << precio_costo << endl;
 	s << "Categoria: " << categoria << endl;
+	s << "Categoria del Producto: " << categoria2 << endl; 
 	s << "Descripcion: " << descripion << endl;
 	s << "Existencia: " << existencia << endl;
 	s << "Limite: " << limite << endl;

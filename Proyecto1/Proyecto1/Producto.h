@@ -1,10 +1,15 @@
 #pragma once
+#include <iostream>
+#include <sstream>
+#include <string>
 #include "Fecha.h"
 #include "Categoria.h"
 
+using namespace std; 
+
 class Producto {
 public:
-	Producto(Fecha* fech, string cod, string nom_comerc, string descr, double precio, string categ , Categoria* categor, int existe, int limit);
+	Producto(string cod, string nom_comerc, string descr, double precio, string categ , Categoria* categor, int existe, int limit, Fecha* fech);
 	virtual ~Producto();
 	
 	//get´s
@@ -30,14 +35,15 @@ public:
 	void setLimite(int);
 
 	//metodos 
-	void establecerPrecioVenta(double precio);
-	void establecerCategoria(Categoria* cat);
+	// revisar estos dos metodos porque creo que se pueden agarrar de los set basicamente
+	//void establecerPrecioVenta(double precio);
+	//void establecerCategoria(Categoria* cat);
 	bool verificarExistencia();
 
 	virtual string toString();
 
 private:
-	Fecha* fecha;
+
 	string codigo;
 	string nombre_comercial;
 	string descripion;
@@ -46,4 +52,6 @@ private:
 	Categoria* categoria2;
 	int existencia;
 	int limite;
+	Fecha* fecha;
+
 };

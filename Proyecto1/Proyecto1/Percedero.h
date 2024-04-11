@@ -6,6 +6,9 @@ private:
     Fecha* venceEl;
 public:
     Percedero(Fecha* venceEl);
-    // Métodos getters y setters
-    // ...
+    ~Percedero();
+
+    Fecha* getVenceEl() const;
+    void setVenceEl(Fecha* venceEl);
+    string toString();
 };

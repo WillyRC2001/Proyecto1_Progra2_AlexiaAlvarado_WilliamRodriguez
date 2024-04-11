@@ -7,7 +7,13 @@ class Fecha {
 public:
 	Fecha(int,int,int);
 	virtual ~Fecha();
-	string ToString();
+	int getDia();
+	int getMes();
+	int getAnio();
+	void setDia(int);
+	void setMes(int);
+	void setAnio(int);
+	string mostrarFecha(); //toString
 private:
 	int dia;
 	int mes;

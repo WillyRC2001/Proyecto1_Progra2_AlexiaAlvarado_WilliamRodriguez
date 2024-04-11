@@ -129,13 +129,14 @@
   <ItemGroup>
     <ClCompile Include="Abarrote.cpp" />
     <ClCompile Include="Carne.cpp" />
+    <ClCompile Include="Categoria.cpp" />
     <ClCompile Include="Conserva.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Percedero.cpp" />
     <ClCompile Include="Producto.cpp" />
-    <ClCompile Include="Product_Conserva.cpp" />
     <ClCompile Include="Product_Perecedero.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +145,6 @@
     <ClInclude Include="Categoria.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Conserva.h" />
-    <ClInclude Include="Product_Conserva.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Factura.h" />
@@ -154,7 +154,7 @@
     <ClInclude Include="MenuReportes.h" />
     <ClInclude Include="MenuVentas.h" />
     <ClInclude Include="Minisuper.h" />
-    <ClInclude Include="Perecedero.h" />
+    <ClInclude Include="Percedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="Product_Perecedero.h" />
   </ItemGroup>
