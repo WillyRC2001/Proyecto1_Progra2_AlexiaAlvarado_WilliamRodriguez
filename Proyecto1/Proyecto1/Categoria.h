@@ -12,6 +12,7 @@ public:
 	int getTipoCategoria();
 	void setTipoCategoria(int);
 	double porcentanjeDeGanancia(); 
+   
 
 private: 
 	int tipo; 

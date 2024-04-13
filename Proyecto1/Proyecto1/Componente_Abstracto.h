@@ -3,7 +3,9 @@
 #include "baseObject.h"
 
 class Componente_Abstracto : public base::baseObject {
+private: 
 public:
-    
-    virtual string toString() const;
+    virtual ~Componente_Abstracto(){}
+    virtual double costo() = 0;
+    virtual string toString() = 0;
 };

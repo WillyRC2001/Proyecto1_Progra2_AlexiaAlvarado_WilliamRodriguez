@@ -138,6 +138,39 @@ void Producto::venderProducto(int cantidad)
 	cout << "Venta realizada: " << cantidad << " unidades de " << nombre_comercial << " vendidas." << endl;
 }
 
+bool Producto::calcularPrecioVenta() {
+	double factorIncremento = obtenerFactorIncrementoPorCategoria();
+	if (factorIncremento <= 0.0) {
+		return false;
+	}
+	double precioVenta = precio_costo * factorIncremento;
+
+	return true;
+}
+
+double Producto::obtenerFactorIncrementoPorCategoria() {
+
+	// Obtenemos la categoría del producto
+	string categoria = getCategoria();
+
+	double factorIncremento = 0.0;
+	if (categoria == "Abarrote") {
+		factorIncremento = 1.1; // Factor de incremento del 10%
+	}
+	else if (categoria == "Conserva") {
+		factorIncremento = 1.2; // Factor de incremento del 20%
+	}
+	else if (categoria == "Embutido") {
+		factorIncremento = 1.3; // Factor de incremento del 30%
+	}
+	else {
+		
+		factorIncremento = 1.1; 
+	}
+
+	return factorIncremento;
+}
+
 string Producto::toString()
 {
 	stringstream s;

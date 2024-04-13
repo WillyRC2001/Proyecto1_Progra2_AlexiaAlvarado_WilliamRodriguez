@@ -1,15 +1,12 @@
 ﻿  Abarrote.cpp
-  baseObject.cpp
   Carne.cpp
-  Categoria.cpp
   Conserva.cpp
   ControlVentas.cpp
+  Decorador_Abarrote.cpp
+  Decorador_Conserva.cpp
+  Decorador_Embutido.cpp
   Embutido.cpp
-  Empaque.cpp
   Factura.cpp
-  Fecha.cpp
-  main.cpp
-  Percedero.cpp
   Producto.cpp
   Product_Perecedero.cpp
   Venta.cpp

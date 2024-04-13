@@ -38,6 +38,8 @@ public:
 	//void establecerCategoria(Categoria* cat);
 	bool verificarExistencia();
 	void venderProducto(int cantidad);
+	bool calcularPrecioVenta();
+	double obtenerFactorIncrementoPorCategoria();
 
 	virtual string toString();
 

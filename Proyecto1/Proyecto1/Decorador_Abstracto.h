@@ -3,12 +3,10 @@
 
 class Decorador_Abstracto : public Componente_Abstracto {
 public:
-    Decorador_Abstracto(Componente_Abstracto*);
-   
-
+    Decorador_Abstracto() {}
+    virtual ~Decorador_Abstracto() { delete ptrComponenteAbs; }
+    virtual double costo()=0;
+    virtual string toString()=0;
 protected:
-    virtual Componente_Abstracto* CA() const;
-
-private:
-    Componente_Abstracto* _CA;
+    Componente_Abstracto* ptrComponenteAbs;
 };

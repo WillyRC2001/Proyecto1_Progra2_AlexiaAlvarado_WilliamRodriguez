@@ -133,6 +133,9 @@
     <ClCompile Include="Categoria.cpp" />
     <ClCompile Include="Conserva.cpp" />
     <ClCompile Include="ControlVentas.cpp" />
+    <ClCompile Include="Decorador_Abarrote.cpp" />
+    <ClCompile Include="Decorador_Conserva.cpp" />
+    <ClCompile Include="Decorador_Embutido.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Factura.cpp" />
