@@ -1,9 +1,6 @@
 #pragma once
-#include <iostream>
-#include <sstream>
+#include "Utiles_Clases.h"
 #include <stdexcept>
-
-using namespace std; 
 
 class Categoria {
 

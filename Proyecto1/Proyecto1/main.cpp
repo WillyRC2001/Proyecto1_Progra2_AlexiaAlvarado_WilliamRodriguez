@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include "Utiles_Clases.h"
 
 int main() {
 	cout << "Hola mundo" << endl;

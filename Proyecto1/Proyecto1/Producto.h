@@ -1,7 +1,5 @@
 #pragma once
-#include <iostream>
-#include <sstream>
-#include <string>
+#include "Utiles_Clases.h"
 #include "Fecha.h"
 #include "Categoria.h"
 
