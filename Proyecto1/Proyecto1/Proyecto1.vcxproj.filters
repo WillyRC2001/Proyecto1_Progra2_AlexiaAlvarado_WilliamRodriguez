@@ -25,40 +25,49 @@
     <Filter Include="Archivos de encabezado\Clases_Pequeñas">
       <UniqueIdentifier>{07bdbd6d-15f0-4775-b6ea-b64dbbc63f1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Clases_Pequeñas">
+      <UniqueIdentifier>{50bb2e47-8b35-406c-bcd4-cf6bde45211f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Productos">
+      <UniqueIdentifier>{0c4848dc-4d41-4afa-805e-517b03aa37f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Abarrote.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Fecha.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Clases_Pequeñas</Filter>
     </ClCompile>
-    <ClCompile Include="Producto.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="baseObject.cpp">
+      <Filter>Archivos de origen\Clases_Pequeñas</Filter>
     </ClCompile>
-    <ClCompile Include="Product_Perecedero.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Abarrote.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
     </ClCompile>
     <ClCompile Include="Carne.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Embutido.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Empaque.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Conserva.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Productos</Filter>
     </ClCompile>
     <ClCompile Include="Categoria.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Clases_Pequeñas</Filter>
+    </ClCompile>
+    <ClCompile Include="Conserva.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
+    </ClCompile>
+    <ClCompile Include="Embutido.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
+    </ClCompile>
+    <ClCompile Include="Empaque.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
     </ClCompile>
     <ClCompile Include="Percedero.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Productos</Filter>
+    </ClCompile>
+    <ClCompile Include="Product_Perecedero.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
+    </ClCompile>
+    <ClCompile Include="Producto.cpp">
+      <Filter>Archivos de origen\Productos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +107,6 @@
     <ClInclude Include="Carne.h">
       <Filter>Archivos de encabezado\Productos</Filter>
     </ClInclude>
-    <ClInclude Include="Categoria.h">
-      <Filter>Archivos de encabezado\Productos</Filter>
-    </ClInclude>
     <ClInclude Include="Conserva.h">
       <Filter>Archivos de encabezado\Productos</Filter>
     </ClInclude>
@@ -123,6 +129,12 @@
       <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
     </ClInclude>
     <ClInclude Include="Utiles_Clases.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
+    <ClInclude Include="baseObject.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
+    <ClInclude Include="Categoria.h">
       <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
     </ClInclude>
   </ItemGroup>
