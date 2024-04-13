@@ -31,6 +31,12 @@
     <Filter Include="Archivos de origen\Productos">
       <UniqueIdentifier>{0c4848dc-4d41-4afa-805e-517b03aa37f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Factura">
+      <UniqueIdentifier>{2ddc8225-f542-494c-b45b-130dd12a09e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Factura">
+      <UniqueIdentifier>{69dd4c2d-9884-4bb2-8257-8a607bc5fe3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +74,15 @@
     </ClCompile>
     <ClCompile Include="Producto.cpp">
       <Filter>Archivos de origen\Productos</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlVentas.cpp">
+      <Filter>Archivos de origen\Factura</Filter>
+    </ClCompile>
+    <ClCompile Include="Factura.cpp">
+      <Filter>Archivos de origen\Factura</Filter>
+    </ClCompile>
+    <ClCompile Include="Venta.cpp">
+      <Filter>Archivos de origen\Factura</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +151,15 @@
     </ClInclude>
     <ClInclude Include="Categoria.h">
       <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
+    <ClInclude Include="Factura.h">
+      <Filter>Archivos de encabezado\Factura</Filter>
+    </ClInclude>
+    <ClInclude Include="Venta.h">
+      <Filter>Archivos de encabezado\Factura</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlVentas.h">
+      <Filter>Archivos de encabezado\Factura</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

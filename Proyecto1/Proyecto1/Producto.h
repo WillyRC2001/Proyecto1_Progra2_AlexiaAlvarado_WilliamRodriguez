@@ -37,6 +37,7 @@ public:
 	//void establecerPrecioVenta(double precio);
 	//void establecerCategoria(Categoria* cat);
 	bool verificarExistencia();
+	void venderProducto(int cantidad);
 
 	virtual string toString();
 

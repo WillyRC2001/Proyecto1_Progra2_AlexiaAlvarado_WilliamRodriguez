@@ -123,6 +123,21 @@ bool Producto::verificarExistencia()
 		return false;
 }
 
+void Producto::venderProducto(int cantidad)
+{
+	
+	if (cantidad > existencia) {
+		cout << "Error: No hay suficientes existencias para realizar la venta." << endl;
+		return;
+	}
+
+	
+	existencia -= cantidad;
+
+	// Aquí podrías agregar lógica adicional, como registrar la venta en un archivo o base de datos
+	cout << "Venta realizada: " << cantidad << " unidades de " << nombre_comercial << " vendidas." << endl;
+}
+
 string Producto::toString()
 {
 	stringstream s;
