@@ -1,7 +1,7 @@
 #include "Abarrote.h"
 
-Abarrote::Abarrote(string cod, string nom_comerc, string descr, double preci, string categ, Categoria*categor, int existe, int limit, Fecha* fech,bool nacion, double pes, string nom_empre):
-	Product_Perecedero(cod,nom_comerc,descr,preci,categ,categor,existe,limit,fech,nacion,pes),nombre_empresa(nom_empre)
+Abarrote::Abarrote(string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, Fecha* fech1,Fecha* fech2,bool nacion, double pes, string nom_empre):
+	Product_Perecedero(cod,nom_comerc,descr,preci,categ,existe,limit,fech1,fech2,nacion,pes),nombre_empresa(nom_empre)
 {
 }
 

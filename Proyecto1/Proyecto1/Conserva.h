@@ -5,7 +5,7 @@ class Conserva : public Producto {
 
 public:
     
-    Conserva(string cod, string nom_comerc, string descr, double precio, string categ, Categoria* categor, int existe, int limit, Fecha* fech, bool envasado);
+    Conserva(string cod, string nom_comerc, string descr, double precio, string categ, int existe, int limit, Fecha* fech, bool envasado);
    
     // Métodos getters y setters
     bool getEnvasado();

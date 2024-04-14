@@ -6,7 +6,7 @@ class Product_Perecedero : public Producto {
 
 public:
 
-	Product_Perecedero (string cod, string nom_comerc, string descr, double precio, string categ, Categoria* categor, int existe, int limit, Fecha* fech, bool nacion,double pes);
+	Product_Perecedero (string cod, string nom_comerc, string descr, double precio, string categ, int existe, int limit, Fecha* fechingreso,Fecha* fechvencido, bool nacion,double pes);
 	virtual ~Product_Perecedero();
 
 	// Getters

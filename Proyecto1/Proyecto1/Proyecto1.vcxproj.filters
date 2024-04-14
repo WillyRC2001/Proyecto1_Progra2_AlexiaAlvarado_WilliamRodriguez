@@ -40,6 +40,9 @@
     <Filter Include="Archivos de origen\Decoradores">
       <UniqueIdentifier>{1e969cbc-5f5c-4fd4-99be-f44173b205d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Contenedores">
+      <UniqueIdentifier>{c62debf7-63b7-44c0-b9fd-b8b2d8e06d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -172,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="Carrito.h">
       <Filter>Archivos de encabezado\Decoradores</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista_Generica.h">
+      <Filter>Archivos de encabezado\Contenedores</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodo_Generico.h">
+      <Filter>Archivos de encabezado\Contenedores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

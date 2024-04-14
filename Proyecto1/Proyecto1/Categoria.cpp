@@ -23,10 +23,21 @@ void Categoria::setTipoCategoria(int tipoCat)
 {
     this->tipo = tipoCat;
 }
+void Categoria::Tipo(string categoria) {
+    if (categoria == "Conserva") {
+        setTipoCategoria(1);
+    }
+    else if (categoria == "Abarrote") {
+        setTipoCategoria(2);
+    }
+    else if (categoria == "Embutido") {
+        setTipoCategoria(3);
+    }
+}
 
-double Categoria::porcentanjeDeGanancia() //revisar el metodo categoria
+double Categoria::porcentajeDeGanancia(string categ) //revisar el metodo categoria
 {
-  
+    this->Tipo(categ);
     double porcentaje = 0.0;
     switch (tipo) {
     case 1:
@@ -39,7 +50,8 @@ double Categoria::porcentanjeDeGanancia() //revisar el metodo categoria
         porcentaje = 30.0; //embutidos (que también son perecederos)
         break;
     default:
-        throw invalid_argument("Tipo de categoría inválido");
+        //throw invalid_argument("Tipo de categoría inválido");
+        cout << "Tipo de Categoria invalido" << endl;
         break;
     }
     return porcentaje;

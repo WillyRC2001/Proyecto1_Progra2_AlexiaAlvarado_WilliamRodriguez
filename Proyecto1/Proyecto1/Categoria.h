@@ -11,7 +11,8 @@ public:
 	virtual~Categoria();
 	int getTipoCategoria();
 	void setTipoCategoria(int);
-	double porcentanjeDeGanancia(); 
+	void Tipo(string);
+	double porcentajeDeGanancia(string); 
    
 
 private: 

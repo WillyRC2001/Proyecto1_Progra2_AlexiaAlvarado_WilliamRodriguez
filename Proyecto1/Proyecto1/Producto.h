@@ -7,7 +7,7 @@ using namespace std;
 
 class Producto {
 public:
-	Producto(string cod, string nom_comerc, string descr, double precio, string categ , Categoria* categor, int existe, int limit, Fecha* fech);
+	Producto(string cod, string nom_comerc, string descr, double precio, string categ, int existe, int limit, Fecha* fech);
 	virtual ~Producto();
 	
 	//get´s
@@ -32,10 +32,6 @@ public:
 	void setExistencias(int);
 	void setLimite(int);
 
-	//metodos 
-	// revisar estos dos metodos porque creo que se pueden agarrar de los set basicamente
-	//void establecerPrecioVenta(double precio);
-	//void establecerCategoria(Categoria* cat);
 	bool verificarExistencia();
 	void venderProducto(int cantidad);
 	bool calcularPrecioVenta();

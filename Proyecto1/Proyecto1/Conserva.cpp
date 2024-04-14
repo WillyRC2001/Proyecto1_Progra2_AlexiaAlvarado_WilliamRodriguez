@@ -1,7 +1,7 @@
 #include "Conserva.h"
 
-Conserva::Conserva(string cod, string nom_comerc, string descr, double precio, string categ, Categoria* categor, int existe, int limit, Fecha* fech, bool envasado)
-    : Producto(cod, nom_comerc, descr, precio, categ, categor, existe, limit, fech), envasado(envasado)
+Conserva::Conserva(string cod, string nom_comerc, string descr, double precio, string categ, int existe, int limit, Fecha* fech, bool envasado)
+    : Producto(cod, nom_comerc, descr, precio, categ, existe, limit, fech), envasado(envasado)
 {
 
 }

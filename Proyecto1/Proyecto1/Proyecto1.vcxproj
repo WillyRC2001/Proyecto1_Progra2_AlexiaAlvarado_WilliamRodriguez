@@ -163,10 +163,12 @@
     <ClInclude Include="Factura.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="baseObject.h" />
+    <ClInclude Include="Lista_Generica.h" />
     <ClInclude Include="MenuMantenimiento.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="MenuReportes.h" />
     <ClInclude Include="MenuVentas.h" />
+    <ClInclude Include="Nodo_Generico.h" />
     <ClInclude Include="Percedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="Product_Perecedero.h" />
