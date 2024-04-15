@@ -13,12 +13,10 @@ public:
 	virtual ~Lista();
 	void agregarInicio(T*);
 	void agregarFinal(T*);
-	T* eliminar();
+	bool eliminar(T*);
 	//string toString();
 	void eliminarTodos();
 	int size();
-	void remover(int lugar);
-	void removerInicio();
 	bool isEmpty();
 private:
 	Nodo<T>* primerNodo;
@@ -41,7 +39,12 @@ Lista<T>::Lista(const Lista& list) {
 
 template<class T>
 Lista<T>::~Lista() {
-	//Aqui me falta hacer la eliminacion de los objetos
+	Nodo<T>* aux = primerNodo;
+	while (aux != NULL) {
+		primerNodo = aux->GetSiguiente();
+		delete aux;
+		aux = primerNodo;
+	}
 }
 
 template<class T>
@@ -52,7 +55,7 @@ void Lista<T>::agregarInicio(T* n) {
 
 template<class T>
 void Lista<T>::agregarFinal(T* n) {
-	if (ths.isEmpty())
+	if (this->isEmpty())
 		agregarInicio(n);
 	else {
 		Nodo<T>* pExt = primerNodo;
@@ -65,13 +68,40 @@ void Lista<T>::agregarFinal(T* n) {
 }
 
 template<class T>
-T* Lista<T>::eliminar() {
-	//Me falta
+bool Lista<T>::eliminar(T* obj) {
+	Nodo<T>* aux = primerNodo;
+	Nodo<T>* anterior = NULL;
+	//si es el primero elimina el nodo
+	if (primerNodo != NULL && primerNodo->GetObj() == obj) {
+		Nodo<T>* actual = primerNodo;
+		primerNodo = actual->GetSiguiente();
+		delete actual;
+		return true;
+	}
+	//si no es el primero
+	else {
+		while (aux != NULL && aux->GetObj() != obj) {
+			anterior = aux;
+			aux = aux->GetSiguiente();
+		}
+		if (aux != NULL && aux->GetObj() == obj) {
+			if (anterior != NULL)
+				anterior->SetSiguiente(aux->GetSiguiente());
+			delete aux;
+			return true;
+		}
+	}
+	return false;
 }
 
 template<class T>
 void Lista<T>::eliminarTodos() {
-	//Me falta
+	Nodo<T>* aux = primerNodo;
+	while (aux != NULL) {
+		primerNodo = aux->GetSiguiente();
+		delete aux;
+		aux = primerNodo;
+	}
 }
 
 template<class T>
@@ -79,20 +109,10 @@ int Lista<T>::size() {
 	Nodo<T>* pExt = primerNodo;
 	int i = 0;
 	while (pExt) {
-		pEXt = pExt->GetSiguiente();
+		pExt = pExt->GetSiguiente();
 		i++;
 	}
 	return i;
-}
-
-template<class T>
-void Lista<T>::remover(int lugar) {
-	//Me falta
-}
-
-template<class T>
-void Lista<T>::removerInicio() {
-	//Me falta
 }
 
 template <class T>

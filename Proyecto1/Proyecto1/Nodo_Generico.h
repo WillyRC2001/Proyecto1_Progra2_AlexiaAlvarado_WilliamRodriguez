@@ -19,7 +19,7 @@ public:
 
 template <class T>
 Nodo<T>::Nodo(Nodo<T>* sigNodo, T& objeto)
-	: sig(sigNodo), obj(objeto) {
+	: sig(sigNodo), obj(&objeto) {
 }
 
 template <class T>
