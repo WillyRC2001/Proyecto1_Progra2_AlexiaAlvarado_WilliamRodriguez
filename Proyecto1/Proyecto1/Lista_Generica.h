@@ -1,8 +1,6 @@
 #pragma once
 #include "Nodo_Generico.h"
-#include <iostream>
-#include <sstream>
-using namespace std;
+#include "Utiles_Clases.h"
 
 template <class T>
 class Lista {

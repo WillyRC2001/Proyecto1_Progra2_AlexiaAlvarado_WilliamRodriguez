@@ -1,7 +1,5 @@
 #pragma once
-#include <iostream>
-#include <sstream>
-using namespace std;
+#include "Utiles_Clases.h"
 
 template <class T>
 class Nodo {
