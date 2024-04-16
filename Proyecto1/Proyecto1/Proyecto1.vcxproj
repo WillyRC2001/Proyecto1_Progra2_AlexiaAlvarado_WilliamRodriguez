@@ -171,6 +171,7 @@
     <ClInclude Include="Nodo_Generico.h" />
     <ClInclude Include="Percedero.h" />
     <ClInclude Include="Producto.h" />
+    <ClInclude Include="Producto_Clases.h" />
     <ClInclude Include="Product_Perecedero.h" />
     <ClInclude Include="Utiles_Clases.h" />
     <ClInclude Include="Venta.h" />

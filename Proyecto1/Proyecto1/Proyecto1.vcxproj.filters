@@ -182,5 +182,8 @@
     <ClInclude Include="Nodo_Generico.h">
       <Filter>Archivos de encabezado\Contenedores</Filter>
     </ClInclude>
+    <ClInclude Include="Producto_Clases.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

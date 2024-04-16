@@ -1,12 +1,7 @@
 #include "Utiles_Clases.h"
 #include "Lista_Generica.h"
 #include "Nodo_Generico.h"
-#include "Producto.h"
-#include "Carne.h"
-#include"Conserva.h"
-#include "Abarrote.h"
-#include "Embutido.h"
-#include "Empaque.h"
+#include "Producto_Clases.h"
 
 int main() {
 	Fecha* fech1 = new Fecha(1, 1, 1);
