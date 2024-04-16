@@ -1,5 +1,6 @@
 #pragma once
 #include "Utiles_Clases.h"
+
 class VerMenus {
 public:
 	//Principal

@@ -4,7 +4,7 @@ Factura::Factura(int numero, Fecha* fecha) : numeroFactura(numero), fecha(fecha)
 
 Factura::~Factura() {
     // Liberar la memoria asignada a los productos vendidos
-    if (productosVendidos != nullptr) {
+    if (productosVendidos != NULL) {
         for (int i = 0; i < numProductos; ++i) {
             delete productosVendidos[i];
         }

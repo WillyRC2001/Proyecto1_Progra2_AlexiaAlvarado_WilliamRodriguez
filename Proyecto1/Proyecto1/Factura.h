@@ -21,3 +21,5 @@ public:
     double calcularTotalPagar();
     double calcularGanancia();
 };
+
+//estuve haciendo unas pruebas con facturas y la gananciaTotal esta como que bugueadam mucho error por ahi a la hora de depurar
