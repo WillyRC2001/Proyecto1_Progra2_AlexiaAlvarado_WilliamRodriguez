@@ -156,6 +156,7 @@
     <ClInclude Include="ControlVentas.h" />
     <ClInclude Include="Decorador_Abarrote.h" />
     <ClInclude Include="Decorador_Abstracto.h" />
+    <ClInclude Include="Decorador_Clases.h" />
     <ClInclude Include="Decorador_Conserva.h" />
     <ClInclude Include="Decorador_Embutido.h" />
     <ClInclude Include="Embutido.h" />

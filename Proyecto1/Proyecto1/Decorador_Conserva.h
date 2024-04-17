@@ -6,9 +6,16 @@ class Decorador_Conserva : public Decorador_Abstracto {
 public:
 	Decorador_Conserva(Componente_Abstracto*, Conserva*);
 	virtual ~Decorador_Conserva();
-	virtual double costo();
-	virtual string toString();
+
+	Conserva* getConserva();
+	void setConserva(Conserva* nuevaConserva);
+
+	string obtener_nombre();
+	string obtener_codigo();
+	double obtener_costo();
+
+	string toString();
 
 private:
-	Conserva* conservar;
+	Conserva* ptrConservas;
 };

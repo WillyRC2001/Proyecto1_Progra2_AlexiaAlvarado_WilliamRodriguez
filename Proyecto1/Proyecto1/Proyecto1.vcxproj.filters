@@ -185,5 +185,8 @@
     <ClInclude Include="Producto_Clases.h">
       <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
     </ClInclude>
+    <ClInclude Include="Decorador_Clases.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

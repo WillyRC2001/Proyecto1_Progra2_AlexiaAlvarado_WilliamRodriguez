@@ -5,7 +5,7 @@ Producto::Producto(string cod, string nom_comerc, string descr, double preci, st
 	descripion(descr), precio_costo(preci), categoria(categ),
 	existencia(existe), limite(limit), fecha(fech)
 {
-	categoria2 = new Categoria();
+	porcentajeGanancia = new Categoria();
 }
 
 Producto::~Producto()
@@ -42,10 +42,11 @@ string Producto::getCategoria()
 	return this->categoria;
 }
 
-Categoria* Producto::getCategoria2()
+Categoria* Producto::getPorcentajeGanancia()
 {
-	return this->categoria2;
+	return this->porcentajeGanancia;
 }
+
 
 int Producto::getExistencias()
 {
@@ -87,9 +88,9 @@ void Producto::setCategoria(string categoRIA)
 	this->categoria = categoRIA;
 }
 
-void Producto::setCategoria2(Categoria* categoRIA2)
+void Producto::setPorcentajeGanancia(Categoria* porcentaje)
 {
-	this->categoria2 = categoRIA2;
+	this->porcentajeGanancia = porcentaje;
 }
 
 void Producto::setExistencias(int existenciasProductos)
@@ -167,7 +168,7 @@ string Producto::toString()
 	s << "Nombre: " << nombre_comercial << endl;
 	s << "Precio: " << precio_costo << endl;
 	s << "Categoria: " << categoria << endl;
-	s << "Porcentaje de Ganancia: " << categoria2->porcentajeDeGanancia(categoria) <<"%"<< endl;
+	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia(categoria) <<"%"<< endl;
 	s << "Descripcion: " << descripion << endl;
 	s << "Existencia: " << existencia << endl;
 	s << "Limite: " << limite << endl;

@@ -6,9 +6,16 @@ class Decorador_Abarrote : public Decorador_Abstracto {
 public:
 	Decorador_Abarrote(Componente_Abstracto*, Abarrote*);
 	virtual ~Decorador_Abarrote();
-	virtual double costo();
-	virtual string toString();
+
+	Abarrote* getAbarrote();
+	void setAbarrote(Abarrote* nuevoAbarrote);
+
+	string obtener_nombre();
+	string obtener_codigo();
+	double obtener_costo();
+
+	string toString();
 
 private:
-	Abarrote* abarrotes;
+	Abarrote* ptrAbarrotes;
 };

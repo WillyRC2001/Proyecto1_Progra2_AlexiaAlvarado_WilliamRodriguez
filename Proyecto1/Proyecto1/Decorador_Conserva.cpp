@@ -1,25 +1,46 @@
 #include "Decorador_Conserva.h"
 
-Decorador_Conserva::Decorador_Conserva(Componente_Abstracto* com, Conserva* cons)
+Decorador_Conserva::Decorador_Conserva(Componente_Abstracto* com, Conserva* conser) :Decorador_Abstracto(com), ptrConservas(conser)
 {
-    this->ptrComponenteAbs = com;
-    this->conservar = cons;
+
 }
 
 Decorador_Conserva::~Decorador_Conserva()
 {
-    delete conservar;
+
 }
 
-double Decorador_Conserva::costo()
+Conserva* Decorador_Conserva::getConserva()
 {
-    return conservar->calcularPrecioVenta() + ptrComponenteAbs->costo();
+    return ptrConservas;
 }
+
+void Decorador_Conserva::setConserva(Conserva* nuevaConserva)
+{
+    ptrConservas = nuevaConserva;
+}
+
+string Decorador_Conserva::obtener_nombre()
+{
+    return ptrConservas->getNombre_Comercial();
+}
+
+string Decorador_Conserva::obtener_codigo()
+{
+    return ptrConservas->getCodigo();
+}
+
+double Decorador_Conserva::obtener_costo()
+{
+    return ptrConservas->calcularPrecioVenta() + ptrComponenteAbs->obtener_costo();
+}
+
 
 string Decorador_Conserva::toString()
 {
     stringstream s;
-    s << this->conservar->getNombre_Comercial() << " y el costo sera de : " << conservar->getPrecio() << endl;
+    s << this->ptrConservas->getNombre_Comercial() << " y el costo sera de : " << ptrConservas->getPrecio() << endl;
+    s << "-----------------------------------------------------------------------------------------------------" << endl;
     s << ptrComponenteAbs->toString() << endl;
     return s.str();
 }

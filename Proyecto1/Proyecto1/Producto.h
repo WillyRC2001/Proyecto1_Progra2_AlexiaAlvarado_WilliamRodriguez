@@ -17,7 +17,7 @@ public:
 	string getDescripcion();
 	double getPrecio();
 	string getCategoria();
-	Categoria* getCategoria2();
+	Categoria* getPorcentajeGanancia();
 	int getExistencias(); 
 	int getLimite();
 
@@ -28,7 +28,7 @@ public:
 	void setDescripcion(string);
 	void setPrecio(double);
 	void setCategoria(string);
-	void setCategoria2(Categoria*);
+	void setPorcentajeGanancia(Categoria*);
 	void setExistencias(int);
 	void setLimite(int);
 
@@ -46,7 +46,7 @@ private:
 	string descripion;
 	double precio_costo;
 	string categoria;
-	Categoria* categoria2;
+	Categoria* porcentajeGanancia;
 	int existencia;
 	int limite;
 	Fecha* fecha;
