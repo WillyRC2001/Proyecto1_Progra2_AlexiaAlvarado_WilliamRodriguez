@@ -1,20 +1,29 @@
 #pragma once
-#include "Producto.h"
+#include "Decorador_Abstracto.h"
+#include "Fecha.h" 
+#include "Cliente.h"
 
 class Venta {
 private:
-    Producto* producto;
-    int cantidad;
-    double precioUnitario;
+    Cliente* clienteCompra;
+    Fecha* fechaCompra;
+    Decorador_Abstracto* productoCompra;
+   /* Factura* facturaCompra;*/
 
 public:
-    Venta(Producto* producto, int cantidad, double precioUnitario);
-    // Métodos getters
-    Producto* getProducto() const;
-    int getCantidad() const;
-    double getPrecioUnitario() const;
-    double getPrecioTotal() const;
-    void setProducto(Producto* producto);
-    void setCantidad(int cantidad);
-    void setPrecioUnitario(double precioUnitario);
+    Venta();
+    Venta(Cliente*, Fecha*, Decorador_Abstracto*);
+    virtual ~Venta();
+
+    Cliente* getClienteComprador();
+    Fecha* getFechaCompra();
+    Decorador_Abstracto* getProductoComprado();
+   /* Factura* getFacturaCompra();*/
+
+    void setClienteComprador(Cliente*);
+    void setFechaCompra(Fecha*);
+    void setProductoComprado(Decorador_Abstracto*);
+    /*void setFacturaCompra(Factura*);*/
+
+    string toString();
 };

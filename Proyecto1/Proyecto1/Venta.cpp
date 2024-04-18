@@ -1,34 +1,78 @@
 #include "Venta.h"
 
-Venta::Venta(Producto* producto, int cantidad, double precioUnitario) : producto(producto), cantidad(cantidad), precioUnitario(precioUnitario) 
+Venta::Venta()
 {
-}
-// Métodos getters
-Producto* Venta::getProducto() const {
-    return producto;
-}
-
-int Venta::getCantidad() const {
-    return cantidad;
+    this->clienteCompra = nullptr;
+    this->fechaCompra = nullptr;
+    this->productoCompra = nullptr;
+    
 }
 
-double Venta::getPrecioUnitario() const {
-    return precioUnitario;
+Venta::Venta(Cliente* clientes, Fecha* fechas, Decorador_Abstracto* productos)
+{
+    this->clienteCompra = clientes;
+    this->fechaCompra = fechas;
+    this->productoCompra = productos;
+    
 }
 
-double Venta::getPrecioTotal() const {
-    return cantidad * precioUnitario;
+Venta::~Venta()
+{
+    if (clienteCompra) delete clienteCompra;
+    if (fechaCompra) delete fechaCompra;
+    if (productoCompra) delete productoCompra;
+    
 }
 
-// Métodos setters
-void Venta::setProducto(Producto* producto) {
-    this->producto = producto;
+Cliente* Venta::getClienteComprador()
+{
+    return clienteCompra;
 }
 
-void Venta::setCantidad(int cantidad) {
-    this->cantidad = cantidad;
+Fecha* Venta::getFechaCompra()
+{
+    return fechaCompra;
 }
 
-void Venta::setPrecioUnitario(double precioUnitario) {
-    this->precioUnitario = precioUnitario;
+Decorador_Abstracto* Venta::getProductoComprado()
+{
+    return productoCompra;
+}
+
+//Factura* Venta::getFacturaCompra()
+//{
+//    return facturaCompra;
+//}
+
+void Venta::setClienteComprador(Cliente* c)
+{
+    clienteCompra = c;
+}
+
+void Venta::setFechaCompra(Fecha* f)
+{
+    fechaCompra = f;
+}
+
+void Venta::setProductoComprado(Decorador_Abstracto* p)
+{
+    productoCompra = p;
+}
+
+//void Venta::setFacturaCompra(Factura* fac)
+//{
+//    facturaCompra = fac;
+//}
+
+string Venta::toString() 
+{
+    stringstream s; 
+    s << "------- FACTURA ---------" << endl;
+    s << "Cedula Cliente: " << this->clienteCompra->getCedulaCliente()<<endl;
+    s << "Fecha de Compra: " << this->fechaCompra->mostrarFecha();
+    s << "--------- PRODUCTOS ----------" << endl; 
+    s << this->productoCompra->toString();
+    s << "---------------------------------------" << endl;
+    
+    return s.str();
 }

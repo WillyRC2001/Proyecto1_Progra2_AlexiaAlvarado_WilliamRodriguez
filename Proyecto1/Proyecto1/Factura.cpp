@@ -1,50 +1,58 @@
 #include "Factura.h"
 
-Factura::Factura(int numero, Fecha* fecha) : numeroFactura(numero), fecha(fecha), productosVendidos(nullptr), numProductos(0), subtotal(0.0), impuestoIVA(0.0), totalPagar(0.0) {}
-
-Factura::~Factura() {
-    // Liberar la memoria asignada a los productos vendidos
-    if (productosVendidos != NULL) {
-        for (int i = 0; i < numProductos; ++i) {
-            delete productosVendidos[i];
-        }
-        delete[] productosVendidos;
-    }
+Factura::Factura(Venta* venta, int numFactura, int cantidadProd,double sub,double IVA, double total)
+{
+    ventaAsociada = venta;
+    numeroFactura = numFactura;
+    cantidadProductos = cantidadProd;
+    subtotal = sub;
+    iva = IVA;
+    totalAPagar = total;
 }
 
-void Factura::agregarVenta(Venta* venta) {
-    // Incrementar el tamaño del arreglo de productos vendidos
-    Venta** temp = new Venta * [numProductos + 1];
-    for (int i = 0; i < numProductos; ++i) {
-        temp[i] = productosVendidos[i];
-    }
-    temp[numProductos] = venta;
-    delete[] productosVendidos;
-    productosVendidos = temp;
-    numProductos++;
+Factura::~Factura() {  
+    delete ventaAsociada;
 }
-double Factura::calcularTotalPagar() {
-    // Calcular el subtotal sumando el precio total de cada venta
+
+void Factura::calcularSubtotal()
+{
     subtotal = 0.0;
-    for (int i = 0; i < numProductos; ++i) {
-        subtotal += productosVendidos[i]->getPrecioTotal();
-    }
-
-    
-    impuestoIVA = subtotal * PORCENTAJE_IVA;
-
-    
-    totalPagar = subtotal + impuestoIVA;
-
-    return totalPagar;
+    Decorador_Abstracto* producto = ventaAsociada->getProductoComprado();
+    subtotal += producto->obtener_costo();
 }
 
-double Factura::calcularGanancia() {
-    // Calcular la ganancia restando el costo total de los productos vendidos al subtotal
-    double costoTotal = 0.0;
-    for (int i = 0; i < numProductos; ++i) {
-        costoTotal += productosVendidos[i]->getProducto()->getPrecio() * productosVendidos[i]->getCantidad();
-    }
+void Factura::calcularIVA()
+{
+    iva = subtotal * 0.13;
+}
 
-    return subtotal - costoTotal;
+void Factura::calcularTotalAPagar()
+{
+    totalAPagar = subtotal + iva;
+}
+
+void Factura::mostrarDetallesProductos()
+{
+    Decorador_Abstracto* producto = ventaAsociada->getProductoComprado();
+
+    cout << "Producto: " << producto->obtener_nombre() << endl;
+    cout << "Codigo: " << producto->obtener_codigo() << endl;
+    cout << "Precio unitario: " << producto->obtener_costo() << endl;
+    
+}
+
+string Factura::mostrarResumenFactura()
+{
+    calcularSubtotal();
+    calcularIVA();
+    calcularTotalAPagar();
+
+    stringstream s; 
+    s << "-------------------------------------" <<endl;
+    s << "Numero de la Factura: " << numeroFactura << endl;
+    s << "Cantidad de Productos: " << cantidadProductos << endl;
+    s << "Subtotal: " << subtotal << endl;
+    s << "IVA: " << iva << endl;
+    s << "Total a pagar: " << totalAPagar << endl;
+    return s.str();
 }

@@ -1,25 +1,24 @@
 #pragma once
 #include "Venta.h"
-#include "Fecha.h"
-
-#define PORCENTAJE_IVA 13.00
 
 class Factura {
 private:
+    Venta* ventaAsociada;  
     int numeroFactura;
-    Fecha* fecha;
-    Venta** productosVendidos;
-    int numProductos;
+    int cantidadProductos;
     double subtotal;
-    double impuestoIVA;
-    double totalPagar;
+    double iva;
+    double totalAPagar;
 
 public:
-    Factura(int numero, Fecha* fecha);
-    ~Factura();
-    void agregarVenta(Venta* venta);
-    double calcularTotalPagar();
-    double calcularGanancia();
-};
+   
+    Factura(Venta*,int, int,double,double,double); // Constructor que recibe la venta asociada, número de factura y cantidad de productos
+    virtual ~Factura();
 
-//estuve haciendo unas pruebas con facturas y la gananciaTotal esta como que bugueadam mucho error por ahi a la hora de depurar
+    void calcularSubtotal();
+    void calcularIVA();
+    void calcularTotalAPagar();
+    void mostrarDetallesProductos();
+
+    string mostrarResumenFactura();
+};

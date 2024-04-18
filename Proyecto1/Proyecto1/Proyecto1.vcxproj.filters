@@ -81,13 +81,7 @@
     <ClCompile Include="Producto.cpp">
       <Filter>Archivos de origen\Productos</Filter>
     </ClCompile>
-    <ClCompile Include="ControlVentas.cpp">
-      <Filter>Archivos de origen\Factura</Filter>
-    </ClCompile>
     <ClCompile Include="Factura.cpp">
-      <Filter>Archivos de origen\Factura</Filter>
-    </ClCompile>
-    <ClCompile Include="Venta.cpp">
       <Filter>Archivos de origen\Factura</Filter>
     </ClCompile>
     <ClCompile Include="Decorador_Abarrote.cpp">
@@ -98,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="Decorador_Embutido.cpp">
       <Filter>Archivos de origen\Decoradores</Filter>
+    </ClCompile>
+    <ClCompile Include="Cliente.cpp">
+      <Filter>Archivos de origen\Factura</Filter>
+    </ClCompile>
+    <ClCompile Include="Venta.cpp">
+      <Filter>Archivos de origen\Factura</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +170,6 @@
     <ClInclude Include="Venta.h">
       <Filter>Archivos de encabezado\Factura</Filter>
     </ClInclude>
-    <ClInclude Include="ControlVentas.h">
-      <Filter>Archivos de encabezado\Factura</Filter>
-    </ClInclude>
     <ClInclude Include="Carrito.h">
       <Filter>Archivos de encabezado\Decoradores</Filter>
     </ClInclude>
@@ -187,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Decorador_Clases.h">
       <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
+    <ClInclude Include="Cliente.h">
+      <Filter>Archivos de encabezado\Factura</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

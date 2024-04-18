@@ -3,6 +3,9 @@
 #include "Decorador_Clases.h"
 #include "Lista_Generica.h"
 #include "Nodo_Generico.h"
+#include "Factura.h"
+#include "Cliente.h"
+#include "Venta.h"
 
 int main() {
 
@@ -53,6 +56,27 @@ int main() {
 	//mostrar
 	cout << "el carrito contiene: " << endl<<endl;
 	cout << Sardina->toString() << endl; 
+
+	system("pause");
+	system("cls");
+
+
+	//factura
+	
+	// Crear objetos de Cliente
+	Cliente* cliente1 = new Cliente("1111", "William");
+
+	// Crear objetos de Venta
+	Venta* venta1 = new Venta(cliente1, fech1,Sardina);
+
+	// Crear objetos de Factura
+	Factura* factura1 = new Factura(venta1, 1, 1, 1000, 130, 1130);
+
+	factura1->calcularSubtotal();
+	factura1->calcularIVA();
+	factura1->calcularTotalAPagar();
+	cout << "Resumen de la factura:" << endl;
+	cout << factura1->mostrarResumenFactura() << endl;
 
 	system("pause");
 	system("cls");
