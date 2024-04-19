@@ -24,19 +24,19 @@ int main() {
 	Fecha* fech10 = new Fecha(10, 10, 2020);
 
 	//percederos
-	Percedero* pc1 = new Percedero(fech10);
+	/*Percedero* pc1 = new Percedero(fech10);
 	Percedero* pc2 = new Percedero(fech8);
-	Percedero* pc3 = new Percedero(fech5);
+	Percedero* pc3 = new Percedero(fech5);*/
 
 	//empaque
 	Empaque* empac = new Empaque(true);
 
-	//creando objetos
+	//creando objetos tipo Conserva
 	Conserva* conserv1 = new Conserva("012", "Carne Molida", "carne molidita", 400, "Conserva", 50, 10, fech1, true);
 	Conserva* conserv2 = new Conserva("034", "Torta de Jamon", "jamon", 700, "Conserva", 80, 5, fech2, true);
 	Conserva* conserv3 = new Conserva("056", "Bistec", "corte fino", 1000, "Conserva", 45, 7, fech3, true);
 
-	//creando objetos percederos
+	//creando objetos perecederos (Abarrote y Embutido)
 	Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600,"Abarrote",100,6,fech4,fech10,true,45.0,"suli");
 	Embutido* embuti1 = new Embutido("090","salchichas", "salchichas de pavo", 2500,"Embutido",100,2,fech3,fech9,false,90.0,"pavo","la parte del pavo", "cinta azul");
 	Abarrote* abarrot2 = new Abarrote("010", "Sardina", "sardina con tomate", 650, "Abarrote", 80, 9, fech6, fech9, true, 30.0, "sardimar");
@@ -51,7 +51,24 @@ int main() {
 	Decorador_Abarrote* Atun = new Decorador_Abarrote(Bistec, abarrot1);
 	Decorador_Embutido* Salchichas = new Decorador_Embutido(Atun, embuti1);
 	Decorador_Abarrote* Sardina = new Decorador_Abarrote(Salchichas, abarrot2);
+
+	//Contenedor de productos usando la lista Generica
+	Lista<Producto>* listaprod = new Lista<Producto>();
+
 	
+	
+	//Agregando los productos al contenedor
+	listaprod->agregarInicio(conserv1);
+	listaprod->agregarInicio(conserv2);
+	listaprod->agregarInicio(conserv3);
+	listaprod->agregarInicio(abarrot1);
+	listaprod->agregarInicio(abarrot2);
+	listaprod->agregarInicio(embuti1);
+	//Mostrando lista del contenedor
+	cout << "=============================================================" << endl;
+	cout << "Lista de productos" << endl;
+	cout << listaprod->toString() << endl;
+	cout << "===============================================================" << endl;
 
 	//mostrar
 	cout << "el carrito contiene: " << endl<<endl;
@@ -63,13 +80,13 @@ int main() {
 
 	//factura
 	
-	// Crear objetos de Cliente
+	 //Crear objetos de Cliente
 	Cliente* cliente1 = new Cliente("1111", "William");
 
-	// Crear objetos de Venta
+	 //Crear objetos de Venta
 	Venta* venta1 = new Venta(cliente1, fech1,Sardina);
 
-	// Crear objetos de Factura
+	 //Crear objetos de Factura
 	Factura* factura1 = new Factura(venta1, 1, 1, 1000, 130, 1130);
 
 	factura1->calcularSubtotal();
@@ -80,18 +97,5 @@ int main() {
 
 	system("pause");
 	system("cls");
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//pruebas listas
-	Categoria* categ1 = new Categoria(1);
-	Producto* c1 = new Embutido("111", "comercial", "desc", 10, "Embutido", 1, 2, fech1,fech2, true,20,"nom_animal","part_animal","marca");
-	cout << c1->toString() << endl;
-	Lista<Producto>* lista = new Lista<Producto>();
-	lista->agregarFinal(c1);
-	lista->eliminar(c1);
-	cout << "Funciona!!" << endl;
-    
-	system("pause");
 	return 0;
 }

@@ -9,7 +9,7 @@ class Producto {
 public:
 	Producto(string cod, string nom_comerc, string descr, double precio, string categ, int existe, int limit, Fecha* fech);
 	virtual ~Producto();
-	
+	friend ostream& operator<<(ostream& os, const Producto& producto);
 	//get´s
 	Fecha* getFecha(); 
 	string getCodigo();
@@ -17,7 +17,7 @@ public:
 	string getDescripcion();
 	double getPrecio();
 	string getCategoria();
-	Categoria* getPorcentajeGanancia();
+	double PorcentajeGanancia();
 	int getExistencias(); 
 	int getLimite();
 
@@ -37,7 +37,7 @@ public:
 	bool calcularPrecioVenta();
 	double obtenerFactorIncrementoPorCategoria();
 
-	virtual string toString();
+	virtual string toString() const;
 
 private:
 

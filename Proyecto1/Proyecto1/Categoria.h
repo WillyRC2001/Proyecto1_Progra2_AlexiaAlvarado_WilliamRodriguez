@@ -6,15 +6,15 @@ class Categoria {
 
 public:
 
-	Categoria(); 
-	Categoria(int);
+	Categoria(string);
 	virtual~Categoria();
 	int getTipoCategoria();
 	void setTipoCategoria(int);
 	void Tipo(string);
-	double porcentajeDeGanancia(string); 
+	double porcentajeDeGanancia(); 
    
 
 private: 
-	int tipo; 
+	int tipo;
+	string categ;
 };

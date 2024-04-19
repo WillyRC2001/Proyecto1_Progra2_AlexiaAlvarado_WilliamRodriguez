@@ -13,7 +13,7 @@ public:
 	void setEmpaque(Empaque*); 
 	void setMarca(string); 
 
-	string toString();
+	string toString() const;
 private:
 	Empaque* empaque;
 	string marca;

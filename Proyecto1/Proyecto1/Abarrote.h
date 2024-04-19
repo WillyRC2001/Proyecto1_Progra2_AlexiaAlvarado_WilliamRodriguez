@@ -11,7 +11,7 @@ public:
 	string getAbarroteNombreEmpresa() ;
 	void setAbarroteNombreEmpresa(string);
 
-	string toString();
+	string toString() const;
 
 private:
 	string nombre_empresa;

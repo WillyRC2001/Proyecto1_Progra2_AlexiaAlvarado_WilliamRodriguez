@@ -19,7 +19,7 @@ void Abarrote::setAbarroteNombreEmpresa(string N_E)
 	this->nombre_empresa = N_E;
 }
 
-string Abarrote::toString()
+string Abarrote::toString() const
 {
 	stringstream s;
 	s << Product_Perecedero::toString()<<endl;

@@ -13,7 +13,7 @@ public:
 	void setNombreAnimal(string);
 	void setParteAnimal(string);
 
-	virtual string toString();
+	virtual string toString() const;
 private:
 	string nom_animal;
 	string part_animal;

@@ -14,7 +14,7 @@ void Conserva::setEnvasado(bool ProdEnvasado) {
     this->envasado = ProdEnvasado;
 }
 
-string Conserva::toString()
+string Conserva::toString() const
 {
 	stringstream s;
 	s << Producto::toString();

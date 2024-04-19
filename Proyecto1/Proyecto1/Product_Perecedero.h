@@ -19,7 +19,7 @@ public:
 	void setPeso(double pes);
 	void setPercedero(Percedero* percedero);
 
-	virtual string toString();
+	virtual string toString() const;
 
 private:
 	bool nacional;

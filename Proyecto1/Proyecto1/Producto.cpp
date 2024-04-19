@@ -5,11 +5,16 @@ Producto::Producto(string cod, string nom_comerc, string descr, double preci, st
 	descripion(descr), precio_costo(preci), categoria(categ),
 	existencia(existe), limite(limit), fecha(fech)
 {
-	porcentajeGanancia = new Categoria();
+	porcentajeGanancia = new Categoria(categoria);
 }
 
 Producto::~Producto()
 {
+}
+
+ostream& operator<<(ostream& os, const Producto& producto) {
+	os << producto.toString();
+	return os;
 }
 
 Fecha* Producto::getFecha()
@@ -41,12 +46,6 @@ string Producto::getCategoria()
 {
 	return this->categoria;
 }
-
-Categoria* Producto::getPorcentajeGanancia()
-{
-	return this->porcentajeGanancia;
-}
-
 
 int Producto::getExistencias()
 {
@@ -112,6 +111,10 @@ bool Producto::verificarExistencia()
 		return false;
 }
 
+double Producto::PorcentajeGanancia()
+{
+	return porcentajeGanancia->porcentajeDeGanancia();
+}
 void Producto::venderProducto(int cantidad)
 {
 	
@@ -160,7 +163,7 @@ double Producto::obtenerFactorIncrementoPorCategoria() {
 	return factorIncremento;
 }
 
-string Producto::toString()
+string Producto::toString() const
 {
 	stringstream s;
 	s << "-------------------PRODUCTO-----------------" << endl<<endl;
@@ -168,7 +171,7 @@ string Producto::toString()
 	s << "Nombre: " << nombre_comercial << endl;
 	s << "Precio: " << precio_costo << endl;
 	s << "Categoria: " << categoria << endl;
-	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia(categoria) <<"%"<< endl;
+	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia() <<"%"<< endl;
 	s << "Descripcion: " << descripion << endl;
 	s << "Existencia: " << existencia << endl;
 	s << "Limite: " << limite << endl;

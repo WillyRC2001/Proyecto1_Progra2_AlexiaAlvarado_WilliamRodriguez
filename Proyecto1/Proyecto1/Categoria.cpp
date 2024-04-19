@@ -1,13 +1,9 @@
 #include "Categoria.h"
 
-Categoria::Categoria()
+Categoria::Categoria(string tip_prod)
 {
     tipo = 0;
-}
-
-Categoria::Categoria(int tipe)
-{
-    this->tipo = tipe; 
+    categ = tip_prod;
 }
 
 Categoria::~Categoria()
@@ -35,11 +31,11 @@ void Categoria::Tipo(string categoria) {
     }
 }
 
-double Categoria::porcentajeDeGanancia(string categ) //revisar el metodo categoria
+double Categoria::porcentajeDeGanancia()
 {
     this->Tipo(categ);
     double porcentaje = 0.0;
-    switch (tipo) {
+    switch (this->tipo) {
     case 1:
         porcentaje = 15.0; //productos en conserva
         break;

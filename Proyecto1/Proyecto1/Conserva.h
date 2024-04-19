@@ -11,7 +11,7 @@ public:
     bool getEnvasado();
     void setEnvasado(bool envasado);
 
-    string toString();
+    string toString() const override;
 
 private:
     bool envasado;

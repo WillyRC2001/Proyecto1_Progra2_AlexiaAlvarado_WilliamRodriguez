@@ -29,7 +29,7 @@ void Carne::setParteAnimal(string partAnimal)
 	this->part_animal = partAnimal;
 }
 
-string Carne::toString()
+string Carne::toString() const
 {
 	stringstream s;
 	s << Product_Perecedero::toString()<<endl;

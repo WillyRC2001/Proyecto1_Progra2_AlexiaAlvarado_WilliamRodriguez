@@ -30,7 +30,7 @@ void Embutido::setMarca(string marcaEmbutido)
 	this->marca = marcaEmbutido;
 }
 
-string Embutido::toString()
+string Embutido::toString() const
 {
 	stringstream s;
 	s << Carne::toString();

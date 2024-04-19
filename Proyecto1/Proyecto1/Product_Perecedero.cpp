@@ -40,7 +40,7 @@ void Product_Perecedero::setPercedero(Percedero* perced)
 	this->percedero = perced;
 }
 
-string Product_Perecedero::toString()
+string Product_Perecedero::toString() const
 {
 	stringstream s;
 	s << Producto::toString();

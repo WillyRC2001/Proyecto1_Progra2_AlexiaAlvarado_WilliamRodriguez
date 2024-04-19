@@ -7,12 +7,12 @@ class Lista {
 public:
 	Lista();
 	Lista(const Lista&);
-	//Lista& operator =(const Lista&);
+	Lista& operator =(const Lista&);
 	virtual ~Lista();
 	void agregarInicio(T*);
 	void agregarFinal(T*);
 	bool eliminar(T*);
-	//string toString();
+	string toString();
 	void eliminarTodos();
 	int size();
 	bool isEmpty();
@@ -43,6 +43,29 @@ Lista<T>::~Lista() {
 		delete aux;
 		aux = primerNodo;
 	}
+}
+
+template<class T>
+Lista<T>& Lista<T>::operator=(const Lista<T>& otra) {
+	if (this != &otra) {
+		while (primerNodo != NULL) {
+			Nodo<T>* aux = primerNodo;
+			primerNodo = primerNodo->GetSiguiente();
+			delete aux;
+		}
+
+		if (otra.primerNodo != NULL) {
+			primerNodo = new Nodo<T>(NULL, *(otra.primerNodo->GetObj()));
+			Nodo<T>* pExtThis = primerNodo;
+			Nodo<T>* pExtOtra = otra.primerNodo->GetObj();
+			while (pExtOtra != NULL) {
+				pExtThis->SetSiguiente(new Nodo<T>(NULL, *(pExtOtra->GetObj())));
+				pExtThis = pExtThis->GetSiguiente();
+				pExtOtra = pExtOtra->GetSiguiente();
+			}
+		}
+	}
+	return *this;
 }
 
 template<class T>
@@ -90,6 +113,16 @@ bool Lista<T>::eliminar(T* obj) {
 		}
 	}
 	return false;
+}
+template<class T>
+string Lista<T>::toString() {
+	stringstream s;
+	Nodo<T>* pExt = primerNodo;
+	while (pExt != NULL) {
+		s << *pExt->GetObj();
+		pExt = pExt->GetSiguiente();
+	}
+	return s.str();
 }
 
 template<class T>
