@@ -3,6 +3,8 @@
 #include "Decorador_Clases.h"
 #include "Lista_Generica.h"
 #include "Nodo_Generico.h"
+#include "Nodo_Producto.h"
+#include "Lista_Producto.h"
 #include "Factura.h"
 #include "Cliente.h"
 #include "Venta.h"
@@ -82,25 +84,54 @@ int main() {
 	system("pause");
 	system("cls");
 
+	// Creación de objetos Cliente
+	Cliente* cliente1 = new Cliente("Juan Perez", "1234567890");
+	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321");
 
-	//factura
-	
-	 //Crear objetos de Cliente
-	Cliente* cliente1 = new Cliente("1111", "William");
+	// Creación de objeto Fecha para la factura
+	Fecha* fechaFactura = new Fecha(20, 4, 2024);
 
-	 //Crear objetos de Venta
-	Venta* venta1 = new Venta(cliente1, fech1,Sardina);
+	// Creación de objeto Factura
+	Factura* factura = new Factura(fechaFactura, 1001);
 
-	 //Crear objetos de Factura
-	Factura* factura1 = new Factura(venta1, 1, 1, 1000, 130, 1130);
+	// Creación de objeto Venta
+	Venta* venta = new Venta(cliente1, fechaFactura, Sardina, factura);
 
-	factura1->calcularSubtotal();
-	factura1->calcularIVA();
-	factura1->calcularTotalAPagar();
-	cout << "Resumen de la factura:" << endl;
-	cout << factura1->mostrarResumenFactura() << endl;
+	// Mostrar información de la venta
+	cout << "Informacion de la Venta:" <<endl;
+	cout << venta->toString() << endl;
+
+	// Modificar la factura y el cliente de la venta
+	Factura* nuevaFactura = new Factura(new Fecha(21, 4, 2024), 1002);
+	Cliente* nuevoCliente = new Cliente("Pedro Ramirez", "5432109876");
+	venta->setFacturaCompra(nuevaFactura);
+	venta->setClienteComprador(nuevoCliente);
+
+	// Mostrar información actualizada de la venta
+	cout << "Informacion de la Venta Actualizada:" << endl;
+	cout << venta->toString() << endl;
 
 	system("pause");
 	system("cls");
+
+	// Creación del contenedor de productos
+	ContenedorLProducto* contenedorProductos = new ContenedorLProducto();
+
+	// Agregar productos al contenedor
+	contenedorProductos->ingresaProducto(conserv1);
+	contenedorProductos->ingresaProducto(conserv2);
+	contenedorProductos->ingresaProducto(conserv3);
+	contenedorProductos->ingresaProducto(abarrot1);
+	contenedorProductos->ingresaProducto(abarrot2);
+	contenedorProductos->ingresaProducto(embuti1);
+
+	// Mostrar la lista de productos en el contenedor
+	cout << "Lista de productos en el contenedor:" << endl;
+	cout << contenedorProductos->toString() << endl;
+
+	system("pause");
+	system("cls");
+
+
 	return 0;
 }

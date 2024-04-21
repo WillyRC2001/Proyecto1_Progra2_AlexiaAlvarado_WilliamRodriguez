@@ -43,6 +43,12 @@
     <Filter Include="Archivos de encabezado\Menu">
       <UniqueIdentifier>{9109f8a8-d7ed-48bc-b9b0-94efbc183a1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Archivos">
+      <UniqueIdentifier>{cbd30390-de8e-4640-ad9f-c225acdf9b53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Archivos">
+      <UniqueIdentifier>{0007ab7e-cf12-41c9-81d4-eae88baebd1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="Venta.cpp">
       <Filter>Archivos de origen\Factura</Filter>
+    </ClCompile>
+    <ClCompile Include="Archivos.cpp">
+      <Filter>Archivos de origen\Archivos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +196,15 @@
     </ClInclude>
     <ClInclude Include="Controler.h">
       <Filter>Archivos de encabezado\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivos.h">
+      <Filter>Archivos de encabezado\Archivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista_Producto.h">
+      <Filter>Archivos de encabezado\Contenedores</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodo_Producto.h">
+      <Filter>Archivos de encabezado\Contenedores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

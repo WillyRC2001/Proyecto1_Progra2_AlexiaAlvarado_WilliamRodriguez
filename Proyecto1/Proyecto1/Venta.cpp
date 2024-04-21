@@ -2,26 +2,23 @@
 
 Venta::Venta()
 {
-    this->clienteCompra = nullptr;
-    this->fechaCompra = nullptr;
-    this->productoCompra = nullptr;
+    this->clienteCompra = NULL;
+    this->fechaCompra = NULL;
+    this->productoCompra = NULL;
+    this->facturaCompra = NULL;
     
 }
 
-Venta::Venta(Cliente* clientes, Fecha* fechas, Decorador_Abstracto* productos)
+Venta::Venta(Cliente* cl, Fecha* fc, Decorador_Abstracto* pc, Factura* fac)
 {
-    this->clienteCompra = clientes;
-    this->fechaCompra = fechas;
-    this->productoCompra = productos;
-    
+    this->clienteCompra = cl;
+    this->fechaCompra = fc;
+    this->productoCompra = pc;
+    this->facturaCompra = fac;
 }
 
 Venta::~Venta()
-{
-    if (clienteCompra) delete clienteCompra;
-    if (fechaCompra) delete fechaCompra;
-    if (productoCompra) delete productoCompra;
-    
+{    
 }
 
 Cliente* Venta::getClienteComprador()
@@ -39,10 +36,10 @@ Decorador_Abstracto* Venta::getProductoComprado()
     return productoCompra;
 }
 
-//Factura* Venta::getFacturaCompra()
-//{
-//    return facturaCompra;
-//}
+Factura* Venta::getFacturaCompra()
+{
+    return facturaCompra;
+}
 
 void Venta::setClienteComprador(Cliente* c)
 {
@@ -59,19 +56,20 @@ void Venta::setProductoComprado(Decorador_Abstracto* p)
     productoCompra = p;
 }
 
-//void Venta::setFacturaCompra(Factura* fac)
-//{
-//    facturaCompra = fac;
-//}
+void Venta::setFacturaCompra(Factura* fac)
+{
+    facturaCompra = fac;
+}
 
 string Venta::toString() 
 {
     stringstream s; 
     s << "------- FACTURA ---------" << endl;
     s << "Cedula Cliente: " << this->clienteCompra->getCedulaCliente()<<endl;
-    s << "Fecha de Compra: " << this->fechaCompra->mostrarFecha();
+    s << "Nombre del Cliente: " << this->clienteCompra->getNombreCliente() << endl;
+    s << "Factura: " << this->facturaCompra->mostrarResumenFactura();
     s << "--------- PRODUCTOS ----------" << endl; 
-    s << this->productoCompra->toString();
+    s << this->productoCompra->toString()<<"\n";
     s << "---------------------------------------" << endl;
     
     return s.str();

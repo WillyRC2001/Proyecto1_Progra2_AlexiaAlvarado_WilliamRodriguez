@@ -1,14 +1,8 @@
 #include "Decorador_Embutido.h"
 
-Decorador_Embutido::Decorador_Embutido(Componente_Abstracto* com, Embutido* embut) :Decorador_Abstracto(com), ptrEmbutidos(embut)
-{
+Decorador_Embutido::Decorador_Embutido(Componente_Abstracto* com, Embutido* embut) :Decorador_Abstracto(com), ptrEmbutidos(embut){}
 
-}
-
-Decorador_Embutido::~Decorador_Embutido()
-{
-
-}
+Decorador_Embutido::~Decorador_Embutido(){}
 
 Embutido* Decorador_Embutido::getEmbutido()
 {

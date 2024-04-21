@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Abarrote.cpp" />
+    <ClCompile Include="Archivos.cpp" />
     <ClCompile Include="baseObject.cpp" />
     <ClCompile Include="Carne.cpp" />
     <ClCompile Include="Categoria.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abarrote.h" />
+    <ClInclude Include="Archivos.h" />
     <ClInclude Include="Carne.h" />
     <ClInclude Include="Carrito.h" />
     <ClInclude Include="Categoria.h" />
@@ -166,10 +168,12 @@
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="baseObject.h" />
     <ClInclude Include="Lista_Generica.h" />
+    <ClInclude Include="Lista_Producto.h" />
     <ClInclude Include="MenuMantenimiento.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="MenuReporte.h" />
     <ClInclude Include="Nodo_Generico.h" />
+    <ClInclude Include="Nodo_Producto.h" />
     <ClInclude Include="Percedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="Producto_Clases.h" />

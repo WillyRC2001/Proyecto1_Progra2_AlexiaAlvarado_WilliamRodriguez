@@ -1,58 +1,40 @@
 #include "Factura.h"
 
-Factura::Factura(Venta* venta, int numFactura, int cantidadProd,double sub,double IVA, double total)
+Factura::Factura()
 {
-    ventaAsociada = venta;
-    numeroFactura = numFactura;
-    cantidadProductos = cantidadProd;
-    subtotal = sub;
-    iva = IVA;
-    totalAPagar = total;
+    this->fechaFactura = NULL;
+    this->numFactura = 0;
 }
 
-Factura::~Factura() {  
-    delete ventaAsociada;
+Factura::Factura(Fecha* fecFactura,int numeroFactura): fechaFactura(fecFactura),numFactura(numeroFactura)
+{
 }
 
-void Factura::calcularSubtotal()
-{
-    subtotal = 0.0;
-    Decorador_Abstracto* producto = ventaAsociada->getProductoComprado();
-    subtotal += producto->obtener_costo();
+Factura::~Factura() {
+   
 }
 
-void Factura::calcularIVA()
+Fecha* Factura::getFactura()
 {
-    iva = subtotal * 0.13;
+    return fechaFactura;
 }
 
-void Factura::calcularTotalAPagar()
+int Factura::getNumeroFactura()
 {
-    totalAPagar = subtotal + iva;
+    return numFactura;
 }
 
-void Factura::mostrarDetallesProductos()
+void Factura::setFactura(Fecha* ff)
 {
-    Decorador_Abstracto* producto = ventaAsociada->getProductoComprado();
-
-    cout << "Producto: " << producto->obtener_nombre() << endl;
-    cout << "Codigo: " << producto->obtener_codigo() << endl;
-    cout << "Precio unitario: " << producto->obtener_costo() << endl;
-    
+    fechaFactura = ff;
 }
 
 string Factura::mostrarResumenFactura()
 {
-    calcularSubtotal();
-    calcularIVA();
-    calcularTotalAPagar();
-
     stringstream s; 
     s << "-------------------------------------" <<endl;
-    s << "Numero de la Factura: " << numeroFactura << endl;
-    s << "Cantidad de Productos: " << cantidadProductos << endl;
-    s << "Subtotal: " << subtotal << endl;
-    s << "IVA: " << iva << endl;
-    s << "Total a pagar: " << totalAPagar << endl;
+    s << "Fecha de Factura: " << this->fechaFactura->mostrarFecha() << endl;
+    s << "Numero de la Factura: " << numFactura << endl;
+    
     return s.str();
 }

@@ -16,8 +16,14 @@ public:
 	void eliminarTodos();
 	int size();
 	bool isEmpty();
+	void incializarActual();
+	int getCantElem();
+	T& recuperarDato(string);
+
 private:
+	int cantElementos; 
 	Nodo<T>* primerNodo;
+	Nodo<T>* actual;
 };
 
 template<class T>
@@ -149,4 +155,14 @@ int Lista<T>::size() {
 template <class T>
 bool Lista<T>::isEmpty() {
 	return (primerNodo == NULL);
+}
+
+template<class T>
+void Lista<T>::incializarActual() {
+	actual = primerNodo;
+}
+
+template<class T>
+inline int Lista<T>::getCantElem() {
+	return cantElementos;
 }
