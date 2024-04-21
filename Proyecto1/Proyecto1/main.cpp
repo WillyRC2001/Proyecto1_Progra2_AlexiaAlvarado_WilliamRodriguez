@@ -59,30 +59,13 @@ int main() {
 	Decorador_Embutido* Salchichas = new Decorador_Embutido(Atun, embuti1);
 	Decorador_Abarrote* Sardina = new Decorador_Abarrote(Salchichas, abarrot2);
 
-	//Contenedor de productos usando la lista Generica
-	Lista<Producto>* listaprod = new Lista<Producto>();
-
-	
-	
-	//Agregando los productos al contenedor
-	listaprod->agregarInicio(conserv1);
-	listaprod->agregarInicio(conserv2);
-	listaprod->agregarInicio(conserv3);
-	listaprod->agregarInicio(abarrot1);
-	listaprod->agregarInicio(abarrot2);
-	listaprod->agregarInicio(embuti1);
-	//Mostrando lista del contenedor
-	cout << "=============================================================" << endl;
-	cout << "Lista de productos" << endl;
-	cout << listaprod->toString() << endl;
-	cout << "===============================================================" << endl;
-
 	//mostrar
 	cout << "el carrito contiene: " << endl<<endl;
 	cout << Sardina->toString() << endl; 
 
 	system("pause");
 	system("cls");
+	
 
 	// Creación de objetos Cliente
 	Cliente* cliente1 = new Cliente("Juan Perez", "1234567890");

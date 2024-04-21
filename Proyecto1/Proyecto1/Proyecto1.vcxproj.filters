@@ -108,6 +108,9 @@
     <ClCompile Include="Archivos.cpp">
       <Filter>Archivos de origen\Archivos</Filter>
     </ClCompile>
+    <ClCompile Include="MiniSuper.cpp">
+      <Filter>Archivos de origen\Clases_Pequeñas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuMantenimiento.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="Nodo_Producto.h">
       <Filter>Archivos de encabezado\Contenedores</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniSuper.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

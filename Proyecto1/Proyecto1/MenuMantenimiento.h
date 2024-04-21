@@ -5,7 +5,6 @@ class MenuMantenimiento {
 public:
 	static string Facturas();
 	static string Producto();
-	//static int Retornar();
 
 };
 string MenuMantenimiento::Facturas() {

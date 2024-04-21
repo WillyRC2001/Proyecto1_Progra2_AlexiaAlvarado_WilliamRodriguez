@@ -16,6 +16,10 @@ public:
 	Producto* busca(string);
 	bool eliminarProducto(string);
 	bool cambiarProducto(string, Producto*);
+	void IngresarProducto(string codigo, Producto* nuevo);				//Contenedor Producto
+	string TodosLosProductos();							//Contenedor Producto
+	string ProductoDeUnaCategoria(string categoria);	//Contenedor Producto
+	string ProductosConMinExistencia();					//Contenedor Producto
 };
 
 
@@ -148,5 +152,38 @@ bool ContenedorLProducto::cambiarProducto(string cod, Producto* per)
 	return false;
 
 }
-
-
+///////////////////////////////////////////////////////////////////////////////////////
+void ContenedorLProducto::IngresarProducto(string codigo, Producto* nuevo){
+	if (this->busca(codigo) == NULL) {
+		this->ingresaProducto(nuevo);
+	}
+}
+//string ContenedorLProducto::TodosLosProductos(){
+//	return this->toString();
+//}
+//string ContenedorLProducto::ProductoDeUnaCategoria(string categoria){
+//	stringstream s;
+//	NodoProducto* p = ppio;
+//	if (!esVacio()) {
+//		while (p != NULL) {
+//			if (p->getProd()->getCategoria() == categoria) {
+//				s << p->getProd()->toString();
+//			}
+//			p = p->getsig();
+//		}
+//	}
+//	return s.str();
+//}
+//string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia quiere decir que no hay??
+//	stringstream s;
+//	NodoProducto* p = ppio;
+//	if (!esVacio()) {
+//		while (p != NULL) {
+//			if (p->getProd()->getExistencias() == 0) {
+//				s << p->getProd()->toString();
+//			}
+//			p = p->getsig();
+//		}
+//	}
+//	return s.str();
+//}
