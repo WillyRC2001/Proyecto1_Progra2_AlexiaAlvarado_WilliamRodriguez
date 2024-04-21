@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\Menus">
-      <UniqueIdentifier>{9109f8a8-d7ed-48bc-b9b0-94efbc183a1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\Decoradores">
       <UniqueIdentifier>{a89fce73-c5f4-4cd5-81f7-9e65ed554bba}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,9 @@
     </Filter>
     <Filter Include="Archivos de encabezado\Contenedores">
       <UniqueIdentifier>{c62debf7-63b7-44c0-b9fd-b8b2d8e06d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Menu">
+      <UniqueIdentifier>{9109f8a8-d7ed-48bc-b9b0-94efbc183a1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,16 +102,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuMantenimiento.h">
-      <Filter>Archivos de encabezado\Menus</Filter>
+      <Filter>Archivos de encabezado\Menu</Filter>
     </ClInclude>
     <ClInclude Include="MenuPrincipal.h">
-      <Filter>Archivos de encabezado\Menus</Filter>
+      <Filter>Archivos de encabezado\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="MenuReportes.h">
-      <Filter>Archivos de encabezado\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuVentas.h">
-      <Filter>Archivos de encabezado\Menus</Filter>
+    <ClInclude Include="MenuReporte.h">
+      <Filter>Archivos de encabezado\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Decorador_Abarrote.h">
       <Filter>Archivos de encabezado\Decoradores</Filter>
@@ -187,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Cliente.h">
       <Filter>Archivos de encabezado\Factura</Filter>
+    </ClInclude>
+    <ClInclude Include="Controler.h">
+      <Filter>Archivos de encabezado\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

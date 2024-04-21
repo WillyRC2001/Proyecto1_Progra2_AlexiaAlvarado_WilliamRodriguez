@@ -6,8 +6,13 @@
 #include "Factura.h"
 #include "Cliente.h"
 #include "Venta.h"
+#include "Controler.h"
 
 int main() {
+	////Pruebas con los menu no toque
+	//Controler* cont = new Controler();
+	//cont->VerMenus();
+	
 
 	//pruebas decorador
 

@@ -154,6 +154,7 @@
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Componente_Abstracto.h" />
     <ClInclude Include="Conserva.h" />
+    <ClInclude Include="Controler.h" />
     <ClInclude Include="Decorador_Abarrote.h" />
     <ClInclude Include="Decorador_Abstracto.h" />
     <ClInclude Include="Decorador_Clases.h" />
@@ -167,8 +168,7 @@
     <ClInclude Include="Lista_Generica.h" />
     <ClInclude Include="MenuMantenimiento.h" />
     <ClInclude Include="MenuPrincipal.h" />
-    <ClInclude Include="MenuReportes.h" />
-    <ClInclude Include="MenuVentas.h" />
+    <ClInclude Include="MenuReporte.h" />
     <ClInclude Include="Nodo_Generico.h" />
     <ClInclude Include="Percedero.h" />
     <ClInclude Include="Producto.h" />
