@@ -111,10 +111,6 @@ bool Producto::verificarExistencia()
 		return false;
 }
 
-double Producto::PorcentajeGanancia()
-{
-	return porcentajeGanancia->porcentajeDeGanancia();
-}
 void Producto::venderProducto(int cantidad)
 {
 	
@@ -131,7 +127,7 @@ void Producto::venderProducto(int cantidad)
 }
 
 bool Producto::calcularPrecioVenta() {
-	double factorIncremento = obtenerFactorIncrementoPorCategoria();
+	double factorIncremento = calcularGanancia();
 	if (factorIncremento <= 0.0) {
 		return false;
 	}
@@ -140,27 +136,9 @@ bool Producto::calcularPrecioVenta() {
 	return true;
 }
 
-double Producto::obtenerFactorIncrementoPorCategoria() {
-
-	// Obtenemos la categoría del producto
-	string categoria = getCategoria();
-
-	double factorIncremento = 0.0;
-	if (categoria == "Abarrote") {
-		factorIncremento = 1.1; // Factor de incremento del 10%
-	}
-	else if (categoria == "Conserva") {
-		factorIncremento = 1.2; // Factor de incremento del 20%
-	}
-	else if (categoria == "Embutido") {
-		factorIncremento = 1.3; // Factor de incremento del 30%
-	}
-	else {
-		
-		factorIncremento = 1.1; 
-	}
-
-	return factorIncremento;
+double Producto::calcularGanancia() {
+	
+	return porcentajeGanancia->porcentajeDeGanancia(categoria);
 }
 
 string Producto::toString() const
@@ -171,7 +149,7 @@ string Producto::toString() const
 	s << "Nombre: " << nombre_comercial << endl;
 	s << "Precio: " << precio_costo << endl;
 	s << "Categoria: " << categoria << endl;
-	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia() <<"%"<< endl;
+	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia(categoria) <<" %"<< endl;
 	s << "Descripcion: " << descripion << endl;
 	s << "Existencia: " << existencia << endl;
 	s << "Limite: " << limite << endl;

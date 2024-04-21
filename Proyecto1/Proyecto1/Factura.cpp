@@ -29,6 +29,7 @@ void Factura::setFactura(Fecha* ff)
     fechaFactura = ff;
 }
 
+
 string Factura::mostrarResumenFactura()
 {
     stringstream s; 

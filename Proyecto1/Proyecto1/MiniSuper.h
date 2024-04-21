@@ -3,7 +3,6 @@
 #include "Lista_Producto.h"
 //#include "Venta.h"
 
-
 class MiniSuper {
 public:
 	MiniSuper();
@@ -24,7 +23,8 @@ public:
 	string ProductosConMinExistencia();					//Contenedor Producto
 	string FacturasDeCliente(string cedula);			//Contenedor Ventas
 	string CedulaDeLas5MejoresVentas();					//Contenedor Ventas
-public:
+
+private:
 	ContenedorLProducto* Cont_Prod;
 	//Falta agregar el contenedor Venta
 };

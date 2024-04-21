@@ -17,7 +17,7 @@ public:
 	string getDescripcion();
 	double getPrecio();
 	string getCategoria();
-	double PorcentajeGanancia();
+	double getPorcentajeGanancia();
 	int getExistencias(); 
 	int getLimite();
 
@@ -35,7 +35,7 @@ public:
 	bool verificarExistencia();
 	void venderProducto(int cantidad);
 	bool calcularPrecioVenta();
-	double obtenerFactorIncrementoPorCategoria();
+	double calcularGanancia();
 
 	virtual string toString() const;
 

@@ -1,26 +1,10 @@
-﻿  Abarrote.cpp
-  Archivos.cpp
-  baseObject.cpp
-  Carne.cpp
-  Categoria.cpp
-  Cliente.cpp
-  Conserva.cpp
-  Decorador_Abarrote.cpp
-  Decorador_Conserva.cpp
-  Decorador_Embutido.cpp
-  Embutido.cpp
-  Empaque.cpp
+﻿  Archivos.cpp
   Factura.cpp
-  Fecha.cpp
-  main.cpp
-C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(2,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-  MiniSuper.cpp
-  Percedero.cpp
-  Producto.cpp
-  Product_Perecedero.cpp
   Venta.cpp
+  main.cpp
+C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(2,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
   Generando código...
-  Proyecto1.vcxproj -> C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\x64\Debug\Proyecto1.exe
+  Proyecto1.vcxproj -> C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\x64\Debug\Proyecto1.exe

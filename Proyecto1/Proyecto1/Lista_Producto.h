@@ -158,32 +158,32 @@ void ContenedorLProducto::IngresarProducto(string codigo, Producto* nuevo){
 		this->ingresaProducto(nuevo);
 	}
 }
-//string ContenedorLProducto::TodosLosProductos(){
-//	return this->toString();
-//}
-//string ContenedorLProducto::ProductoDeUnaCategoria(string categoria){
-//	stringstream s;
-//	NodoProducto* p = ppio;
-//	if (!esVacio()) {
-//		while (p != NULL) {
-//			if (p->getProd()->getCategoria() == categoria) {
-//				s << p->getProd()->toString();
-//			}
-//			p = p->getsig();
-//		}
-//	}
-//	return s.str();
-//}
-//string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia quiere decir que no hay??
-//	stringstream s;
-//	NodoProducto* p = ppio;
-//	if (!esVacio()) {
-//		while (p != NULL) {
-//			if (p->getProd()->getExistencias() == 0) {
-//				s << p->getProd()->toString();
-//			}
-//			p = p->getsig();
-//		}
-//	}
-//	return s.str();
-//}
+string ContenedorLProducto::TodosLosProductos(){
+	return this->toString();
+}
+string ContenedorLProducto::ProductoDeUnaCategoria(string categoria){
+	stringstream s;
+	NodoProducto* p = ppio;
+	if (!esVacio()) {
+		while (p != NULL) {
+			if (p->getProd()->getCategoria() == categoria) {
+				s << p->getProd()->toString();
+			}
+			p = p->getsig();
+		}
+	}
+	return s.str();
+}
+string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia quiere decir que no hay??
+	stringstream s;
+	NodoProducto* p = ppio;
+	if (!esVacio()) {
+		while (p != NULL) {
+			if (p->getProd()->getExistencias() == 0) {
+				s << p->getProd()->toString();
+			}
+			p = p->getsig();
+		}
+	}
+	return s.str();
+}

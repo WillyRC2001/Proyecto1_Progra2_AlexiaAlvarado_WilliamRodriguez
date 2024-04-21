@@ -1,6 +1,7 @@
 #pragma once
 #include "Factura.h"
 
+
 class Venta {
 private:
     Cliente* clienteCompra;
@@ -23,7 +24,6 @@ public:
     void setFechaCompra(Fecha*);
     void setProductoComprado(Decorador_Abstracto*);
     void setFacturaCompra(Factura*);
- 
 
     string toString();
 };
