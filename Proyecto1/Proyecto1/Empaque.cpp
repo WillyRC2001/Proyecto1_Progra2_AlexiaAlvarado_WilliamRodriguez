@@ -8,7 +8,7 @@ Empaque::~Empaque()
 {
 }
 
-bool Empaque::getTripa()
+bool Empaque::getTripa() const
 {
 	return this->tripa;
 }
@@ -21,6 +21,6 @@ void Empaque::setTripa(bool trippa)
 string Empaque::toString()
 {
 	std::stringstream s;
-	s << "Tipo de empaque: " << (tripa ? "Tripa" : "Otro") << endl;
+	s << "Tipo de empaque: " << (tripa ? "Si" : "No") << endl;
 	return s.str();
 }

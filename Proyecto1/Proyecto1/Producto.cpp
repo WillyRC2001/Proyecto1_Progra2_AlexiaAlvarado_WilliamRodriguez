@@ -1,5 +1,18 @@
 #include "Producto.h"
 
+Producto::Producto()
+{
+	this->porcentajeGanancia = new Categoria(nullptr);
+	this->fecha = nullptr;
+	this->codigo = "";
+	this->nombre_comercial = "";
+	this->descripion = "";
+	this->precio_costo = 0.0;
+	this->categoria = "";
+	this->existencia = 0;
+	this->limite = 0;
+}
+
 Producto::Producto(string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, Fecha* fech) :
 	codigo(cod), nombre_comercial(nom_comerc),
 	descripion(descr), precio_costo(preci), categoria(categ),
@@ -8,18 +21,35 @@ Producto::Producto(string cod, string nom_comerc, string descr, double preci, st
 	porcentajeGanancia = new Categoria(categoria);
 }
 
-Producto::~Producto()
+Producto::Producto(const Producto& p)
 {
+	this->porcentajeGanancia = new Categoria(*(p.porcentajeGanancia));
+	this->fecha = new Fecha(*(p.fecha));
+	this->codigo = p.codigo;
+	this->nombre_comercial = p.nombre_comercial;
+	this->descripion = p.descripion;
+	this->precio_costo = p.precio_costo;
+	this->categoria = p.categoria;
+	this->existencia = p.existencia;
+	this->limite = p.limite;
+
 }
 
-ostream& operator<<(ostream& os, const Producto& producto) {
-	os << producto.toString();
-	return os;
+Producto::~Producto()
+{
+	if (porcentajeGanancia != nullptr) { delete porcentajeGanancia; }
+	if (fecha != nullptr) { delete fecha; }
+
 }
 
 Fecha* Producto::getFecha()
 {
 	return this->fecha;
+}
+
+Categoria* Producto::getPorcentajeGanancia()
+{
+	return this->porcentajeGanancia;
 }
 
 string Producto::getCodigo()
@@ -126,14 +156,9 @@ void Producto::venderProducto(int cantidad)
 	cout << "Venta realizada: " << cantidad << " unidades de " << nombre_comercial << " vendidas." << endl;
 }
 
-bool Producto::calcularPrecioVenta() {
-	double factorIncremento = calcularGanancia();
-	if (factorIncremento <= 0.0) {
-		return false;
-	}
-	double precioVenta = precio_costo * factorIncremento;
+double Producto::calcularPrecioVenta() {
 
-	return true;
+	return precio_costo * porcentajeGanancia->porcentajeDeGanancia(categoria);
 }
 
 double Producto::calcularGanancia() {
@@ -145,15 +170,22 @@ string Producto::toString() const
 {
 	stringstream s;
 	s << "-------------------PRODUCTO-----------------" << endl<<endl;
+	if (fecha != nullptr) {
+		s << "La fecha de ingreso es de " << *(&fecha) << endl;
+	}
 	s << "Codigo: " << codigo << endl;
 	s << "Nombre: " << nombre_comercial << endl;
+	s << "Descripcion: " << descripion << endl;
 	s << "Precio: " << precio_costo << endl;
 	s << "Categoria: " << categoria << endl;
 	s << "Porcentaje de Ganancia: " << porcentajeGanancia->porcentajeDeGanancia(categoria) <<" %"<< endl;
-	s << "Descripcion: " << descripion << endl;
 	s << "Existencia: " << existencia << endl;
 	s << "Limite: " << limite << endl;
-	s << "Fecha de Ingreso: " << fecha->mostrarFecha();
 	s << "----------------------------------------------" << endl;
 	return s.str();
+}
+
+ostream& operator<<(ostream& os, const Producto& producto) {
+	os << producto.toString();
+	return os;
 }

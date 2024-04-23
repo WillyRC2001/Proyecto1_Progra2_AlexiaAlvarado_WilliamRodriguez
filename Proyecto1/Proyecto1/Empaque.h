@@ -6,7 +6,7 @@ public:
 	Empaque(bool trip);
 	virtual ~Empaque();
 
-	bool getTripa();
+	bool getTripa() const;
 	void setTripa(bool); 
 
 	string toString();

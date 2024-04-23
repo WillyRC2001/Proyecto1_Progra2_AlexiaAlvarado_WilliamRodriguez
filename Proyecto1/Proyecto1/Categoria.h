@@ -1,6 +1,6 @@
 #pragma once
 #include "Utiles_Clases.h"
-#include <stdexcept>
+
 
 class Categoria {
 

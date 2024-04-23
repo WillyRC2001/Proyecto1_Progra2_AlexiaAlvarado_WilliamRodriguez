@@ -1,7 +1,8 @@
 #include "Decorador_Abarrote.h"
 
 
-Decorador_Abarrote::Decorador_Abarrote(Componente_Abstracto* com, Abarrote* abarr):Decorador_Abstracto(com),ptrAbarrotes(abarr)
+Decorador_Abarrote::Decorador_Abarrote(Componente_Abstracto* com, Abarrote* abarr):
+    Decorador_Abstracto(com),ptrAbarrotes(abarr)
 {
     
 }

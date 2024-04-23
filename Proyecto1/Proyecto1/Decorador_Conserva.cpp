@@ -1,6 +1,7 @@
 #include "Decorador_Conserva.h"
 
-Decorador_Conserva::Decorador_Conserva(Componente_Abstracto* com, Conserva* conser) :Decorador_Abstracto(com), ptrConservas(conser)
+Decorador_Conserva::Decorador_Conserva(Componente_Abstracto* com, Conserva* conser) :
+    Decorador_Abstracto(com), ptrConservas(conser)
 {
 
 }

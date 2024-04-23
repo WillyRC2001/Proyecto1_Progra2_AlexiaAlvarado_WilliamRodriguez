@@ -1,6 +1,12 @@
-﻿  Archivos.cpp
-  Factura.cpp
-  Venta.cpp
+﻿  Abarrote.cpp
+  Carne.cpp
+  Conserva.cpp
+  Decorador_Abarrote.cpp
+  Decorador_Conserva.cpp
+  Decorador_Embutido.cpp
+  Embutido.cpp
+  Product_Perecedero.cpp
+  Producto.cpp
   main.cpp
 C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(2,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
 C:\Users\Usuario\Documents\PROGRA 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\Proyecto1\Controler.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
