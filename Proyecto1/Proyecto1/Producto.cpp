@@ -2,7 +2,6 @@
 
 Producto::Producto()
 {
-	this->porcentajeGanancia = new Categoria(nullptr);
 	this->fecha = nullptr;
 	this->codigo = "";
 	this->nombre_comercial = "";
@@ -11,6 +10,7 @@ Producto::Producto()
 	this->categoria = "";
 	this->existencia = 0;
 	this->limite = 0;
+	this->porcentajeGanancia = new Categoria(categoria);
 }
 
 Producto::Producto(string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, Fecha* fech) :
@@ -171,7 +171,7 @@ string Producto::toString() const
 	stringstream s;
 	s << "-------------------PRODUCTO-----------------" << endl<<endl;
 	if (fecha != nullptr) {
-		s << "La fecha de ingreso es de " << *(&fecha) << endl;
+		s << "La fecha de ingreso es de " << fecha->mostrarFecha() << endl;
 	}
 	s << "Codigo: " << codigo << endl;
 	s << "Nombre: " << nombre_comercial << endl;

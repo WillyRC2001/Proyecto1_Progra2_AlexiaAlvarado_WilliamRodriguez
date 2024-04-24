@@ -1,11 +1,12 @@
 #pragma once
 #include "Utiles_Clases.h"
 #include "Lista_Producto.h"
-//#include "Venta.h"
+#include "Lista_Generica.h"
+#include "Venta.h"
 
 class MiniSuper {
 public:
-	MiniSuper();
+	MiniSuper(ContenedorLProducto*, Lista<Venta>*);
 	virtual ~MiniSuper();
 
 	//Metodos que pide Mantenimiento
@@ -26,17 +27,24 @@ public:
 
 private:
 	ContenedorLProducto* Cont_Prod;
-	//Falta agregar el contenedor Venta
+	Lista<Venta>* Cont_Venta;
 };
-
-MiniSuper::MiniSuper() {
-	Cont_Prod = new ContenedorLProducto();
+MiniSuper::MiniSuper(ContenedorLProducto* cont, Lista<Venta>* vent) {
+	Cont_Prod = cont;
+	Cont_Venta = vent;
 }
 MiniSuper::~MiniSuper() {
 	if (Cont_Prod != NULL) {
 		delete Cont_Prod;
 		Cont_Prod = NULL;
 	}
+	if (Cont_Venta != NULL) {
+		delete Cont_Venta;
+		Cont_Venta = NULL;
+	}
+}
+void MiniSuper::EliminarFactura(int num_factura) {
+	Cont_Venta->eliminar(Cont_Venta->buscarNumeroFactura(num_factura));
 }
 
 void MiniSuper::IngresarElProducto(string codigo, Producto* nuevo)

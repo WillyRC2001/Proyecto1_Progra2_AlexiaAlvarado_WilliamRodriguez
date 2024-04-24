@@ -119,9 +119,6 @@
     <ClInclude Include="MenuPrincipal.h">
       <Filter>Archivos de encabezado\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="MenuReporte.h">
-      <Filter>Archivos de encabezado\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Decorador_Abarrote.h">
       <Filter>Archivos de encabezado\Decoradores</Filter>
     </ClInclude>

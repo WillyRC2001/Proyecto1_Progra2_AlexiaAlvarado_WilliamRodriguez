@@ -19,6 +19,7 @@ public:
 	void incializarActual();
 	int getCantElem();
 	T& recuperarDato(string);
+	T* buscarNumeroFactura(int);
 
 private:
 	int cantElementos; 
@@ -165,4 +166,20 @@ void Lista<T>::incializarActual() {
 template<class T>
 inline int Lista<T>::getCantElem() {
 	return cantElementos;
+}
+
+template<class T>
+T* Lista<T>::buscarNumeroFactura(int num_factura)
+{
+	Nodo<T>* p = primerNodo;
+	if (!NULL) {
+		while (p != NULL) {
+			if (p->GetObj()->getFacturaCompra()->getNumeroFactura() == num_factura) {
+				return p->GetObj();
+
+			}
+			p = p->GetSiguiente();
+		}
+	}
+	return NULL;
 }

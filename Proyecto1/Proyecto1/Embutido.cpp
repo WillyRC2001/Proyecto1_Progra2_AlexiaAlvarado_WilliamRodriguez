@@ -1,7 +1,7 @@
 #include "Embutido.h"
 
-Embutido::Embutido(string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, Fecha* fech1, Fecha* fech2, bool nacion, double pes, string nom_ani, string part_ani, string marc):
-	Carne(cod, nom_comerc, descr, preci, categ, existe, limit, fech1, fech2, nacion, pes, nom_ani, part_ani), marca(marc)
+Embutido::Embutido(string cod, string nom_comerc, string descr, double preci, string categ, int existe, int limit, Fecha* fech1, Fecha* fech2, bool nacion, double pes, string nom_ani, string part_ani, string marc, Empaque* emp):
+	Carne(cod, nom_comerc, descr, preci, categ, existe, limit, fech1, fech2, nacion, pes, nom_ani, part_ani), marca(marc),empaque(emp)
 {
 
 }

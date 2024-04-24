@@ -11,13 +11,6 @@
 #include "Controler.h"
 
 int main() {
-	////Pruebas con los menu no toque
-	//Controler* cont = new Controler();
-	//cont->VerMenus();
-	
-
-	//pruebas decorador
-
 	//fechas
 	Fecha* fech1 = new Fecha(01, 1, 2021);
 	Fecha* fech2 = new Fecha(22, 2, 2022);
@@ -30,11 +23,6 @@ int main() {
 	Fecha* fech9 = new Fecha(19, 9, 2021);
 	Fecha* fech10 = new Fecha(10, 10, 2020);
 
-	//percederos
-	/*Percedero* pc1 = new Percedero(fech10);
-	Percedero* pc2 = new Percedero(fech8);
-	Percedero* pc3 = new Percedero(fech5);*/
-
 	//empaque
 	Empaque* empac = new Empaque(true);
 
@@ -45,7 +33,7 @@ int main() {
 
 	//creando objetos perecederos (Abarrote y Embutido)
 	Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600,"Abarrote",100,6,fech4,fech10,true,45.0,"suli");
-	Embutido* embuti1 = new Embutido("090","salchichas", "salchichas de pavo", 2500,"Embutido",100,2,fech3,fech9,false,90.0,"pavo","la parte del pavo", "cinta azul");
+	Embutido* embuti1 = new Embutido("090","salchichas", "salchichas de pavo", 2500,"Embutido",100,2,fech3,fech9,false,90.0,"pavo","la parte del pavo", "cinta azul",empac);
 	Abarrote* abarrot2 = new Abarrote("010", "Sardina", "sardina con tomate", 650, "Abarrote", 80, 9, fech6, fech9, true, 30.0, "sardimar");
 
 	/*carrito*/
@@ -72,27 +60,27 @@ int main() {
 	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321");
 
 	// Creación de objeto Fecha para la factura
-	Fecha* fechaFactura = new Fecha(20, 4, 2024);
+	Fecha* fechaFactura1 = new Fecha(20, 4, 2024);
 
 	// Creación de objeto Factura
-	Factura* factura = new Factura(fechaFactura, 1001);
+	Factura* factura1 = new Factura(fechaFactura1, 1001);
 
 	// Creación de objeto Venta
-	Venta* venta = new Venta(cliente1, fechaFactura, Sardina, factura);
+	Venta* venta1 = new Venta(cliente1, fechaFactura1, Sardina, factura1);
 
 	// Mostrar información de la venta
 	cout << "Informacion de la Venta:" <<endl;
-	cout << venta->toString() << endl;
+	cout << venta1->toString() << endl;
 
 	// Modificar la factura y el cliente de la venta
 	Factura* nuevaFactura = new Factura(new Fecha(21, 4, 2024), 1002);
 	Cliente* nuevoCliente = new Cliente("Pedro Ramirez", "5432109876");
-	venta->setFacturaCompra(nuevaFactura);
-	venta->setClienteComprador(nuevoCliente);
+	venta1->setFacturaCompra(nuevaFactura);
+	venta1->setClienteComprador(nuevoCliente);
 
 	// Mostrar información actualizada de la venta
 	cout << "Informacion de la Venta Actualizada:" << endl;
-	cout << venta->toString() << endl;
+	cout << venta1->toString() << endl;
 
 	system("pause");
 	system("cls");
@@ -108,9 +96,16 @@ int main() {
 	contenedorProductos->ingresaProducto(abarrot2);
 	contenedorProductos->ingresaProducto(embuti1);
 
-	// Mostrar la lista de productos en el contenedor
-	cout << "Lista de productos en el contenedor:" << endl;
-	cout << contenedorProductos->toString() << endl;
+	//Creación del Contenedor de Ventas (template)
+	Lista<Venta>* contenedorVentas = new Lista<Venta>();
+
+	//Agregar Ventas al contenedor
+	contenedorVentas->agregarInicio(venta1);
+
+	//Pruebas con los menu no toque
+	Controler* cont = new Controler();
+	MiniSuper* mini = new MiniSuper(contenedorProductos,contenedorVentas);
+	cont->VerMenus(mini);
 
 	system("pause");
 	system("cls");

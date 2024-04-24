@@ -172,7 +172,6 @@
     <ClInclude Include="Lista_Producto.h" />
     <ClInclude Include="MenuMantenimiento.h" />
     <ClInclude Include="MenuPrincipal.h" />
-    <ClInclude Include="MenuReporte.h" />
     <ClInclude Include="MiniSuper.h" />
     <ClInclude Include="Nodo_Generico.h" />
     <ClInclude Include="Nodo_Producto.h" />

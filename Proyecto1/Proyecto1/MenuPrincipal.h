@@ -1,5 +1,6 @@
 #pragma once
 #include "Utiles_Clases.h"
+#include "MiniSuper.h"
 
 class MenuPrincipal {
 public:
@@ -50,7 +51,7 @@ string MenuPrincipal::menuReportes() {
 	stringstream s;
 	s << "[1] Reportar todos los productos del minisuper" << endl;
 	s << "[2] Reportar solo los productos de una determinada categoria" << endl;
-	s << "[3] Reportar los productos qye esta por debajo del minimo de su existencia" << endl;
+	s << "[3] Reportar los productos que esta por debajo del minimo de su existencia" << endl;
 	s << "[4] Reportar las facturas de un determinado cliente por su cedula" << endl;
 	s << "[5] Reportar las cedulas de los 5 mejores clientes que compran en el minisuper" << endl;
 	s << "[6] Retornar" << endl;
