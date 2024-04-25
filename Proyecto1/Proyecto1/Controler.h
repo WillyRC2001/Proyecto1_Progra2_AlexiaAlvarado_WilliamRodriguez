@@ -3,6 +3,10 @@
 #include "MenuPrincipal.h";
 #include "MenuMantenimiento.h";
 #include "MiniSuper.h"
+#include "Embutido.h"
+#include "Empaque.h"
+#include "Conserva.h"
+#include "Abarrote.h"
 
 class Controler {
 public:
@@ -178,11 +182,13 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 				case 4:
 					cout << "Digite la cedula de cliente: "; cin >> ced;
 					//Listo para agregar el metodo
+					miniSuper->FacturasDeCliente(ced);
 					
 					break;
 				case 5:
 					cout << "--> Lista de las 5 mejores compras <--" << endl;
 					//Listo Para Agregar el metodo
+					miniSuper->CedulaDeLas5MejoresVentas();
 					break;
 				case 6:
 					//Retornar

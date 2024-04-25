@@ -76,3 +76,11 @@ string MiniSuper::ProductosConMinExistencia()
 {
 	return Cont_Prod->ProductosConMinExistencia();
 }
+
+string MiniSuper::CedulaDeLas5MejoresVentas(){
+	return Cont_Venta->CedulaMejoresVentas();
+}
+
+string MiniSuper::FacturasDeCliente(string cedula) {
+	return Cont_Venta->FacturaDeCliente(cedula);
+}

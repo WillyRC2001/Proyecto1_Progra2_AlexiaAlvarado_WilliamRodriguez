@@ -19,7 +19,10 @@ public:
 	void incializarActual();
 	int getCantElem();
 	T& recuperarDato(string);
-	T* buscarNumeroFactura(int);
+	//Metodos que necesitaba la lista template de ventas
+	T* buscarNumeroFactura(int num_factura);
+	string FacturaDeCliente(string cedula);
+	string CedulaMejoresVentas();
 
 private:
 	int cantElementos; 
@@ -182,4 +185,78 @@ T* Lista<T>::buscarNumeroFactura(int num_factura)
 		}
 	}
 	return NULL;
+}
+
+template<class T>
+string Lista<T>::CedulaMejoresVentas(){
+	stringstream s;
+	Nodo<T>* pExt = primerNodo;
+	T* pos1=NULL;
+	T* pos2 = NULL;
+	T* pos3 = NULL;
+	T* pos4 = NULL;
+	T* pos5 = NULL;
+	while (pExt != NULL) {
+		if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos1->getProductoComprado()->obtener_costo()) {
+			pos5 = pos4;
+			pos4 = pos3;
+			pos3 = pos2;
+			pos2 = pos1;
+			pos1 = pExt->GetObj();
+		}
+		else {
+			if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos2->getProductoComprado()->obtener_costo()) {
+				pos5 = pos4;
+				pos4 = pos3;
+				pos3 = pos2;
+				pos2 = pExt->GetObj();
+			}
+			else {
+				if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos3->getProductoComprado()->obtener_costo()) {
+					pos5 = pos4;
+					pos4 = pos3;
+					pos3 = pExt->GetObj();
+				}
+				else {
+					if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos4->getProductoComprado()->obtener_costo()) {
+						pos5 = pos4;
+						pos4 = pExt->GetObj();
+					}
+					else {
+						if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos5->getProductoComprado()->obtener_costo()) {
+							pos5 = pExt->GetObj();
+						}
+					}
+				}
+			}
+		}
+		pExt = pExt->GetSiguiente();
+	}
+	s << "---> Cedula de las 5 Mejores Ventas <---" << endl;
+	if(pos1 != NULL)
+		s << "top1: "<< pos1->getClienteComprador()->getCedulaCliente() << endl;
+	if(pos2 != NULL)
+		s << "top2: " << pos2->getClienteComprador()->getCedulaCliente() << endl;
+	if(pos3 != NULL)
+		s << "top3: " << pos3->getClienteComprador()->getCedulaCliente() << endl;
+	if(pos4 != NULL)
+		s << "top4: " << pos4->getClienteComprador()->getCedulaCliente() << endl;
+	if(pos5 != NULL)
+		s << "top5: " << pos5->getClienteComprador()->getCedulaCliente() << endl;
+	s << "-------------------------------------" << endl;
+	return s.str();
+}
+
+template<class T>
+string Lista<T>::FacturaDeCliente(string cedula){
+	stringstream s;
+	Nodo<T>* pExt = primerNodo;
+	while (pExt != NULL) {
+		if (pExt->GetObj()->getClienteComprador()->getCedulaCliente() == cedula) {
+			s << pExt->GetObj()->toString() << endl;
+			s << "-------------------------------------" << endl;
+		}
+		pExt = pExt->GetSiguiente();
+	}
+	return s.str();
 }
