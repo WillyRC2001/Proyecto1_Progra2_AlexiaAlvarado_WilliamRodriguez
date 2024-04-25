@@ -6,6 +6,7 @@
 class Factura {
 private:
     Fecha* fechaFactura;
+    Cliente* cliente;
     int numFactura;
 public:
     Factura();
@@ -13,7 +14,9 @@ public:
     virtual ~Factura();
     Fecha* getFactura();
     int getNumeroFactura();
+    void setNumeroFactura(int);
     void setFactura(Fecha*);
+    void setCliente(Cliente*);
 
     string mostrarResumenFactura();
 };

@@ -34,6 +34,15 @@ void Cliente::setCedulaCliente(string ced)
     this->cedula = ced;
 }
 
+Cliente* Cliente::buscarClientePorCedula(const string& cedula) {
+    if (this->cedula == cedula) {
+        return this; // Retorna el propio cliente si la cédula coincide
+    }
+    else {
+        return nullptr; // Retorna nullptr si la cédula no coincide
+    }
+}
+
 string Cliente::toString()
 {
     stringstream s; 

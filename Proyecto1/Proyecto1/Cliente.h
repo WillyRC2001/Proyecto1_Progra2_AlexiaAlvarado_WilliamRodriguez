@@ -16,6 +16,8 @@ public:
 	void setNombreCliente(string);
 	void setCedulaCliente(string);
 
+	Cliente* buscarClientePorCedula(const string& cedula);
+
 	string toString();
 
 };

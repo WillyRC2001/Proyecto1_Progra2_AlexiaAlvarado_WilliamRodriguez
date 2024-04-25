@@ -61,6 +61,20 @@ void Venta::setFacturaCompra(Factura* fac)
     facturaCompra = fac;
 }
 
+void Venta::setNumeroFactura(int numeroFactura)
+{
+   if (facturaCompra != nullptr) {
+        facturaCompra->setNumeroFactura(numeroFactura);
+   }
+}
+
+Cliente* Venta::buscarClientePorCedula(string cedula) {
+    if (clienteCompra->getCedulaCliente() == cedula) {
+        return clienteCompra;
+    }
+    return nullptr; // Cliente no encontrado
+}
+
 string Venta::toString() 
 {
     stringstream s; 

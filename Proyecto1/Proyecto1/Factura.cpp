@@ -24,9 +24,19 @@ int Factura::getNumeroFactura()
     return numFactura;
 }
 
+void Factura::setNumeroFactura(int num)
+{
+    numFactura = num;
+}
+
 void Factura::setFactura(Fecha* ff)
 {
     fechaFactura = ff;
+}
+
+void Factura::setCliente(Cliente* clien)
+{
+    this->cliente = clien;
 }
 
 

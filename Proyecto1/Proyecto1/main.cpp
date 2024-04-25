@@ -64,7 +64,8 @@ int main() {
 
 	// Creación de objeto Factura
 	Factura* factura1 = new Factura(fechaFactura1, 1001);
-
+	Factura* factura2 = new Factura(fechaFactura1, 1002);
+	Factura* factura3 = new Factura(fechaFactura1, 1003);
 	// Creación de objeto Venta
 	Venta* venta1 = new Venta(cliente1, fechaFactura1, Sardina, factura1);
 

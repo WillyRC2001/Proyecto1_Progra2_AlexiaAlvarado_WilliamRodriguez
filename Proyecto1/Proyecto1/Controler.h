@@ -3,10 +3,7 @@
 #include "MenuPrincipal.h";
 #include "MenuMantenimiento.h";
 #include "MiniSuper.h"
-#include "Embutido.h"
-#include "Empaque.h"
-#include "Conserva.h"
-#include "Abarrote.h"
+#include "Producto_Clases.h"
 
 class Controler {
 public:
@@ -86,6 +83,7 @@ Producto* Controler::CrearModificarProducto(string cod) {
 		}
 	}
 }
+
 void Controler::VerMenus(MiniSuper* miniSuper) {
 	int opt = 0;
 	cout << MenuPrincipal::menuPrincipal() << endl;
@@ -107,7 +105,8 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 				cout << "Se ha eliminado" << endl;
 				break;
 			case 2:
-				//Listo para agregar el metodo de actualizar factura
+				miniSuper->ActualizarFactura(n_fact);
+				cout << "Se ha actualizado" << endl;
 				break;
 			case 3:
 				system("cls");
@@ -191,7 +190,6 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 					miniSuper->CedulaDeLas5MejoresVentas();
 					break;
 				case 6:
-					//Retornar
 					break;
 
 				}

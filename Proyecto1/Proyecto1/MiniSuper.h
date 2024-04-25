@@ -28,6 +28,8 @@ public:
 private:
 	ContenedorLProducto* Cont_Prod;
 	Lista<Venta>* Cont_Venta;
+	Lista<Factura>* Cont_Factura; 
+	Lista<Cliente>* Cont_Cliente;
 };
 MiniSuper::MiniSuper(ContenedorLProducto* cont, Lista<Venta>* vent) {
 	Cont_Prod = cont;
@@ -47,6 +49,20 @@ void MiniSuper::EliminarFactura(int num_factura) {
 	Cont_Venta->eliminar(Cont_Venta->buscarNumeroFactura(num_factura));
 }
 
+void MiniSuper::ActualizarFactura(int num_factura) {
+	Venta* venta = Cont_Venta->buscarNumeroFactura(num_factura);
+	if (venta != nullptr) {
+		int nuevoNumFactura;
+		cout << "Ingrese el nuevo número de factura: ";
+		cin >> nuevoNumFactura;
+		venta->setNumeroFactura(nuevoNumFactura);
+		cout << "Factura actualizada correctamente." << endl;
+	}
+	else {
+		cout << "Error: La factura no se encontró en la lista." << endl;
+	}
+}
+
 void MiniSuper::IngresarElProducto(string codigo, Producto* nuevo)
 {
 	Cont_Prod->IngresarProducto(codigo, nuevo);
@@ -60,6 +76,25 @@ void MiniSuper::EliminaProducto(string codigo)
 void MiniSuper::ModificarProducto(string codigo, Producto* nuevo)
 {
 	Cont_Prod->cambiarProducto(codigo, nuevo);
+}
+
+void MiniSuper::CrearNuevaFactura(int num_factura, string ced) //esta malito no se como hacerlo
+{
+	Fecha* fecha_actual = new Fecha();
+	Factura* nueva_factura = new Factura(fecha_actual, num_factura);
+
+	
+	Cliente* cliente = Cont_Cliente->obtenerClientePorCedula(ced); 
+	if (cliente != nullptr) {
+		
+		nueva_factura->setCliente(cliente);
+		Cont_Factura->agregarInicio(nueva_factura);
+
+		cout << "Nueva factura creada correctamente." << endl;
+	}
+	else {
+		cout << "Error: Cliente no encontrado para la cédula proporcionada." << endl;
+	}
 }
 
 string MiniSuper::TodosLosProductos()

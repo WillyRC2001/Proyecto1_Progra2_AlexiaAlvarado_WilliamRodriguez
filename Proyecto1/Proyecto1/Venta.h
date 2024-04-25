@@ -24,6 +24,9 @@ public:
     void setFechaCompra(Fecha*);
     void setProductoComprado(Decorador_Abstracto*);
     void setFacturaCompra(Factura*);
+    void setNumeroFactura(int numeroFactura);
+
+    Cliente* buscarClientePorCedula(string cedula);
 
     string toString();
 };

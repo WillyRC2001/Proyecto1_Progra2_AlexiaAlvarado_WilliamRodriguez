@@ -1,5 +1,6 @@
 #pragma once
 #include "Nodo_Generico.h"
+#include "Cliente.h"
 #include "Utiles_Clases.h"
 
 template <class T>
@@ -22,7 +23,9 @@ public:
 	//Metodos que necesitaba la lista template de ventas
 	T* buscarNumeroFactura(int num_factura);
 	string FacturaDeCliente(string cedula);
+	bool actualizar(T*);
 	string CedulaMejoresVentas();
+	T* obtenerClientePorCedula(string cedula);
 
 private:
 	int cantElementos; 
@@ -188,6 +191,12 @@ T* Lista<T>::buscarNumeroFactura(int num_factura)
 }
 
 template<class T>
+bool Lista<T>::actualizar(T* obj) {
+	Nodo<T>* aux = primerNodo;
+
+}
+
+template<class T>
 string Lista<T>::CedulaMejoresVentas(){
 	stringstream s;
 	Nodo<T>* pExt = primerNodo;
@@ -259,4 +268,18 @@ string Lista<T>::FacturaDeCliente(string cedula){
 		pExt = pExt->GetSiguiente();
 	}
 	return s.str();
+}
+
+template<class T>
+T* Lista<T>::obtenerClientePorCedula(string cedula) {
+
+	Nodo<T>* pExt = primerNodo;
+	while (pExt != nullptr) {
+		Cliente* cliente = pExt->GetObj()->buscarClientePorCedula(cedula);
+		if (cliente != nullptr) {
+			return cliente; // Cliente encontrado
+		}
+		pExt = pExt->GetSiguiente();
+	}
+	return nullptr; // Cliente no encontrado en ninguna venta
 }
