@@ -181,7 +181,7 @@ T* Lista<T>::buscarNumeroFactura(int num_factura)
 	Nodo<T>* p = primerNodo;
 	if (!NULL) {
 		while (p != NULL) {
-			if (p->GetObj()->getFacturaCompra()->getNumeroFactura() == num_factura) {
+			if (p->GetObj()->getNumeroFactura() == num_factura) {
 				return p->GetObj();
 
 			}
@@ -207,7 +207,7 @@ string Lista<T>::CedulaMejoresVentas(){
 	T* pos4 = NULL;
 	T* pos5 = NULL;
 	while (pExt != NULL) {
-		if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos1->getProductoComprado()->obtener_costo()) {
+		if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos1->getVenta()->ObtenerTotalVenta()) {
 			pos5 = pos4;
 			pos4 = pos3;
 			pos3 = pos2;
@@ -215,25 +215,25 @@ string Lista<T>::CedulaMejoresVentas(){
 			pos1 = pExt->GetObj();
 		}
 		else {
-			if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos2->getProductoComprado()->obtener_costo()) {
+			if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos2->getVenta()->ObtenerTotalVenta()) {
 				pos5 = pos4;
 				pos4 = pos3;
 				pos3 = pos2;
 				pos2 = pExt->GetObj();
 			}
 			else {
-				if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos3->getProductoComprado()->obtener_costo()) {
+				if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos3->getVenta()->ObtenerTotalVenta()) {
 					pos5 = pos4;
 					pos4 = pos3;
 					pos3 = pExt->GetObj();
 				}
 				else {
-					if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos4->getProductoComprado()->obtener_costo()) {
+					if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos4->getVenta()->ObtenerTotalVenta()) {
 						pos5 = pos4;
 						pos4 = pExt->GetObj();
 					}
 					else {
-						if (pExt->GetObj()->getProductoComprado()->obtener_costo() >= pos5->getProductoComprado()->obtener_costo()) {
+						if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos5->getVenta()->ObtenerTotalVenta()) {
 							pos5 = pExt->GetObj();
 						}
 					}
@@ -244,15 +244,15 @@ string Lista<T>::CedulaMejoresVentas(){
 	}
 	s << "---> Cedula de las 5 Mejores Ventas <---" << endl;
 	if(pos1 != NULL)
-		s << "top1: "<< pos1->getClienteComprador()->getCedulaCliente() << endl;
+		s << "top1: "<< pos1->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
 	if(pos2 != NULL)
-		s << "top2: " << pos2->getClienteComprador()->getCedulaCliente() << endl;
+		s << "top2: " << pos2->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
 	if(pos3 != NULL)
-		s << "top3: " << pos3->getClienteComprador()->getCedulaCliente() << endl;
+		s << "top3: " << pos3->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
 	if(pos4 != NULL)
-		s << "top4: " << pos4->getClienteComprador()->getCedulaCliente() << endl;
+		s << "top4: " << pos4->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
 	if(pos5 != NULL)
-		s << "top5: " << pos5->getClienteComprador()->getCedulaCliente() << endl;
+		s << "top5: " << pos5->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
 	s << "-------------------------------------" << endl;
 	return s.str();
 }
@@ -262,7 +262,7 @@ string Lista<T>::FacturaDeCliente(string cedula){
 	stringstream s;
 	Nodo<T>* pExt = primerNodo;
 	while (pExt != NULL) {
-		if (pExt->GetObj()->getClienteComprador()->getCedulaCliente() == cedula) {
+		if (pExt->GetObj()->getVenta()->getClienteComprador()->getCedulaCliente() == cedula) {
 			s << pExt->GetObj()->toString() << endl;
 			s << "-------------------------------------" << endl;
 		}

@@ -142,7 +142,6 @@
     <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MiniSuper.cpp" />
     <ClCompile Include="Percedero.cpp" />
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="Product_Perecedero.cpp" />

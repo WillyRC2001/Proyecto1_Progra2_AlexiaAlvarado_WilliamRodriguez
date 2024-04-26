@@ -108,9 +108,6 @@
     <ClCompile Include="Archivos.cpp">
       <Filter>Archivos de origen\Archivos</Filter>
     </ClCompile>
-    <ClCompile Include="MiniSuper.cpp">
-      <Filter>Archivos de origen\Factura</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuMantenimiento.h">

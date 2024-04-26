@@ -8,7 +8,8 @@ public:
 
     virtual string obtener_nombre() = 0;
     virtual string obtener_codigo() = 0;
-    virtual double obtener_costo() = 0; //este metodo de obtener costos hay que revisarlo por que es la relacion de producto con categoria (%ganacia)
+    virtual double obtener_costo() = 0;
+    virtual Componente_Abstracto* SiguienteComponente() { return ptrComponenteAbs; }
 
     virtual string toString() = 0;
 

@@ -1,22 +1,14 @@
 #include "Factura.h"
 
-Factura::Factura()
-{
-    this->fechaFactura = NULL;
-    this->numFactura = 0;
-}
-
-Factura::Factura(Fecha* fecFactura,int numeroFactura): fechaFactura(fecFactura),numFactura(numeroFactura)
+Factura::Factura(Venta* v,int numeroFactura): venta(v),numFactura(numeroFactura)
 {
 }
 
 Factura::~Factura() {
    
 }
-
-Fecha* Factura::getFactura()
-{
-    return fechaFactura;
+Venta* Factura::getVenta() {
+    return venta;
 }
 
 int Factura::getNumeroFactura()
@@ -29,23 +21,19 @@ void Factura::setNumeroFactura(int num)
     numFactura = num;
 }
 
-void Factura::setFactura(Fecha* ff)
+void Factura::setVenta(Venta* ventanueva)
 {
-    fechaFactura = ff;
-}
-
-void Factura::setCliente(Cliente* clien)
-{
-    this->cliente = clien;
+    venta = ventanueva;
 }
 
 
-string Factura::mostrarResumenFactura()
+string Factura::toString()
 {
     stringstream s; 
-    s << "-------------------------------------" <<endl;
-    s << "Fecha de Factura: " << this->fechaFactura->mostrarFecha() << endl;
+    s << "-----------FACTURA-------------" << endl;
     s << "Numero de la Factura: " << numFactura << endl;
+    s << venta->toString();
+    s << "------------------------------------" << endl;
     
     return s.str();
 }

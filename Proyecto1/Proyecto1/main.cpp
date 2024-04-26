@@ -39,6 +39,17 @@ int main() {
 	/*carrito*/
 	Carrito* car = new Carrito();
 
+	//Carrito* car2 = new Carrito();
+	//int cant = 3;
+	//Decorador_Conserva* dec1 = new Decorador_Conserva(car2, conserv1); //Primer ingreso
+	//Componente_Abstracto* aux = dec1;
+	//for (int i = 0; i <= cant - 1; i++) {
+	//	//Se busca el producto
+	//	//Se cambia al atributo correspondiente, en este caso conserva
+	//	DecoradorConserva* dec2 = new Decorador_Conserva(aux, productoconserva);
+	//	Componente_Abstracto* aux = dec2;
+	//}
+
 	//decoradores
 	Decorador_Conserva* Carne = new Decorador_Conserva(car, conserv1);
 	Decorador_Conserva* Jamon = new Decorador_Conserva(Carne, conserv2);
@@ -57,30 +68,34 @@ int main() {
 
 	// Creación de objetos Cliente
 	Cliente* cliente1 = new Cliente("Juan Perez", "1234567890");
-	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321");
+	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321"); 
+	Cliente* cliente3 = new Cliente("Benja", "1235389010");
+	Cliente* cliente4 = new Cliente("Andrea", "543566545");
+	Cliente* cliente5 = new Cliente("Luis", "1234567890");
 
-	// Creación de objeto Fecha para la factura
-	Fecha* fechaFactura1 = new Fecha(20, 4, 2024);
+	// Creación de objeto Fecha para la venta
+	Fecha* fechaVenta1 = new Fecha(20, 4, 2024);
 
-	// Creación de objeto Factura
-	Factura* factura1 = new Factura(fechaFactura1, 1001);
-	Factura* factura2 = new Factura(fechaFactura1, 1002);
-	Factura* factura3 = new Factura(fechaFactura1, 1003);
 	// Creación de objeto Venta
-	Venta* venta1 = new Venta(cliente1, fechaFactura1, Sardina, factura1);
+	Venta* venta1 = new Venta(cliente1, fechaVenta1, Sardina);
+	Venta* venta2 = new Venta(cliente2, fechaVenta1, Carne);
+	Venta* venta3 = new Venta(cliente3, fechaVenta1, Bistec);
+	Venta* venta4 = new Venta(cliente4, fechaVenta1, Atun);
+	Venta* venta5 = new Venta(cliente5, fechaVenta1, Sardina);
+	// Creación de objeto Venta
+	int numerofactura1 = 001;
+	int numerofactura2 = 002;
+	int numerofactura3 = 003;
+	int numerofactura4 = 004;
+	int numerofactura5 = 005;
+	Factura* fact1 = new Factura(venta1,numerofactura1);
+	Factura* fact2 = new Factura(venta2, numerofactura2);
+	Factura* fact3 = new Factura(venta3, numerofactura3);
+	Factura* fact4 = new Factura(venta4, numerofactura4);
+	Factura* fact5 = new Factura(venta5, numerofactura5);
 
 	// Mostrar información de la venta
 	cout << "Informacion de la Venta:" <<endl;
-	cout << venta1->toString() << endl;
-
-	// Modificar la factura y el cliente de la venta
-	Factura* nuevaFactura = new Factura(new Fecha(21, 4, 2024), 1002);
-	Cliente* nuevoCliente = new Cliente("Pedro Ramirez", "5432109876");
-	venta1->setFacturaCompra(nuevaFactura);
-	venta1->setClienteComprador(nuevoCliente);
-
-	// Mostrar información actualizada de la venta
-	cout << "Informacion de la Venta Actualizada:" << endl;
 	cout << venta1->toString() << endl;
 
 	system("pause");
@@ -97,15 +112,38 @@ int main() {
 	contenedorProductos->ingresaProducto(abarrot2);
 	contenedorProductos->ingresaProducto(embuti1);
 
+	Producto* producto = contenedorProductos->busca("codigo_del_producto");
+
+	//if (producto) {
+	//	// Crear un objeto Carrito (u otro componente abstracto)
+	//	Carrito* carrito = new Carrito();
+
+	//	// Crear un objeto Conserva utilizando los datos del producto
+	//	Conserva* conserva2 = dynamic_cast<Conserva*>(producto);
+	//	//Conserva* conserva = new Conserva(producto->getCodigo(), producto->getNombre_Comercial(), producto->getDescripcion(), producto->getPrecio(), producto->getCategoria(), producto->getExistencias(), producto->getLimite(), producto->getFecha(), true);
+
+	//	// Crear un objeto Decorador_Conserva utilizando el producto y el carrito
+	//	Decorador_Conserva* decoradorConserva = new Decorador_Conserva(carrito,conserva2);
+
+	//	// Ahora puedes utilizar el decoradorConserva en la creación de un objeto Venta
+	//	Venta* venta = new Venta(cliente1,fechaVenta1, decoradorConserva);
+
+	//	// Asegúrate de liberar la memoria cuando ya no necesites los objetos
+	//	delete venta;
+	//	delete decoradorConserva;
+	//	delete carrito;
+	//}
+
+
 	//Creación del Contenedor de Ventas (template)
-	Lista<Venta>* contenedorVentas = new Lista<Venta>();
+	Lista<Factura>* contenedorFactura = new Lista<Factura>();
 
 	//Agregar Ventas al contenedor
-	contenedorVentas->agregarInicio(venta1);
+	contenedorFactura->agregarInicio(fact1);
 
 	//Pruebas con los menu no toque
 	Controler* cont = new Controler();
-	MiniSuper* mini = new MiniSuper(contenedorProductos,contenedorVentas);
+	MiniSuper* mini = new MiniSuper(contenedorProductos,contenedorFactura);
 	cont->VerMenus(mini);
 
 	system("pause");

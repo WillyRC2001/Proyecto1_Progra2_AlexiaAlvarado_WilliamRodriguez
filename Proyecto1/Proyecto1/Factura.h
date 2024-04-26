@@ -1,22 +1,17 @@
 #pragma once
-#include "Cliente.h"
-#include "Fecha.h"
-#include "Decorador_Abstracto.h"
+#include "Venta.h"
 
 class Factura {
 private:
-    Fecha* fechaFactura;
-    Cliente* cliente;
+    Venta* venta;
     int numFactura;
 public:
-    Factura();
-    Factura(Fecha*, int); 
+    Factura(Venta*, int); 
     virtual ~Factura();
-    Fecha* getFactura();
     int getNumeroFactura();
+    Venta* getVenta();
     void setNumeroFactura(int);
-    void setFactura(Fecha*);
-    void setCliente(Cliente*);
+    void setVenta(Venta*);
 
-    string mostrarResumenFactura();
+    string toString();
 };

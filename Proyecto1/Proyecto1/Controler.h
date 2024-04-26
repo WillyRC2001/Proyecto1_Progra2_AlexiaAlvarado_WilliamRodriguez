@@ -1,7 +1,7 @@
 #pragma once
-#include "Utiles_Clases.h";
-#include "MenuPrincipal.h";
-#include "MenuMantenimiento.h";
+#include "Utiles_Clases.h"
+#include "MenuPrincipal.h"
+#include "MenuMantenimiento.h"
 #include "MiniSuper.h"
 #include "Producto_Clases.h"
 
@@ -11,7 +11,7 @@ public:
 	void VerMenus(MiniSuper*);
 	void PausaAndClose();	//Para no estar copiando y pegando los system pause and close
 	Producto* CrearModificarProducto(string cod); //Este metodo está porque el ingreso o modificacion del producto recibe por parametros un nuevo producto
-	Venta* CrearFactura(int,string);
+	Factura* CrearFactura(Decorador_Abstracto*);
 private:
 
 };
@@ -85,23 +85,29 @@ Producto* Controler::CrearModificarProducto(string cod) {
 	}
 }
 
+Factura* Controler::CrearFactura(Decorador_Abstracto* productos) {		
+	string nom, ced;
+	int d, m, a, num_factura;
+	Carrito* carrito = new Carrito();
+	//Factura(Venta*,int)
+	//Venta(Cliente*,Fecha*,DecoradorAbs*)
+	//DecoradorAbs(Decorador,ProductoCorrespondiente*)
+	//Cliente(ced,nom)
+	//Fecha(d,m,a)
+	cout << "Digite un nuevo numero de factura: "; cin >> num_factura;
+	cout << "Digite la cedula del cliente: "; cin >> ced;
+	cout << "Digite el nombre del cliente: "; cin >> nom;
+	cout << "Digite el dia: "; cin >> d;
+	cout << "Digite el mes: "; cin >> m;
+	cout << "Digite el anio: "; cin >> a;
+	Cliente* clientenuevo = new Cliente(ced, nom);
+	Fecha* fechanueva = new Fecha(d, m, a);
+	Venta* ventanueva = new Venta(clientenuevo, fechanueva, productos);
+	Factura* facturanueva = new Factura(ventanueva, num_factura);
+	return facturanueva;
+}
 
 
-//Este era el metodo que estabamos usando para Crear La Venta
-// Nota: tenemos que cambiar todo venta y factura por cierta personita que lo puso todo mal, no voy a dar nombres pero empieza con A xdd
-//Venta* Controler::CrearFactura(int numFactura,string cedula) {
-//	string nom;
-//	int d, m, a;
-//	cout << "Digite el nombre del Cliente: "; cin >> nom;
-//	Cliente* clienteNuevo = new Cliente(cedula, nom);
-//	cout << "Digite el dia: "; cin >> d;
-//	cout << "Digite el mes: "; cin >> m;
-//	cout << "Digite el anio: "; cin >> a;
-//	Fecha* fechaNuevo1 = new Fecha(d, m, a);
-//	Fecha* fechaNuevo2 = new Fecha(d, m, a);
-//	Factura* facturaNueva = new Factura(fechaNuevo2, numFactura);
-//	Venta* ventanueva=new Venta(clienteNuevo,fechaNuevo1,/*Producto Abstracto*/, facturaNueva)
-//}
 
 void Controler::VerMenus(MiniSuper* miniSuper) {
 	bool retornar = true;
@@ -183,42 +189,78 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 					cout << MenuPrincipal::menuVentas() << endl;
 					cin >> opt;
 					if (opt == 1) {
-						//bool agregar = true;
-						//Carrito* carrito = new Carrito();
-						//do {
-						//	string codigoprod;
-						//	cout << miniSuper->TodosLosProductos() << endl;
-						//	
-						//	cout << "Digite el codigo del producto que quieras agregar: "; cin >> codigoprod;
-						//	if (miniSuper->buscarProducto(codigoprod)!=NULL) {
-						//		Producto* prod = miniSuper->buscarProducto(codigoprod);
-						//		if (prod->getCategoria() == "Conserva") {
-						//			bool envasado = prod->getEnvasado();
-						//			Decorador_Conserva* decoConserva = new Decorador_Conserva(carrito,agregado);
-						//		}
-						//		else {
-						//			if () {
-
-						//			}
-						//			else {
-
-						//			}
-						//		}
-						//	}
-						//	else {
-						//		cout << "No se pudo encontrar el producto" << endl;
-						//	}
-
-						//} while (agregar == true);
-						//int num_factura;
-						//string id_cliente;
-						//cout << "Digite un nuevo numero de factura: "; cin >> num_factura;
-						//cout << "Digite la cedula del cliente: "; cin >> id_cliente;
-						//miniSuper->CrearNuevaFactura(num_factura, id_cliente);
-						////Listo para agregar los metodos de crear factura
+						cout << miniSuper->TodosLosProductos() << endl << endl;
+						int cant;
+						cout << "Digite la cantidad de Productos que quieres: "; cin >> cant;
+						string codprod;
+						cout << "Digite el codigo del primer producto: "; cin >> codprod;
+						Producto* producto = miniSuper->buscarProducto(codprod);
+						Componente_Abstracto* aux;
+						if (producto != NULL) {	//Encontro el producto para agregar el primer elemento
+							system("cls");
+							Carrito* carrito = new Carrito();
+							if (producto->getCategoria() == "Conserva") {
+								Conserva* conserva = dynamic_cast<Conserva*>(producto);
+								Decorador_Conserva* dec = new Decorador_Conserva(carrito, conserva);
+								aux = dec;
+							}
+							else {
+								if (producto->getCategoria() == "Abarrote") {
+									Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
+									Decorador_Abarrote* dec = new Decorador_Abarrote(carrito, abarrote);
+									aux = dec;
+								}
+								else {
+									Embutido* embutido = dynamic_cast<Embutido*>(producto);
+									Decorador_Embutido* dec = new Decorador_Embutido(carrito, embutido);
+									aux = dec;
+								}
+							}
+							//Se crea un ciclo en donde comienza a agregar los demas elementos que quiere
+							for (int i = 1; i < cant; i++) {
+								system("cls");
+								cout << miniSuper->TodosLosProductos() << endl;
+								cout << "Digite el codigo del siguiente producto: "; cin >> codprod;
+								producto = miniSuper->buscarProducto(codprod);
+								if (producto != NULL) {
+									if (producto->getCategoria() == "Conserva") {
+										Conserva* conserva = dynamic_cast<Conserva*>(producto);
+										Decorador_Conserva* decoCons = new Decorador_Conserva(aux, conserva);
+										aux = decoCons;
+									}
+									else {
+										if (producto->getCategoria() == "Abarrote") {
+											Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
+											Decorador_Abarrote* decoAbar = new Decorador_Abarrote(aux, abarrote);
+											aux = decoAbar;
+										}
+										else {
+											Embutido* embutido = dynamic_cast<Embutido*>(producto);
+											Decorador_Embutido* decoEmbu = new Decorador_Embutido(aux, embutido);
+											aux = decoEmbu;
+										}
+									}
+								}
+								else {
+									cout << "ERROR, No se encontró el producto" << endl;
+									this->PausaAndClose();
+									i = i--;
+								}
+							}
+							Decorador_Abstracto* producTotales = dynamic_cast<Decorador_Abstracto*>(aux);
+							miniSuper->CrearNuevaFactura(this->CrearFactura(producTotales));
+							cout << "Se a agregado la Nueva Factura!" << endl;
+							this->PausaAndClose();
+							retornarVentas = false;
+						}
+						else {
+							cout << "No se encontró el producto" << endl;
+							this->PausaAndClose();
+							retornarVentas = true;
+						}
 					}
 					if (opt == 2) {
-						retornar = true;	//Retornar a menu de ventas
+						retornarVentas = true;	//Retornar a menu de ventas
 					}
 				} while (retornarVentas == true);
 			}
@@ -234,30 +276,35 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 						case 1:
 							cout << "---> Lista de Todos los Productos <---" << endl;
 							cout << miniSuper->TodosLosProductos() << endl;
-							retornarReportes = false;
+							this->PausaAndClose();
+							retornarReportes = true;
 							break;
 						case 2:
 							cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
 							cout << miniSuper->ProductoDeUnaCategoria(categ);
-							retornarReportes = false;
+							this->PausaAndClose();
+							retornarReportes = true;
 							break;
 						case 3:
 							cout << "---> Lista de Productos con minimo de existencia <---" << endl;
 							cout << miniSuper->ProductosConMinExistencia();
-							retornarReportes = false;
+							this->PausaAndClose();
+							retornarReportes = true;
 							break;
 						case 4:
 							cout << "Digite la cedula de cliente: "; cin >> ced;
 							miniSuper->FacturasDeCliente(ced);
-							retornarReportes = false;
+							this->PausaAndClose();
+							retornarReportes = true;
 							break;
 						case 5:
 							cout << "--> Lista de las 5 mejores compras <--" << endl;
 							miniSuper->CedulaDeLas5MejoresVentas();
-							retornarReportes = false;
+							this->PausaAndClose();
+							retornarReportes = true;
 							break;
 						default:
-							retornarReportes == true;
+							retornarReportes = false;
 							break;
 
 						}

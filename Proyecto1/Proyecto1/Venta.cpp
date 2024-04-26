@@ -5,16 +5,14 @@ Venta::Venta()
     this->clienteCompra = NULL;
     this->fechaCompra = NULL;
     this->productoCompra = NULL;
-    this->facturaCompra = NULL;
     
 }
 
-Venta::Venta(Cliente* cl, Fecha* fc, Decorador_Abstracto* pc, Factura* fac)
+Venta::Venta(Cliente* cl, Fecha* fc, Decorador_Abstracto* pc)
 {
     this->clienteCompra = cl;
     this->fechaCompra = fc;
     this->productoCompra = pc;
-    this->facturaCompra = fac;
 }
 
 Venta::~Venta()
@@ -36,11 +34,6 @@ Decorador_Abstracto* Venta::getProductoComprado()
     return productoCompra;
 }
 
-Factura* Venta::getFacturaCompra()
-{
-    return facturaCompra;
-}
-
 void Venta::setClienteComprador(Cliente* c)
 {
     clienteCompra = c;
@@ -56,18 +49,6 @@ void Venta::setProductoComprado(Decorador_Abstracto* p)
     productoCompra = p;
 }
 
-void Venta::setFacturaCompra(Factura* fac)
-{
-    facturaCompra = fac;
-}
-
-void Venta::setNumeroFactura(int numeroFactura)
-{
-   if (facturaCompra != nullptr) {
-        facturaCompra->setNumeroFactura(numeroFactura);
-   }
-}
-
 Cliente* Venta::buscarClientePorCedula(string cedula) {
     if (clienteCompra->getCedulaCliente() == cedula) {
         return clienteCompra;
@@ -78,13 +59,23 @@ Cliente* Venta::buscarClientePorCedula(string cedula) {
 string Venta::toString() 
 {
     stringstream s; 
-    s << "------- FACTURA ---------" << endl;
-    s << "Cedula Cliente: " << this->clienteCompra->getCedulaCliente()<<endl;
+    s << "------- VENTA ---------" << endl;
+    s << "Cedula Cliente: " << this->clienteCompra->getCedulaCliente()<< endl;
     s << "Nombre del Cliente: " << this->clienteCompra->getNombreCliente() << endl;
-    s << "Factura: " << this->facturaCompra->mostrarResumenFactura();
-    s << "--------- PRODUCTOS ----------" << endl; 
-    s << this->productoCompra->toString()<<"\n";
+    s << "Fecha: " << this->fechaCompra->mostrarFecha() << endl;
+    s << "Total a pagar: " << this->ObtenerTotalVenta()<< endl;
     s << "---------------------------------------" << endl;
     
     return s.str();
+}
+
+double Venta::ObtenerTotalVenta()
+{
+    Componente_Abstracto* aux = productoCompra;
+    double total = 0.0;
+    while (aux != NULL && aux->obtener_nombre() != "Carrito") {
+        total = total + aux->obtener_costo();
+        aux = aux->SiguienteComponente();
+    }
+    return total;
 }
