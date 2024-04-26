@@ -9,6 +9,8 @@ public:
 	MiniSuper(ContenedorLProducto*, Lista<Venta>*);
 	virtual ~MiniSuper();
 
+	Producto* buscarProducto(string cod);
+
 	//Metodos que pide Mantenimiento
 	void EliminarFactura(int num_factura);				//Contenedor Ventas
 	void ActualizarFactura(int num_factura);			//Contenedor Ventas
@@ -28,8 +30,6 @@ public:
 private:
 	ContenedorLProducto* Cont_Prod;
 	Lista<Venta>* Cont_Venta;
-	Lista<Factura>* Cont_Factura; 
-	Lista<Cliente>* Cont_Cliente;
 };
 MiniSuper::MiniSuper(ContenedorLProducto* cont, Lista<Venta>* vent) {
 	Cont_Prod = cont;
@@ -44,6 +44,9 @@ MiniSuper::~MiniSuper() {
 		delete Cont_Venta;
 		Cont_Venta = NULL;
 	}
+}
+Producto* MiniSuper::buscarProducto(string cod) {
+	return Cont_Prod->busca(cod);
 }
 void MiniSuper::EliminarFactura(int num_factura) {
 	Cont_Venta->eliminar(Cont_Venta->buscarNumeroFactura(num_factura));
@@ -78,24 +81,25 @@ void MiniSuper::ModificarProducto(string codigo, Producto* nuevo)
 	Cont_Prod->cambiarProducto(codigo, nuevo);
 }
 
-void MiniSuper::CrearNuevaFactura(int num_factura, string ced) //esta malito no se como hacerlo
-{
-	Fecha* fecha_actual = new Fecha();
-	Factura* nueva_factura = new Factura(fecha_actual, num_factura);
-
-	
-	Cliente* cliente = Cont_Cliente->obtenerClientePorCedula(ced); 
-	if (cliente != nullptr) {
-		
-		nueva_factura->setCliente(cliente);
-		Cont_Factura->agregarInicio(nueva_factura);
-
-		cout << "Nueva factura creada correctamente." << endl;
-	}
-	else {
-		cout << "Error: Cliente no encontrado para la cédula proporcionada." << endl;
-	}
-}
+//void MiniSuper::CrearNuevaFactura(int num_factura, string ced) //esta malito no se como hacerlo
+//{
+//	
+//	/*Fecha* fecha_actual = new Fecha();
+//	Factura* nueva_factura = new Factura(fecha_actual, num_factura);
+//
+//	
+//	Cliente* cliente = Cont_Cliente->obtenerClientePorCedula(ced); 
+//	if (cliente != nullptr) {
+//		
+//		nueva_factura->setCliente(cliente);
+//		Cont_Factura->agregarInicio(nueva_factura);
+//
+//		cout << "Nueva factura creada correctamente." << endl;
+//	}
+//	else {
+//		cout << "Error: Cliente no encontrado para la cédula proporcionada." << endl;
+//	}*/
+//}
 
 string MiniSuper::TodosLosProductos()
 {

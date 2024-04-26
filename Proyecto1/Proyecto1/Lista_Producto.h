@@ -44,22 +44,6 @@ bool ContenedorLProducto::esVacio()
 bool ContenedorLProducto::ingresaProducto(Producto* pro)
 {
 	NodoProducto* p = ppio;
-	/*if(busca(pro->getCodigo() == true)){
-	* return false;
-	}
-	else{
-	if (esVacio()) {
-		ppio = new NodoProducto(pro);
-		return true;
-	}
-	else {
-		while (p->getsig() != NULL)
-			p = p->getsig();
-		p->setsig(new NodoProducto(pro));
-		return true;
-	}
-	return false;
-	}*/
 
 	if (esVacio()) {
 		ppio = new NodoProducto(pro);
