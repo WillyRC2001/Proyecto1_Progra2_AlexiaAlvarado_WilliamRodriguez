@@ -2,6 +2,8 @@
 #include "Nodo_Generico.h"
 #include "Cliente.h"
 #include "Utiles_Clases.h"
+#include "Factura.h"
+#include <map>
 
 template <class T>
 class Lista {
@@ -194,66 +196,35 @@ T* Lista<T>::buscarNumeroFactura(int num_factura)
 template<class T>
 bool Lista<T>::actualizar(T* obj) {
 	Nodo<T>* aux = primerNodo;
-
 }
 
 template<class T>
-string Lista<T>::CedulaMejoresVentas(){
+string Lista<T>::CedulaMejoresVentas() {
 	stringstream s;
-	Nodo<T>* pExt = primerNodo;
-	T* pos1=NULL;
-	T* pos2 = NULL;
-	T* pos3 = NULL;
-	T* pos4 = NULL;
-	T* pos5 = NULL;
-	while (pExt != NULL) {
-		if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos1->getVenta()->ObtenerTotalVenta()) {
-			pos5 = pos4;
-			pos4 = pos3;
-			pos3 = pos2;
-			pos2 = pos1;
-			pos1 = pExt->GetObj();
-		}
-		else {
-			if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos2->getVenta()->ObtenerTotalVenta()) {
-				pos5 = pos4;
-				pos4 = pos3;
-				pos3 = pos2;
-				pos2 = pExt->GetObj();
-			}
-			else {
-				if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos3->getVenta()->ObtenerTotalVenta()) {
-					pos5 = pos4;
-					pos4 = pos3;
-					pos3 = pExt->GetObj();
-				}
-				else {
-					if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos4->getVenta()->ObtenerTotalVenta()) {
-						pos5 = pos4;
-						pos4 = pExt->GetObj();
-					}
-					else {
-						if (pExt->GetObj()->getVenta()->ObtenerTotalVenta() >= pos5->getVenta()->ObtenerTotalVenta()) {
-							pos5 = pExt->GetObj();
-						}
-					}
-				}
-			}
-		}
-		pExt = pExt->GetSiguiente();
-	}
 	s << "---> Cedula de las 5 Mejores Ventas <---" << endl;
-	if(pos1 != NULL)
-		s << "top1: "<< pos1->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
-	if(pos2 != NULL)
-		s << "top2: " << pos2->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
-	if(pos3 != NULL)
-		s << "top3: " << pos3->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
-	if(pos4 != NULL)
-		s << "top4: " << pos4->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
-	if(pos5 != NULL)
-		s << "top5: " << pos5->getVenta()->getClienteComprador()->getCedulaCliente() << endl;
-	s << "-------------------------------------" << endl;
+	map<double, string> myMap;
+	Nodo<T>* curr = primerNodo;
+	while (curr != nullptr) {
+		Factura* factura = curr->GetObj();
+		Venta* venta = factura->getVenta();
+		Cliente* cliente = venta->getClienteComprador();
+		double ventaTotal = venta->ObtenerTotalVenta();
+		string cedula = cliente->getCedulaCliente();
+		myMap[ventaTotal] = cedula;
+		curr = curr->GetSiguiente();
+	}
+	map<double, string> ultimasVentas;
+	auto it = myMap.rbegin();
+	int count = 0;
+	while (it != myMap.rend() && count < 5) {
+		ultimasVentas[it->first] = it->second;
+		++it;
+		++count;
+	}
+	for (auto it = ultimasVentas.rbegin(); it != ultimasVentas.rend(); ++it) {
+		s << "Venta: " << it->first << ", Cliente: " << it->second << endl;
+	}
+	string result = s.str();
 	return s.str();
 }
 

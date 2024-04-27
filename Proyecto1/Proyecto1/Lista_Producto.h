@@ -164,7 +164,7 @@ string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia 
 	NodoProducto* p = ppio;
 	if (!esVacio()) {
 		while (p != NULL) {
-			if (p->getProd()->getExistencias() == 0) {
+			if (p->getProd()->getLimite() <= 5) {
 				s << p->getProd()->toString();
 			}
 			p = p->getsig();

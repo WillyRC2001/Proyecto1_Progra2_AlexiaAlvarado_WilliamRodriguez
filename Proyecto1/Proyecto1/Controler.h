@@ -293,13 +293,13 @@ void Controler::VerMenus(MiniSuper* miniSuper) {
 							break;
 						case 4:
 							cout << "Digite la cedula de cliente: "; cin >> ced;
-							miniSuper->FacturasDeCliente(ced);
+							cout << miniSuper->FacturasDeCliente(ced);
 							this->PausaAndClose();
 							retornarReportes = true;
 							break;
 						case 5:
 							cout << "--> Lista de las 5 mejores compras <--" << endl;
-							miniSuper->CedulaDeLas5MejoresVentas();
+							cout << miniSuper->CedulaDeLas5MejoresVentas();
 							this->PausaAndClose();
 							retornarReportes = true;
 							break;

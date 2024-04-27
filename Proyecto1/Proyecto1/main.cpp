@@ -140,10 +140,14 @@ int main() {
 
 	//Agregar Ventas al contenedor
 	contenedorFactura->agregarInicio(fact1);
+	contenedorFactura->agregarInicio(fact2);
+	contenedorFactura->agregarInicio(fact3);
+	contenedorFactura->agregarInicio(fact4);
+	contenedorFactura->agregarInicio(fact5);
 
 	//Pruebas con los menu no toque
 	Controler* cont = new Controler();
-	MiniSuper* mini = new MiniSuper(contenedorProductos,contenedorFactura);
+	MiniSuper* mini = new MiniSuper(contenedorProductos, contenedorFactura);
 	cont->VerMenus(mini);
 
 	system("pause");
