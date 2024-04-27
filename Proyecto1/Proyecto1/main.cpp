@@ -1,3 +1,4 @@
+#include "Controler.h"
 #include "Utiles_Clases.h"
 #include "Producto_Clases.h"
 #include "Decorador_Clases.h"
@@ -8,9 +9,12 @@
 #include "Factura.h"
 #include "Cliente.h"
 #include "Venta.h"
-#include "Controler.h"
 
 int main() {
+
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//fechas
 	Fecha* fech1 = new Fecha(01, 1, 2021);
 	Fecha* fech2 = new Fecha(22, 2, 2022);
@@ -32,8 +36,8 @@ int main() {
 	Conserva* conserv3 = new Conserva("056", "Bistec", "corte fino", 1000, "Conserva", 45, 7, fech3, true);
 
 	//creando objetos perecederos (Abarrote y Embutido)
-	Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600,"Abarrote",100,6,fech4,fech10,true,45.0,"suli");
-	Embutido* embuti1 = new Embutido("090","salchichas", "salchichas de pavo", 2500,"Embutido",100,2,fech3,fech9,false,90.0,"pavo","la parte del pavo", "cinta azul",empac);
+	Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600, "Abarrote", 100, 6, fech4, fech10, true, 45.0, "suli");
+	Embutido* embuti1 = new Embutido("090", "salchichas", "salchichas de pavo", 2500, "Embutido", 100, 2, fech3, fech9, false, 90.0, "pavo", "la parte del pavo", "cinta azul", empac);
 	Abarrote* abarrot2 = new Abarrote("010", "Sardina", "sardina con tomate", 650, "Abarrote", 80, 9, fech6, fech9, true, 30.0, "sardimar");
 
 	/*carrito*/
@@ -60,15 +64,15 @@ int main() {
 
 	//mostrar
 	/*cout << "el carrito contiene: " << endl<<endl;
-	cout << Sardina->toString() << endl; 
+	cout << Sardina->toString() << endl;
 
 	system("pause");
 	system("cls");*/
-	
+
 
 	// Creación de objetos Cliente
 	Cliente* cliente1 = new Cliente("Juan Perez", "1234567890");
-	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321"); 
+	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321");
 	Cliente* cliente3 = new Cliente("Benja", "1235389010");
 	Cliente* cliente4 = new Cliente("Andrea", "543566545");
 	Cliente* cliente5 = new Cliente("Luis", "1234567890");
@@ -88,7 +92,7 @@ int main() {
 	int numerofactura3 = 003;
 	int numerofactura4 = 004;
 	int numerofactura5 = 005;
-	Factura* fact1 = new Factura(venta1,numerofactura1);
+	Factura* fact1 = new Factura(venta1, numerofactura1);
 	Factura* fact2 = new Factura(venta2, numerofactura2);
 	Factura* fact3 = new Factura(venta3, numerofactura3);
 	Factura* fact4 = new Factura(venta4, numerofactura4);
@@ -144,8 +148,10 @@ int main() {
 	contenedorFactura->agregarInicio(fact3);
 	contenedorFactura->agregarInicio(fact4);
 	contenedorFactura->agregarInicio(fact5);
+	
 
-	//Pruebas con los menu no toque
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	Controler* cont = new Controler();
 	MiniSuper* mini = new MiniSuper(contenedorProductos, contenedorFactura);
 	cont->VerMenus(mini);

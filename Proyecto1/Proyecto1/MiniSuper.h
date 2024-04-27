@@ -14,6 +14,7 @@ public:
 	//Metodos que pide Mantenimiento
 	void EliminarFactura(int num_factura);				//Contenedor Factura
 	void ActualizarFactura(int num_factura);			//Contenedor Factura
+	Factura* buscarFactura(int num_factura);              //Contenedor Factura
 	void IngresarElProducto(string codigo, Producto* nuevo);				//Contenedor Producto
 	void EliminaProducto(string codigo);				//Contenedor Producto
 	void ModificarProducto(string codigo, Producto* nuevo);				//Contenedor Producto
@@ -65,7 +66,9 @@ void MiniSuper::ActualizarFactura(int num_factura) {
 		cout << "Error: La factura no se encontró en la lista." << endl;
 	}
 }
-
+Factura* MiniSuper::buscarFactura(int num_factura) {
+	return Cont_Factura->buscarNumeroFactura(num_factura);
+}
 void MiniSuper::IngresarElProducto(string codigo, Producto* nuevo)
 {
 	Cont_Prod->IngresarProducto(codigo, nuevo);

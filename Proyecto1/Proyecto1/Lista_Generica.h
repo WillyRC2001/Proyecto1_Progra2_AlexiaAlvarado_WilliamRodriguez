@@ -21,7 +21,6 @@ public:
 	bool isEmpty();
 	void incializarActual();
 	int getCantElem();
-	T& recuperarDato(string);
 	//Metodos que necesitaba la lista template de ventas
 	T* buscarNumeroFactura(int num_factura);
 	string FacturaDeCliente(string cedula);
@@ -201,7 +200,7 @@ bool Lista<T>::actualizar(T* obj) {
 template<class T>
 string Lista<T>::CedulaMejoresVentas() {
 	stringstream s;
-	s << "---> Cedula de las 5 Mejores Ventas <---" << endl;
+	
 	map<double, string> myMap;
 	Nodo<T>* curr = primerNodo;
 	while (curr != nullptr) {

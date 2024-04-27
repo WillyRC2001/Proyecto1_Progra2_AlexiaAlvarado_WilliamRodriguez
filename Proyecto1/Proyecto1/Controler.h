@@ -1,11 +1,16 @@
 #pragma once
 #include <exception> 
+#include <stdexcept> 
+
+#include "Excepciones_Clases.h"
+#include "Producto_Clases.h"
+#include "Decorador_Clases.h"
 #include "Utiles_Clases.h"
+
 #include "MenuPrincipal.h"
 #include "MenuMantenimiento.h"
 #include "MiniSuper.h"
-#include "Producto_Clases.h"
-#include "Decorador_Clases.h"
+
 
 class Controler {
 public:
@@ -25,14 +30,21 @@ Producto* Controler::CrearModificarProducto(string cod) {
 	string nom_comercial,descrip,categ;
 	double precio;
 	int existe,limit,dia,mes,anio;
-	cout << "Digite el nombre comercial: "; cin >> nom_comercial;
-	cout << "Digite el descripcion: "; cin >> descrip;
-	cout << "Digite el categoria(Conserva/Abarrote/Embutido): "; cin >> categ;
+	cout << "Digite el nombre comercial: "; getline(cin, nom_comercial);
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+	cout << "Digite el descripcion: "; getline(cin,descrip); // Lee toda la línea, incluyendo espacios
+	cout << "Digite el categoria(Conserva/Abarrote/Embutido): "; getline(cin, categ);
 	cout << "Digite el precio: "; cin >> precio;
 	cout << "Digite el existencia: "; cin >> existe;
 	cout << "Digite el limite: "; cin >> limit;
 	cout << "Digite el dia de ingreso: "; cin >> dia;
+	if (dia < 1 || dia > 31) {
+		throw new ExcepcionFechaDia();
+	}
 	cout << "Digite el mes de ingreso: "; cin >> mes;
+	if (mes < 1 || mes > 12) {
+		throw new ExcepcionFechaMes();
+	}
 	cout << "Digite el anio de ingreso: "; cin >> anio;
 	Fecha* fechIng = new Fecha(dia, mes, anio);
 	string opt;
@@ -49,7 +61,13 @@ Producto* Controler::CrearModificarProducto(string cod) {
 	}
 	else {
 		cout << "Digite el dia de vencimiento: "; cin >> dia;
+		if (dia < 1 || dia > 31) {
+			throw new ExcepcionFechaDia();
+		}
 		cout << "Digite el mes de vencimiento: "; cin >> mes;
+		if (mes < 1 || mes > 12) {
+			throw new ExcepcionFechaMes();
+		}
 		cout << "Digite el anio de vencimiento: "; cin >> anio;
 		Fecha* fechVenc = new Fecha(dia, mes, anio);
 		Percedero* perecedero = new Percedero(fechVenc);
@@ -63,7 +81,8 @@ Producto* Controler::CrearModificarProducto(string cod) {
 			nacional = false;
 		if (categ == "Abarrote" || categ == "abarrote") {
 			string nom_empresa;
-			cout << "Digite el Nombre de la empresa: "; cin >> nom_comercial;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+			cout << "Digite el Nombre de la empresa: "; getline(cin, nom_comercial);
 			Producto* prodAbarrote = new Abarrote(cod, nom_comercial, descrip, precio, categ, existe, limit, fechIng,fechVenc,nacional,peso,nom_empresa);
 			this->PausaAndClose();
 			return prodAbarrote;
@@ -71,15 +90,17 @@ Producto* Controler::CrearModificarProducto(string cod) {
 		else {
 			string nom_animal, parte_animal, marca;
 			bool tripa;
-			cout << "Digite la marca: "; cin >> marca;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+			cout << "Digite la marca: "; getline(cin, marca);
 			cout << "El Producto tiene Tripas? (Si/NO): "; cin >> opt;
 			if (opt == "Si"||"SI"||"si")
 				tripa = true;
 			else
 				tripa = false;
 			Empaque* empaque = new Empaque(tripa);
-			cout << "Digite el nombre del animal: "; cin >> nom_animal;
-			cout << "Digite la parte del animal: "; cin >> parte_animal;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+			cout << "Digite el nombre del animal: "; getline(cin, nom_animal);
+			cout << "Digite la parte del animal: "; getline(cin, parte_animal);
 			Producto* prodEmbutido = new Embutido(cod, nom_comercial, descrip, precio, categ, existe, limit, fechIng, fechVenc, nacional, peso, nom_animal,parte_animal,marca,empaque);
 			this->PausaAndClose();
 			return prodEmbutido;
@@ -91,19 +112,22 @@ Factura* Controler::CrearFactura(Decorador_Abstracto* productos) {
 	string nom, ced;
 	int d, m, a, num_factura;
 	Carrito* carrito = new Carrito();
-	//Factura(Venta*,int)
-	//Venta(Cliente*,Fecha*,DecoradorAbs*)
-	//DecoradorAbs(Decorador,ProductoCorrespondiente*)
-	//Cliente(ced,nom)
-	//Fecha(d,m,a)
+	
 	cout << "Digite un nuevo numero de factura: "; cin >> num_factura;
-	cout << "Digite la cedula del cliente: "; cin >> ced;
-	cout << "Digite el nombre del cliente: "; cin >> nom;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+	cout << "Digite la cedula del cliente: "; getline(cin, ced);
+	cout << "Digite el nombre del cliente: "; getline(cin, nom);
 	cout << "Digite el dia: "; cin >> d;
+	if (d < 1 || d > 31) {
+		throw new ExcepcionFechaDia();
+	}
 	cout << "Digite el mes: "; cin >> m;
+	if (m < 1 || m > 12) {
+		throw new ExcepcionFechaMes();
+	}
 	cout << "Digite el anio: "; cin >> a;
 	Cliente* clientenuevo = new Cliente(ced, nom);
-	Fecha* fechanueva = new Fecha(d, m, a);
+	Fecha* fechanueva = new Fecha(d,m,a);
 	Venta* ventanueva = new Venta(clientenuevo, fechanueva, productos);
 	Factura* facturanueva = new Factura(ventanueva, num_factura);
 	return facturanueva;
@@ -114,8 +138,8 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 	MenuPrincipal::entrada();
 
 	bool retornar = true;
-	try {
-		do {
+	do {
+		try {
 			int opt = 0;
 			cout << MenuPrincipal::menuPrincipal() << endl;
 			cout << "Ingrese la opcion: ";
@@ -135,20 +159,37 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 						switch (opt) {
 						case 1:
 							cout << "Digite el numero de factura: "; cin >> n_fact;
-							miniSuper->EliminarFactura(n_fact);
-							cout << "Se ha eliminado" << endl;
+							if (miniSuper->buscarFactura(n_fact) != NULL) { 
+								miniSuper->EliminarFactura(n_fact);
+								cout << "Se ha eliminado" << endl;
+							}
+							else {
+								
+								throw  new ExcepcionFueraRango();
+			
+							}
+							
 							this->PausaAndClose();
 							retornarMantenimiento = false;
 							break;
 						case 2:
 							cout << "Digite el numero de factura: "; cin >> n_fact;
-							miniSuper->ActualizarFactura(n_fact);
+							if (miniSuper->buscarFactura(n_fact) != NULL) {
+								miniSuper->ActualizarFactura(n_fact);
+							}
+							else {
+								throw  new ExcepcionFueraRango();
+							}
 							this->PausaAndClose();
 							retornarMantenimiento = false;
 							break;
 						case 3:
 							system("cls");
 							retornar = true;
+							break;
+						default:
+							
+							throw  new ExcepcionFueraRango();
 							break;
 						}
 					}
@@ -171,26 +212,52 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 								break;
 							case 2:
 								cout << "Digite el codigo del producto: "; cin >> cod;
-								miniSuper->EliminaProducto(cod);
+								if (miniSuper->buscarProducto(cod) != NULL) {
+									miniSuper->EliminaProducto(cod);
+								}
+								else {
+									throw new ExcepcionProducto();
+								}
 								this->PausaAndClose();
 								retornarMantenimiento = false;
 								break;
 							case 3:
 								cout << "Digite el codigo del producto: "; cin >> cod;
-								cout << "Para modificar el producto se necesita reingresar los datos: " << endl;
-								this->PausaAndClose();
-								miniSuper->ModificarProducto(cod, this->CrearModificarProducto(cod));
-								cout << "Se ha modificado el producto" << endl;
+								if (miniSuper->buscarProducto(cod) != NULL) {
+									cout << "Para modificar el producto se necesita reingresar los datos: " << endl;
+									this->PausaAndClose();
+									miniSuper->ModificarProducto(cod, this->CrearModificarProducto(cod));
+									cout << "Se ha modificado el producto" << endl;
+								}
+								else {
+									throw new ExcepcionProducto();
+								}
 								this->PausaAndClose();
 								retornarMantenimiento = false;
 								break;
 							case 4:
-								retornarMantenimiento = true; //Retornar al menu 
+								system("cls");
+								retornar = true; //Retornar al menu 
+								break;
+							default:
+								
+								throw  new ExcepcionFueraRango();
 								break;
 							}
 						}
-					} //OCUPO QUE ARREGLE EL RETORNAR DE MANTENIMIENTO PORQUE NO RETORNA AL MENU PRINCIPAL
-				} while (retornar == true);
+						else {
+							if (opt == 3) {
+								retornar = true; //Retornar al menu 
+							}
+							else {
+									throw  new ExcepcionFueraRango();
+								
+							}
+						}
+						
+					} 
+
+				} while (retornarMantenimiento == true);
 			}
 			else {
 				if (opt == 2) {
@@ -272,8 +339,15 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 							}
 						}
 						if (opt == 2) {
+							this->PausaAndClose();
 							retornar = true;	//Retornar a menu 
 						}
+						else {
+							
+							throw  new ExcepcionFueraRango();
+							
+						}
+
 					} while (retornarVentas == true);
 				}
 				else {
@@ -285,54 +359,75 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 							cin >> opt;
 							string categ;
 							string ced;
-							switch (opt) {
-							case 1:
-								cout << "---> Lista de Todos los Productos <---" << endl;
-								cout << miniSuper->TodosLosProductos() << endl;
-								this->PausaAndClose();
-								retornarReportes = true;
-								break;
-							case 2:
-								cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
-								cout << miniSuper->ProductoDeUnaCategoria(categ);
-								this->PausaAndClose();
-								retornarReportes = true;
-								break;
-							case 3:
-								cout << "---> Lista de Productos con minimo de existencia <---" << endl;
-								cout << miniSuper->ProductosConMinExistencia();
-								this->PausaAndClose();
-								retornarReportes = true;
-								break;
-							case 4:
-								cout << "Digite la cedula de cliente: "; cin >> ced;
-								cout << miniSuper->FacturasDeCliente(ced);
-								this->PausaAndClose();
-								retornarReportes = true;
-								break;
-							case 5:
-								cout << "--> Lista de las 5 mejores compras <--" << endl;
-								cout << miniSuper->CedulaDeLas5MejoresVentas();
-								this->PausaAndClose();
-								retornarReportes = true;
-								break;
-							default:
-								retornarReportes = false;
-								break;
+							
+								switch (opt) {
+								case 1:
+									cout << "---> Lista de Todos los Productos <---" << endl;
+									cout << miniSuper->TodosLosProductos() << endl;
+									this->PausaAndClose();
+									retornarReportes = true;
+									break;
+								case 2:
+									cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
+									cout << miniSuper->ProductoDeUnaCategoria(categ);
+									this->PausaAndClose();
+									retornarReportes = true;
+									break;
+								case 3:
+									cout << "---> Lista de Productos con minimo de existencia <---" << endl;
+									cout << miniSuper->ProductosConMinExistencia();
+									this->PausaAndClose();
+									retornarReportes = true;
+									break;
+								case 4:
+									cout << "Digite la cedula de cliente: "; cin >> ced;
+									cout << miniSuper->FacturasDeCliente(ced);
+									this->PausaAndClose();
+									retornarReportes = true;
+									break;
+								case 5:
+									cout << "--> Lista de las 5 mejores compras <--" << endl;
+									cout << miniSuper->CedulaDeLas5MejoresVentas();
+									this->PausaAndClose();
+									retornarReportes = true;
+									break;
+								case 6: 
+									this->PausaAndClose();
+									retornarReportes = false;
+									break;
 
-							}
+								default:
+									throw  new ExcepcionFueraRango();
+									break;
+								}
+						
 						} while (retornarReportes == true);
-					}
+
+					} //termina 3
+
 					else {
-						retornar = false;	//Salir del menu principal
+						if (opt == 4) {
+							MenuPrincipal::despedida();
+							retornar = false;	//Salir del menu principal
+						}
+						else {
+							throw  new ExcepcionFueraRango();
+							
+						}
 					}
 				}
 			}
-			system("cls");
-		} while (retornar == true);
-	}
-	catch (...){}
+		}
+		catch (ExcepcionesUsuario* e) {
+			MenuPrincipal::excepcionRango(e);
+				this->PausaAndClose();
+		}
+			catch (...) {
+				MenuPrincipal::errorGeneral();
+				this->PausaAndClose();
+			}
 
-	MenuPrincipal::despedida();
+	} while (retornar == true);
+
 }
 

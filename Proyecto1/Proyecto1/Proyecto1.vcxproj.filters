@@ -49,6 +49,12 @@
     <Filter Include="Archivos de origen\Archivos">
       <UniqueIdentifier>{0007ab7e-cf12-41c9-81d4-eae88baebd1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Excepciones">
+      <UniqueIdentifier>{4f796701-fb3a-4277-8cb2-cb6f38ea7fd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Excepciones">
+      <UniqueIdentifier>{2db89173-d5e3-4a49-a223-58ba36b2b4d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +113,24 @@
     </ClCompile>
     <ClCompile Include="Archivos.cpp">
       <Filter>Archivos de origen\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionUsuario.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExecpcionProducto.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionRango.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionFactura.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionFechaDia.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionFechaMes.cpp">
+      <Filter>Archivos de origen\Excepciones</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +229,30 @@
     </ClInclude>
     <ClInclude Include="MiniSuper.h">
       <Filter>Archivos de encabezado\Factura</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionUsuario.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExecpcionProducto.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionRango.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="Excepciones_Clases.h">
+      <Filter>Archivos de encabezado\Clases_Pequeñas</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionFactura.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionFechaDia.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionFechaMes.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcepcionDatoNoNumero.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

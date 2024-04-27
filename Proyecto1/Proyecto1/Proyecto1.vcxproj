@@ -139,6 +139,12 @@
     <ClCompile Include="Decorador_Embutido.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
+    <ClCompile Include="ExcepcionFactura.cpp" />
+    <ClCompile Include="ExcepcionFechaDia.cpp" />
+    <ClCompile Include="ExcepcionFechaMes.cpp" />
+    <ClCompile Include="ExcepcionRango.cpp" />
+    <ClCompile Include="ExcepcionUsuario.cpp" />
+    <ClCompile Include="ExecpcionProducto.cpp" />
     <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,6 +170,14 @@
     <ClInclude Include="Decorador_Embutido.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
+    <ClInclude Include="ExcepcionDatoNoNumero.h" />
+    <ClInclude Include="Excepciones_Clases.h" />
+    <ClInclude Include="ExcepcionFactura.h" />
+    <ClInclude Include="ExcepcionFechaDia.h" />
+    <ClInclude Include="ExcepcionFechaMes.h" />
+    <ClInclude Include="ExcepcionRango.h" />
+    <ClInclude Include="ExcepcionUsuario.h" />
+    <ClInclude Include="ExecpcionProducto.h" />
     <ClInclude Include="Factura.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="baseObject.h" />
