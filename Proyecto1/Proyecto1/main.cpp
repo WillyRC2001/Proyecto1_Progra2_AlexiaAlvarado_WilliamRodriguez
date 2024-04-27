@@ -59,11 +59,11 @@ int main() {
 	Decorador_Abarrote* Sardina = new Decorador_Abarrote(Salchichas, abarrot2);
 
 	//mostrar
-	cout << "el carrito contiene: " << endl<<endl;
+	/*cout << "el carrito contiene: " << endl<<endl;
 	cout << Sardina->toString() << endl; 
 
 	system("pause");
-	system("cls");
+	system("cls");*/
 	
 
 	// Creación de objetos Cliente
@@ -95,11 +95,11 @@ int main() {
 	Factura* fact5 = new Factura(venta5, numerofactura5);
 
 	// Mostrar información de la venta
-	cout << "Informacion de la Venta:" <<endl;
+	/*cout << "Informacion de la Venta:" <<endl;
 	cout << venta1->toString() << endl;
 
 	system("pause");
-	system("cls");
+	system("cls");*/
 
 	// Creación del contenedor de productos
 	ContenedorLProducto* contenedorProductos = new ContenedorLProducto();

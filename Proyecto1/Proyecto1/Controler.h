@@ -1,9 +1,11 @@
 #pragma once
+#include <exception> 
 #include "Utiles_Clases.h"
 #include "MenuPrincipal.h"
 #include "MenuMantenimiento.h"
 #include "MiniSuper.h"
 #include "Producto_Clases.h"
+#include "Decorador_Clases.h"
 
 class Controler {
 public:
@@ -37,7 +39,7 @@ Producto* Controler::CrearModificarProducto(string cod) {
 	if (categ == "Conserva" || categ == "conserva") {
 		bool envasado;
 		cout << "Envasado? (Si/NO): "; cin >> opt;
-		if (opt == "Si")
+		if (opt == "Si"||"SI"||"si")
 			envasado = true;
 		else
 			envasado = false;
@@ -55,7 +57,7 @@ Producto* Controler::CrearModificarProducto(string cod) {
 		bool nacional;
 		cout << "Digite el peso del producto: "; cin >> peso;
 		cout << "Es Producto Nacional? (Si/NO): "; cin >> opt;
-		if (opt == "Si")
+		if (opt == "Si"||"SI"||"si")
 			nacional = true;
 		else
 			nacional = false;
@@ -70,8 +72,8 @@ Producto* Controler::CrearModificarProducto(string cod) {
 			string nom_animal, parte_animal, marca;
 			bool tripa;
 			cout << "Digite la marca: "; cin >> marca;
-			cout << "El Producto tiene Tripas? (Si/NO)"; cin >> opt;
-			if (opt == "Si")
+			cout << "El Producto tiene Tripas? (Si/NO): "; cin >> opt;
+			if (opt == "Si"||"SI"||"si")
 				tripa = true;
 			else
 				tripa = false;
@@ -107,214 +109,230 @@ Factura* Controler::CrearFactura(Decorador_Abstracto* productos) {
 	return facturanueva;
 }
 
+void Controler::VerMenus(MiniSuper* miniSuper) 
+{
+	MenuPrincipal::entrada();
 
-
-void Controler::VerMenus(MiniSuper* miniSuper) {
 	bool retornar = true;
-	do {
-		int opt = 0;
-		cout << MenuPrincipal::menuPrincipal() << endl;
-		cin >> opt;
-		this->PausaAndClose();
-		if (opt == 1) {
-			bool retornarMantenimiento = false;
-			do {
-				cout << MenuPrincipal::menuMantenimiento() << endl;
-				cin >> opt;
-				this->PausaAndClose();
-				if (opt == 1) {
-					cout << MenuMantenimiento::Facturas() << endl;
+	try {
+		do {
+			int opt = 0;
+			cout << MenuPrincipal::menuPrincipal() << endl;
+			cout << "Ingrese la opcion: ";
+			cin >> opt;
+			this->PausaAndClose();
+			if (opt == 1) {
+				bool retornarMantenimiento = false;
+				do {
+					cout << MenuPrincipal::menuMantenimiento() << endl;
 					cin >> opt;
-					int n_fact;
-					switch (opt) {
-					case 1:
-						cout << "Digite el numero de factura: "; cin >> n_fact;
-						miniSuper->EliminarFactura(n_fact);
-						cout << "Se ha eliminado" << endl;
-						retornarMantenimiento = false;
-						break;
-					case 2:
-						cout << "Digite el numero de factura: "; cin >> n_fact;
-						miniSuper->ActualizarFactura(n_fact);
-						cout << "Se ha actualizado" << endl;
-						retornarMantenimiento = false;
-						break;
-					case 3:
-						system("cls");
-						retornar = true;
-						break;
-					}
-				}
-				else {
-					if (opt == 2) {
-						cout << MenuMantenimiento::Producto() << endl;
+					this->PausaAndClose();
+					if (opt == 1) {
+						cout << MenuMantenimiento::Facturas() << endl;
+						cout << "Ingrese la opcion: ";
 						cin >> opt;
-						this->PausaAndClose();
-						string cod;
+						int n_fact;
 						switch (opt) {
 						case 1:
-							cout << "Digite el codigo del producto: "; cin >> cod;
-							cout << "Para ingresar el producto se debe completar su informacion: " << endl;
-							this->PausaAndClose();
-							miniSuper->IngresarElProducto(cod, this->CrearModificarProducto(cod));
-							cout << "Se ha ingresado el producto" << endl;
+							cout << "Digite el numero de factura: "; cin >> n_fact;
+							miniSuper->EliminarFactura(n_fact);
+							cout << "Se ha eliminado" << endl;
 							this->PausaAndClose();
 							retornarMantenimiento = false;
 							break;
 						case 2:
-							cout << "Digite el codigo del producto: "; cin >> cod;
-							miniSuper->EliminaProducto(cod);
+							cout << "Digite el numero de factura: "; cin >> n_fact;
+							miniSuper->ActualizarFactura(n_fact);
+							this->PausaAndClose();
 							retornarMantenimiento = false;
 							break;
 						case 3:
-							cout << "Digite el codigo del producto: "; cin >> cod;
-							cout << "Para modificar el producto se necesita reingresar los datos: " << endl;
-							this->PausaAndClose();
-							miniSuper->ModificarProducto(cod, this->CrearModificarProducto(cod));
-							cout << "Se ha modificado el producto" << endl;
-							retornarMantenimiento = false;
-							break;
-						case 4:
-							retornarMantenimiento = true; //Retornar al menu de mantenimiento
-							break;
-						}
-					}
-				}
-			} while (retornarMantenimiento == true);
-		}
-		else {
-			if (opt == 2) {
-				bool retornarVentas = false;
-				do {
-					cout << MenuPrincipal::menuVentas() << endl;
-					cin >> opt;
-					if (opt == 1) {
-						cout << miniSuper->TodosLosProductos() << endl << endl;
-						int cant;
-						cout << "Digite la cantidad de Productos que quieres: "; cin >> cant;
-						string codprod;
-						cout << "Digite el codigo del primer producto: "; cin >> codprod;
-						Producto* producto = miniSuper->buscarProducto(codprod);
-						Componente_Abstracto* aux;
-						if (producto != NULL) {	//Encontro el producto para agregar el primer elemento
 							system("cls");
-							Carrito* carrito = new Carrito();
-							if (producto->getCategoria() == "Conserva") {
-								Conserva* conserva = dynamic_cast<Conserva*>(producto);
-								Decorador_Conserva* dec = new Decorador_Conserva(carrito, conserva);
-								aux = dec;
-							}
-							else {
-								if (producto->getCategoria() == "Abarrote") {
-									Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
-									Decorador_Abarrote* dec = new Decorador_Abarrote(carrito, abarrote);
-									aux = dec;
-								}
-								else {
-									Embutido* embutido = dynamic_cast<Embutido*>(producto);
-									Decorador_Embutido* dec = new Decorador_Embutido(carrito, embutido);
-									aux = dec;
-								}
-							}
-							//Se crea un ciclo en donde comienza a agregar los demas elementos que quiere
-							for (int i = 1; i < cant; i++) {
-								system("cls");
-								cout << miniSuper->TodosLosProductos() << endl;
-								cout << "Digite el codigo del siguiente producto: "; cin >> codprod;
-								producto = miniSuper->buscarProducto(codprod);
-								if (producto != NULL) {
-									if (producto->getCategoria() == "Conserva") {
-										Conserva* conserva = dynamic_cast<Conserva*>(producto);
-										Decorador_Conserva* decoCons = new Decorador_Conserva(aux, conserva);
-										aux = decoCons;
-									}
-									else {
-										if (producto->getCategoria() == "Abarrote") {
-											Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
-											Decorador_Abarrote* decoAbar = new Decorador_Abarrote(aux, abarrote);
-											aux = decoAbar;
-										}
-										else {
-											Embutido* embutido = dynamic_cast<Embutido*>(producto);
-											Decorador_Embutido* decoEmbu = new Decorador_Embutido(aux, embutido);
-											aux = decoEmbu;
-										}
-									}
-								}
-								else {
-									cout << "ERROR, No se encontró el producto" << endl;
-									this->PausaAndClose();
-									i = i--;
-								}
-							}
-							Decorador_Abstracto* producTotales = dynamic_cast<Decorador_Abstracto*>(aux);
-							miniSuper->CrearNuevaFactura(this->CrearFactura(producTotales));
-							cout << "Se a agregado la Nueva Factura!" << endl;
-							this->PausaAndClose();
-							retornarVentas = false;
-						}
-						else {
-							cout << "No se encontró el producto" << endl;
-							this->PausaAndClose();
-							retornarVentas = true;
+							retornar = true;
+							break;
 						}
 					}
-					if (opt == 2) {
-						retornarVentas = true;	//Retornar a menu de ventas
-					}
-				} while (retornarVentas == true);
+					else {
+						if (opt == 2) {
+							cout << MenuMantenimiento::Producto() << endl;
+							cout << "Ingrese la opcion: ";
+							cin >> opt;
+							this->PausaAndClose();
+							string cod;
+							switch (opt) {
+							case 1:
+								cout << "Digite el codigo del producto: "; cin >> cod;
+								cout << "Para ingresar el producto se debe completar su informacion: " << endl;
+								this->PausaAndClose();
+								miniSuper->IngresarElProducto(cod, this->CrearModificarProducto(cod));
+								cout << "Se ha ingresado el producto" << endl;
+								this->PausaAndClose();
+								retornarMantenimiento = false;
+								break;
+							case 2:
+								cout << "Digite el codigo del producto: "; cin >> cod;
+								miniSuper->EliminaProducto(cod);
+								this->PausaAndClose();
+								retornarMantenimiento = false;
+								break;
+							case 3:
+								cout << "Digite el codigo del producto: "; cin >> cod;
+								cout << "Para modificar el producto se necesita reingresar los datos: " << endl;
+								this->PausaAndClose();
+								miniSuper->ModificarProducto(cod, this->CrearModificarProducto(cod));
+								cout << "Se ha modificado el producto" << endl;
+								this->PausaAndClose();
+								retornarMantenimiento = false;
+								break;
+							case 4:
+								retornarMantenimiento = true; //Retornar al menu 
+								break;
+							}
+						}
+					} //OCUPO QUE ARREGLE EL RETORNAR DE MANTENIMIENTO PORQUE NO RETORNA AL MENU PRINCIPAL
+				} while (retornar == true);
 			}
 			else {
-				if (opt == 3) {
-					bool retornarReportes = false;
+				if (opt == 2) {
+					bool retornarVentas = false;
 					do {
-						cout << MenuPrincipal::menuReportes() << endl;
+						cout << MenuPrincipal::menuVentas() << endl;
+						cout << "Ingrese la opcion: ";
 						cin >> opt;
-						string categ;
-						string ced;
-						switch (opt) {
-						case 1:
-							cout << "---> Lista de Todos los Productos <---" << endl;
-							cout << miniSuper->TodosLosProductos() << endl;
-							this->PausaAndClose();
-							retornarReportes = true;
-							break;
-						case 2:
-							cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
-							cout << miniSuper->ProductoDeUnaCategoria(categ);
-							this->PausaAndClose();
-							retornarReportes = true;
-							break;
-						case 3:
-							cout << "---> Lista de Productos con minimo de existencia <---" << endl;
-							cout << miniSuper->ProductosConMinExistencia();
-							this->PausaAndClose();
-							retornarReportes = true;
-							break;
-						case 4:
-							cout << "Digite la cedula de cliente: "; cin >> ced;
-							cout << miniSuper->FacturasDeCliente(ced);
-							this->PausaAndClose();
-							retornarReportes = true;
-							break;
-						case 5:
-							cout << "--> Lista de las 5 mejores compras <--" << endl;
-							cout << miniSuper->CedulaDeLas5MejoresVentas();
-							this->PausaAndClose();
-							retornarReportes = true;
-							break;
-						default:
-							retornarReportes = false;
-							break;
-
+						if (opt == 1) {
+							cout << "--- PROCEDE A REALIZAR UNA NUEVA COMPRA ---" << endl;
+							cout << miniSuper->TodosLosProductos() << endl << endl;
+							int cant;
+							cout << "Digite la cantidad de Productos que quieres: "; cin >> cant;
+							string codprod;
+							cout << "Digite el codigo del primer producto: "; cin >> codprod;
+							Producto* producto = miniSuper->buscarProducto(codprod);
+							Componente_Abstracto* aux;
+							if (producto != NULL) {	//Encontro el producto para agregar el primer elemento
+								system("cls");
+								Carrito* carrito = new Carrito();
+								if (producto->getCategoria() == "Conserva") {
+									Conserva* conserva = dynamic_cast<Conserva*>(producto);
+									Decorador_Conserva* dec = new Decorador_Conserva(carrito, conserva);
+									aux = dec;
+								}
+								else {
+									if (producto->getCategoria() == "Abarrote") {
+										Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
+										Decorador_Abarrote* dec = new Decorador_Abarrote(carrito, abarrote);
+										aux = dec;
+									}
+									else {
+										Embutido* embutido = dynamic_cast<Embutido*>(producto);
+										Decorador_Embutido* dec = new Decorador_Embutido(carrito, embutido);
+										aux = dec;
+									}
+								}
+								//Se crea un ciclo en donde comienza a agregar los demas elementos que quiere
+								for (int i = 1; i < cant; i++) {
+									system("cls");
+									cout << miniSuper->TodosLosProductos() << endl;
+									cout << "Digite el codigo del siguiente producto: "; cin >> codprod;
+									producto = miniSuper->buscarProducto(codprod);
+									if (producto != NULL) {
+										if (producto->getCategoria() == "Conserva") {
+											Conserva* conserva = dynamic_cast<Conserva*>(producto);
+											Decorador_Conserva* decoCons = new Decorador_Conserva(aux, conserva);
+											aux = decoCons;
+										}
+										else {
+											if (producto->getCategoria() == "Abarrote") {
+												Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
+												Decorador_Abarrote* decoAbar = new Decorador_Abarrote(aux, abarrote);
+												aux = decoAbar;
+											}
+											else {
+												Embutido* embutido = dynamic_cast<Embutido*>(producto);
+												Decorador_Embutido* decoEmbu = new Decorador_Embutido(aux, embutido);
+												aux = decoEmbu;
+											}
+										}
+									}
+									else {
+										cout << "ERROR, No se encontró el producto" << endl;
+										this->PausaAndClose();
+										i = i--;
+									}
+								}
+								Decorador_Abstracto* producTotales = dynamic_cast<Decorador_Abstracto*>(aux);
+								miniSuper->CrearNuevaFactura(this->CrearFactura(producTotales));
+								cout << "Se a agregado la Nueva Factura!" << endl;
+								this->PausaAndClose();
+								retornarVentas = false;
+							}
+							else {
+								cout << "No se encontró el producto" << endl;
+								this->PausaAndClose();
+								retornarVentas = true;
+							}
 						}
-					} while (retornarReportes == true);
+						if (opt == 2) {
+							retornar = true;	//Retornar a menu 
+						}
+					} while (retornarVentas == true);
 				}
 				else {
-					retornar = false;	//Salir del menu principal
+					if (opt == 3) {
+						bool retornarReportes = false;
+						do {
+							cout << MenuPrincipal::menuReportes() << endl;
+							cout << "Ingrese la opcion: ";
+							cin >> opt;
+							string categ;
+							string ced;
+							switch (opt) {
+							case 1:
+								cout << "---> Lista de Todos los Productos <---" << endl;
+								cout << miniSuper->TodosLosProductos() << endl;
+								this->PausaAndClose();
+								retornarReportes = true;
+								break;
+							case 2:
+								cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
+								cout << miniSuper->ProductoDeUnaCategoria(categ);
+								this->PausaAndClose();
+								retornarReportes = true;
+								break;
+							case 3:
+								cout << "---> Lista de Productos con minimo de existencia <---" << endl;
+								cout << miniSuper->ProductosConMinExistencia();
+								this->PausaAndClose();
+								retornarReportes = true;
+								break;
+							case 4:
+								cout << "Digite la cedula de cliente: "; cin >> ced;
+								cout << miniSuper->FacturasDeCliente(ced);
+								this->PausaAndClose();
+								retornarReportes = true;
+								break;
+							case 5:
+								cout << "--> Lista de las 5 mejores compras <--" << endl;
+								cout << miniSuper->CedulaDeLas5MejoresVentas();
+								this->PausaAndClose();
+								retornarReportes = true;
+								break;
+							default:
+								retornarReportes = false;
+								break;
+
+							}
+						} while (retornarReportes == true);
+					}
+					else {
+						retornar = false;	//Salir del menu principal
+					}
 				}
 			}
-		}
-		system("cls");
-	} while (retornar == true);
+			system("cls");
+		} while (retornar == true);
+	}
+	catch (...){}
+
+	MenuPrincipal::despedida();
 }
+
