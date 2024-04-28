@@ -24,7 +24,7 @@ public:
 	string ProductoDeUnaCategoria(string categoria);	//Contenedor Producto
 	string ProductosConMinExistencia();					//Contenedor Producto
 	bool guardar(); //archivos
-	bool recuperar();
+	bool recuperar();//archivos
 };
 
 
