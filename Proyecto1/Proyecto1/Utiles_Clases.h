@@ -7,4 +7,4 @@
 #include <string>
 #include <fstream>
 
-using namespace std; 
+using namespace std;

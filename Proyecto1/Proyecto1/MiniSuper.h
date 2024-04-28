@@ -29,6 +29,7 @@ public:
 	string CedulaDeLas5MejoresVentas();					//Contenedor Factura
 
 	void guardar(); //archivos
+	void recuperar();
 
 private:
 	ContenedorLProducto* Cont_Prod; 
@@ -114,9 +115,9 @@ string MiniSuper::FacturasDeCliente(string cedula) {
 }
 
 void MiniSuper::guardar() { //archivos
-	ofstream archivo("producto.txt");
-	if (archivo.is_open()) {
-		ContenedorLProducto* contP = new ContenedorLProducto();
-		for(int i=0; i)
-	}
+	Cont_Prod->guardar();
+}
+
+void MiniSuper::recuperar() {
+	Cont_Prod->recuperar();
 }

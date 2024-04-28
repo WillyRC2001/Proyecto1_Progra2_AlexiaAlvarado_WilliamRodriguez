@@ -14,31 +14,54 @@ int main() {
 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Creación del contenedor de productos
+	ContenedorLProducto* contenedorProductos = new ContenedorLProducto();
+	//Creación del Contenedor de Facturas (template)
+	Lista<Factura>* contenedorFactura = new Lista<Factura>();
+	//Creacion del minisuper
+	Controler* cont = new Controler();
+	MiniSuper* mini = new MiniSuper(contenedorProductos, contenedorFactura);
+	mini->recuperar();
 
-	//fechas
-	Fecha* fech1 = new Fecha(01, 1, 2021);
-	Fecha* fech2 = new Fecha(22, 2, 2022);
-	Fecha* fech3 = new Fecha(30, 3, 2023);
-	Fecha* fech4 = new Fecha(14, 4, 2024);
-	Fecha* fech5 = new Fecha(25, 5, 2021);
-	Fecha* fech6 = new Fecha(16, 6, 2022);
-	Fecha* fech7 = new Fecha(07, 7, 2023);
-	Fecha* fech8 = new Fecha(12, 8, 2024);
-	Fecha* fech9 = new Fecha(19, 9, 2021);
-	Fecha* fech10 = new Fecha(10, 10, 2020);
+	//Informacion de productos Quemados para Respaldo
+	
+	////fechas
+	//Fecha* fech1 = new Fecha(01, 1, 2021);
+	//Fecha* fech2 = new Fecha(22, 2, 2022);
+	//Fecha* fech3 = new Fecha(30, 3, 2023);
+	//Fecha* fech4 = new Fecha(14, 4, 2024);
+	//Fecha* fech5 = new Fecha(25, 5, 2021);
+	//Fecha* fech6 = new Fecha(16, 6, 2022);
+	//Fecha* fech7 = new Fecha(07, 7, 2023);
+	//Fecha* fech8 = new Fecha(12, 8, 2024);
+	//Fecha* fech9 = new Fecha(19, 9, 2021);
+	//Fecha* fech10 = new Fecha(10, 10, 2020);
 
-	//empaque
-	Empaque* empac = new Empaque(true);
+	////empaque
+	//Empaque* empac = new Empaque(true);
+	//
 
-	//creando objetos tipo Conserva
-	Conserva* conserv1 = new Conserva("012", "Carne Molida", "carne molidita", 400, "Conserva", 50, 10, fech1, true);
-	Conserva* conserv2 = new Conserva("034", "Torta de Jamon", "jamon", 700, "Conserva", 80, 5, fech2, true);
-	Conserva* conserv3 = new Conserva("056", "Bistec", "corte fino", 1000, "Conserva", 45, 7, fech3, true);
+	//Conserva* conserv1 = new Conserva("012", "Carne Molida", "carne molidita", 400, "Conserva", 50, 10, fech1, true);
+	//Conserva* conserv2 = new Conserva("034", "Torta de Jamon", "jamon", 700, "Conserva", 80, 5, fech2, true);
+	//Conserva* conserv3 = new Conserva("056", "Bistec", "corte fino", 1000, "Conserva", 45, 7, fech3, true);
+	//Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600, "Abarrote", 100, 6, fech4, fech10, true, 45.0, "suli");
+	//Embutido* embuti1 = new Embutido("090", "salchichas", "salchichas de pavo", 2500, "Embutido", 100, 2, fech3, fech9, false, 90.0, "pavo", "la parte del pavo", "cinta azul", empac);
+	//Abarrote* abarrot2 = new Abarrote("010", "Sardina", "sardina con tomate", 650, "Abarrote", 80, 9, fech6, fech9, true, 30.0, "sardimar");
 
-	//creando objetos perecederos (Abarrote y Embutido)
-	Abarrote* abarrot1 = new Abarrote("078", "Atun", "atun sulli", 600, "Abarrote", 100, 6, fech4, fech10, true, 45.0, "suli");
-	Embutido* embuti1 = new Embutido("090", "salchichas", "salchichas de pavo", 2500, "Embutido", 100, 2, fech3, fech9, false, 90.0, "pavo", "la parte del pavo", "cinta azul", empac);
-	Abarrote* abarrot2 = new Abarrote("010", "Sardina", "sardina con tomate", 650, "Abarrote", 80, 9, fech6, fech9, true, 30.0, "sardimar");
+	//Los productos estan dentro de productos.txt pero como no existe un facturas.txt los ocupamos llamar para usar los decoradores de venta quemados
+	Producto* producto = contenedorProductos->busca("012");
+	Conserva* conserv1 = dynamic_cast<Conserva*>(producto);
+	producto = contenedorProductos->busca("034");
+	Conserva* conserv2 = dynamic_cast<Conserva*>(producto);
+	producto = contenedorProductos->busca("056");
+	Conserva* conserv3 = dynamic_cast<Conserva*>(producto);
+	producto = contenedorProductos->busca("078");
+	Abarrote* abarrot1 = dynamic_cast<Abarrote*>(producto);
+	producto = contenedorProductos->busca("090");
+	Embutido* embuti1 = dynamic_cast<Embutido*>(producto);
+	producto = contenedorProductos->busca("010");
+	Abarrote* abarrot2 = dynamic_cast<Abarrote*>(producto);
 
 	/*carrito*/
 	Carrito* car = new Carrito();
@@ -79,34 +102,25 @@ int main() {
 	Factura* fact4 = new Factura(venta4, numerofactura4);
 	Factura* fact5 = new Factura(venta5, numerofactura5);
 
-	// Creación del contenedor de productos
-	ContenedorLProducto* contenedorProductos = new ContenedorLProducto();
-
-	// Agregar productos al contenedor
-	contenedorProductos->ingresaProducto(conserv1);
-	contenedorProductos->ingresaProducto(conserv2);
-	contenedorProductos->ingresaProducto(conserv3);
-	contenedorProductos->ingresaProducto(abarrot1);
-	contenedorProductos->ingresaProducto(abarrot2);
-	contenedorProductos->ingresaProducto(embuti1);
-
-	Producto* producto = contenedorProductos->busca("codigo_del_producto");
-
-	//Creación del Contenedor de Facturas (template)
-	Lista<Factura>* contenedorFactura = new Lista<Factura>();
-
 	//Agregar Facturas al contenedor
 	contenedorFactura->agregarInicio(fact1);
 	contenedorFactura->agregarInicio(fact2);
 	contenedorFactura->agregarInicio(fact3);
 	contenedorFactura->agregarInicio(fact4);
 	contenedorFactura->agregarInicio(fact5);
+
+	//Ingresar Contenedor Producto RESPALDO
+	/*contenedorProductos->ingresaProducto(conserv1);
+	contenedorProductos->ingresaProducto(conserv2);
+	contenedorProductos->ingresaProducto(conserv3);
+	contenedorProductos->ingresaProducto(abarrot1);
+	contenedorProductos->ingresaProducto(abarrot2);
+	contenedorProductos->ingresaProducto(embuti1);*/
 	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	Controler* cont = new Controler();
-	MiniSuper* mini = new MiniSuper(contenedorProductos, contenedorFactura);
+	
 	cont->VerMenus(mini);
 
 	system("pause");

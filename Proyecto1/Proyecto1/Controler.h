@@ -30,8 +30,8 @@ Producto* Controler::CrearModificarProducto(string cod) {
 	string nom_comercial,descrip,categ;
 	double precio;
 	int existe,limit,dia,mes,anio;
-	cout << "Digite el nombre comercial: "; getline(cin, nom_comercial);
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
+	cout << "Digite el nombre comercial: "; getline(cin, nom_comercial);
 	cout << "Digite el descripcion: "; getline(cin,descrip); // Lee toda la línea, incluyendo espacios
 	cout << "Digite el categoria(Conserva/Abarrote/Embutido): "; getline(cin, categ);
 	cout << "Digite el precio: "; cin >> precio;
@@ -407,7 +407,7 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 
 					else {
 						if (opt == 4) {
-							minisuper->guardar();
+							miniSuper->guardar();
 							MenuPrincipal::despedida();
 							retornar = false;	//Salir del menu principal
 						}

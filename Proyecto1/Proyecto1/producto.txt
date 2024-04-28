@@ -1,0 +1,17 @@
+1,012,Carne Molida,carne molidita,400,Conserva,50,10,1
+1,1,2021
+1,034,Torta de Jamon,jamon,700,Conserva,80,5,1
+22,2,2022
+1,056,Bistec,corte fino,1000,Conserva,45,7,1
+30,3,2023
+2,078,Atun,atun sulli,600,Abarrote,100,6,1,45,suli
+14,4,2024
+10,10,2020
+2,010,Sardina,sardina con tomate,650,Abarrote,80,9,1,30,sardimar
+16,6,2022
+19,9,2021
+3,090,salchichas,salchichas de pavo,2500,Embutido,100,2,0,90,pavo,la parte del pavo,cinta azul,1
+30,3,2023
+19,9,2021
+1,331,fresas,fresas del valle,40,Conserva,100,15,1
+28,4,2024
