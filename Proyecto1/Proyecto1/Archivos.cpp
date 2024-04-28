@@ -78,13 +78,13 @@ string GestorDeArchivos::recuperarString(char delimitador) {
 //	guardarString(f->mostrarResumenFactura(), '\n');
 //}
 //
-//Fecha* GestorDeArchivos::recuperarFecha()
-//{
-//	int dia = recuperarInt('\t');
-//	int mes = recuperarInt('\t');
-//	int anio = recuperarInt('\t');
-//	return new Fecha(dia, mes, anio);;
-//}
+Fecha* GestorDeArchivos::recuperarFecha()
+{
+	int dia = recuperarInt('\t');
+	int mes = recuperarInt('\t');
+	int anio = recuperarInt('\t');
+	return new Fecha(dia, mes, anio);;
+}
 //
 //Cliente* GestorDeArchivos::recuperarCliente()
 //{
@@ -113,9 +113,7 @@ string GestorDeArchivos::recuperarString(char delimitador) {
 //Factura* GestorDeArchivos::recuperarFactura()
 //{
 //	Venta* venta = recuperarVenta();
-//	/*int cantPasajeros = recuperarInt('\t');
-//	string cedulaPersona = recuperarString('\n');
-//	return new Reservacion(viaje, cantPasajeros, cedulaPersona);*/
+//	
 //
 //}
 //
@@ -136,7 +134,7 @@ string GestorDeArchivos::recuperarString(char delimitador) {
 //
 //	int i = 0;
 //	while (i < n) {
-//		cliente = &listaC->recuperarDato("Ruta");
+//		cliente = &listaC->;
 //		guardarCliente(cliente);
 //		i++;
 //	}

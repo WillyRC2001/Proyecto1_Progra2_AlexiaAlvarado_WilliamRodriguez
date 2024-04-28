@@ -1,8 +1,10 @@
 #pragma once
 #include "Lista_Generica.h"
+#include "Lista_Producto.h"
+#include "MiniSuper.h"
 #include "Cliente.h"
 #include "Factura.h"
-#include "Venta.h"
+#include "Fecha.h"
 
 class GestorDeArchivos {
 private:
@@ -32,16 +34,17 @@ public:
 
 	//****Paso 4****
 
-	/*virtual void guardarCliente(Cliente*);
-	virtual void guardarVenta(Venta*);
+	virtual void guardarCliente(Cliente*);
 	virtual void guardarFactura(Factura*);
+	virtual void guardarProducto(Decorador_Abstracto*);
+	virtual void guardarFecha(Fecha* );
 
 	
 	virtual Fecha* recuperarFecha();
 	virtual Cliente* recuperarCliente();
-	virtual Venta* recuperarVenta();
+	//virtual Venta* recuperarVenta();
 	virtual Factura* recuperarFactura();
-	virtual Decorador_Abstracto* recuperarProducto();*/
+	virtual Decorador_Abstracto* recuperarProducto(); //
 
 	//****Paso 5****
 

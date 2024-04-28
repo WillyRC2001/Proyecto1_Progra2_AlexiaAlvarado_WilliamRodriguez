@@ -1,7 +1,6 @@
 #pragma once
 #include "Utiles_Clases.h"
 
-
 class Categoria {
 
 public:

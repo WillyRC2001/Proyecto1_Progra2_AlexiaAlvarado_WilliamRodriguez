@@ -28,8 +28,10 @@ public:
 	string FacturasDeCliente(string cedula);			//Contenedor Factura
 	string CedulaDeLas5MejoresVentas();					//Contenedor Factura
 
+	void guardar(); //archivos
+
 private:
-	ContenedorLProducto* Cont_Prod;
+	ContenedorLProducto* Cont_Prod; 
 	Lista<Factura>* Cont_Factura;
 };
 MiniSuper::MiniSuper(ContenedorLProducto* cont, Lista<Factura>* fact) {
@@ -109,4 +111,12 @@ string MiniSuper::CedulaDeLas5MejoresVentas(){
 
 string MiniSuper::FacturasDeCliente(string cedula) {
 	return Cont_Factura->FacturaDeCliente(cedula);
+}
+
+void MiniSuper::guardar() { //archivos
+	ofstream archivo("producto.txt");
+	if (archivo.is_open()) {
+		ContenedorLProducto* contP = new ContenedorLProducto();
+		for(int i=0; i)
+	}
 }

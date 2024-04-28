@@ -20,6 +20,7 @@ public:
 	string TodosLosProductos();							//Contenedor Producto
 	string ProductoDeUnaCategoria(string categoria);	//Contenedor Producto
 	string ProductosConMinExistencia();					//Contenedor Producto
+	bool guardar(); //archivos
 };
 
 
@@ -168,4 +169,21 @@ string ContenedorLProducto::ProductosConMinExistencia(){
 		}
 	}
 	return s.str();
+}
+
+bool ContenedorLProducto::guardar() { //archivos
+	ofstream archivo("producto.txt");
+	if (archivo.is_open()) {
+		NodoProducto* actual = ppio;
+		while (actual!=nullptr) {
+			Producto* producto = actual->getProd();
+			Fecha* fecha = producto->getFecha();
+			Categoria* categoria = producto->getPorcentajeGanancia();
+
+			archivo <<producto->getCodigo() << "," << producto->getNombre_Comercial() << "," << producto->getDescripcion()<< "," << producto->getPrecio() << "," << producto->getCategoria()<< "," << producto->getExistencias()<< "," << producto->getLimite()<<","<<producto->getFecha()<<endl;
+
+			actual = actual->getsig();
+		}
+	}
+
 }

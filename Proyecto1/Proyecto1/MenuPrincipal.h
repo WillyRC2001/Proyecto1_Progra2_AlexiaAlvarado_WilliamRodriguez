@@ -14,7 +14,7 @@ public:
 
 	//Mantenimiento
 	static string menuMantenimiento();
-	
+
 	//Ventas
 	static string menuVentas();
 
@@ -27,6 +27,7 @@ public:
 	//Excepciones
 	static void excepcionRango(ExcepcionesUsuario*);
 	static void errorGeneral();
+
 };
 
 void MenuPrincipal::entrada() {

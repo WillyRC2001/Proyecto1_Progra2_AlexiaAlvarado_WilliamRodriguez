@@ -407,6 +407,7 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 
 					else {
 						if (opt == 4) {
+							minisuper->guardar();
 							MenuPrincipal::despedida();
 							retornar = false;	//Salir del menu principal
 						}
