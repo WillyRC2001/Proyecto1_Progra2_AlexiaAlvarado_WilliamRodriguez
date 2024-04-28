@@ -20,7 +20,6 @@ public:
 	string TodosLosProductos();							//Contenedor Producto
 	string ProductoDeUnaCategoria(string categoria);	//Contenedor Producto
 	string ProductosConMinExistencia();					//Contenedor Producto
-	/*bool obtenerEnvasadoDeConserva(string codigo);*/
 };
 
 
@@ -76,14 +75,12 @@ Producto* ContenedorLProducto::busca(string cod)
 	if (!esVacio()) {
 		while (p != NULL) {
 			if (p->getProd()->getCodigo() == cod) {
-				// return true
 				return p->getProd();
 
 			}
 			p = p->getsig();
 		}
 	}
-	//return false
 	return NULL;
 }
 
@@ -159,7 +156,7 @@ string ContenedorLProducto::ProductoDeUnaCategoria(string categoria){
 	}
 	return s.str();
 }
-string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia quiere decir que no hay??
+string ContenedorLProducto::ProductosConMinExistencia(){
 	stringstream s;
 	NodoProducto* p = ppio;
 	if (!esVacio()) {
@@ -172,23 +169,3 @@ string ContenedorLProducto::ProductosConMinExistencia(){	//minimo de existencia 
 	}
 	return s.str();
 }
-//bool ContenedorLProducto::obtenerEnvasadoDeConserva(string codigo) {
-//	// Buscar el producto por su código
-//	Producto* producto = busca(codigo);
-//
-//	// Verificar si el producto encontrado es una instancia de Conserva
-//	Conserva* conserva = dynamic_cast<Conserva*>(producto);
-//		 //Verificar si el producto es una instancia de Conserva
-//		if (conserva) {
-//			// Si es una conserva, devolver el valor de envasado
-//			return conserva->getEnvasado();
-//		}
-//		else {
-//			// Si el producto no es una conserva, mostrar un mensaje de error o devolver un valor predeterminado
-//			// Aquí puedes manejar la situación según sea necesario
-//			// Por ejemplo:
-//			// cout << "El producto no es una conserva" << endl;
-//			// return false; // o algún valor predeterminado
-//		}
-//		return false;
-//}

@@ -17,8 +17,8 @@ public:
 	Controler(){}
 	void VerMenus(MiniSuper*);
 	void PausaAndClose();	//Para no estar copiando y pegando los system pause and close
-	Producto* CrearModificarProducto(string cod); //Este metodo está porque el ingreso o modificacion del producto recibe por parametros un nuevo producto
-	Factura* CrearFactura(Decorador_Abstracto*);
+	Producto* CrearModificarProducto(string cod); //Este metodo está para solicitar al usuario la informacion de producto que quiere crear o cambiar
+	Factura* CrearFactura(Decorador_Abstracto*);	//Este metodo está para solicitar al usuario la informacion de la factura que quiere crear
 private:
 
 };

@@ -43,17 +43,6 @@ int main() {
 	/*carrito*/
 	Carrito* car = new Carrito();
 
-	//Carrito* car2 = new Carrito();
-	//int cant = 3;
-	//Decorador_Conserva* dec1 = new Decorador_Conserva(car2, conserv1); //Primer ingreso
-	//Componente_Abstracto* aux = dec1;
-	//for (int i = 0; i <= cant - 1; i++) {
-	//	//Se busca el producto
-	//	//Se cambia al atributo correspondiente, en este caso conserva
-	//	DecoradorConserva* dec2 = new Decorador_Conserva(aux, productoconserva);
-	//	Componente_Abstracto* aux = dec2;
-	//}
-
 	//decoradores
 	Decorador_Conserva* Carne = new Decorador_Conserva(car, conserv1);
 	Decorador_Conserva* Jamon = new Decorador_Conserva(Carne, conserv2);
@@ -61,14 +50,6 @@ int main() {
 	Decorador_Abarrote* Atun = new Decorador_Abarrote(Bistec, abarrot1);
 	Decorador_Embutido* Salchichas = new Decorador_Embutido(Atun, embuti1);
 	Decorador_Abarrote* Sardina = new Decorador_Abarrote(Salchichas, abarrot2);
-
-	//mostrar
-	/*cout << "el carrito contiene: " << endl<<endl;
-	cout << Sardina->toString() << endl;
-
-	system("pause");
-	system("cls");*/
-
 
 	// Creación de objetos Cliente
 	Cliente* cliente1 = new Cliente("Juan Perez", "1234567890");
@@ -98,13 +79,6 @@ int main() {
 	Factura* fact4 = new Factura(venta4, numerofactura4);
 	Factura* fact5 = new Factura(venta5, numerofactura5);
 
-	// Mostrar información de la venta
-	/*cout << "Informacion de la Venta:" <<endl;
-	cout << venta1->toString() << endl;
-
-	system("pause");
-	system("cls");*/
-
 	// Creación del contenedor de productos
 	ContenedorLProducto* contenedorProductos = new ContenedorLProducto();
 
@@ -118,31 +92,10 @@ int main() {
 
 	Producto* producto = contenedorProductos->busca("codigo_del_producto");
 
-	//if (producto) {
-	//	// Crear un objeto Carrito (u otro componente abstracto)
-	//	Carrito* carrito = new Carrito();
-
-	//	// Crear un objeto Conserva utilizando los datos del producto
-	//	Conserva* conserva2 = dynamic_cast<Conserva*>(producto);
-	//	//Conserva* conserva = new Conserva(producto->getCodigo(), producto->getNombre_Comercial(), producto->getDescripcion(), producto->getPrecio(), producto->getCategoria(), producto->getExistencias(), producto->getLimite(), producto->getFecha(), true);
-
-	//	// Crear un objeto Decorador_Conserva utilizando el producto y el carrito
-	//	Decorador_Conserva* decoradorConserva = new Decorador_Conserva(carrito,conserva2);
-
-	//	// Ahora puedes utilizar el decoradorConserva en la creación de un objeto Venta
-	//	Venta* venta = new Venta(cliente1,fechaVenta1, decoradorConserva);
-
-	//	// Asegúrate de liberar la memoria cuando ya no necesites los objetos
-	//	delete venta;
-	//	delete decoradorConserva;
-	//	delete carrito;
-	//}
-
-
-	//Creación del Contenedor de Ventas (template)
+	//Creación del Contenedor de Facturas (template)
 	Lista<Factura>* contenedorFactura = new Lista<Factura>();
 
-	//Agregar Ventas al contenedor
+	//Agregar Facturas al contenedor
 	contenedorFactura->agregarInicio(fact1);
 	contenedorFactura->agregarInicio(fact2);
 	contenedorFactura->agregarInicio(fact3);

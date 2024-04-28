@@ -46,7 +46,6 @@ double Categoria::porcentajeDeGanancia(string categoria)
         porcentaje = 30.0; // Embutidos (que también son perecederos)
         break;
     default:
-        // throw invalid_argument("Tipo de categoría inválido");
         cout << "Tipo de Categoria invalido" << endl;
         break;
     }
