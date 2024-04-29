@@ -1,2 +1,29 @@
-﻿  main.cpp
+﻿  Abarrote.cpp
+  baseObject.cpp
+  Carne.cpp
+  Categoria.cpp
+  Cliente.cpp
+  Conserva.cpp
+  Decorador_Abarrote.cpp
+  Decorador_Conserva.cpp
+  Decorador_Embutido.cpp
+  Embutido.cpp
+  Empaque.cpp
+  ExcepcionFactura.cpp
+  ExcepcionFechaDia.cpp
+  ExcepcionFechaMes.cpp
+  ExcepcionGuardado.cpp
+  ExcepcionRango.cpp
+  ExcepcionUsuario.cpp
+  ExecpcionProducto.cpp
+  Factura.cpp
+  Fecha.cpp
+  Generando código...
+  Compilando...
+  main.cpp
+  Percedero.cpp
+  Producto.cpp
+  Product_Perecedero.cpp
+  Venta.cpp
+  Generando código...
   Proyecto1.vcxproj -> C:\Users\Willy\Documents\UNA\Programacion 2\Proyecto1_Progra2_AlexiaAlvarado_WilliamRodriguez\Proyecto1\x64\Debug\Proyecto1.exe

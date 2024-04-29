@@ -23,8 +23,6 @@ public:
 	int getCantElem();
 	//Metodos que necesitaba la lista template de ventas
 	T* buscarNumeroFactura(int num_factura);
-	string FacturaDeCliente(string cedula);
-	bool actualizar(T*);
 	string CedulaMejoresVentas();
 	string obtenerFacturaPorCedula(string cedula);
 
@@ -193,11 +191,6 @@ T* Lista<T>::buscarNumeroFactura(int num_factura)
 }
 
 template<class T>
-bool Lista<T>::actualizar(T* obj) {
-	Nodo<T>* aux = primerNodo;
-}
-
-template<class T>
 string Lista<T>::CedulaMejoresVentas() {
 	stringstream s;
 	
@@ -226,20 +219,6 @@ string Lista<T>::CedulaMejoresVentas() {
 	string result = s.str();
 	return s.str();
 }
-
-//template<class T>
-//string Lista<T>::FacturaDeCliente(string cedula){
-//	stringstream s;
-//	Nodo<T>* pExt = primerNodo;
-//	while (pExt != NULL) {
-//		if (pExt->GetObj()->getVenta()->getClienteComprador()->getCedulaCliente() == cedula) {
-//			s << pExt->GetObj()->toString() << endl;
-//			s << "-------------------------------------" << endl;
-//		}
-//		pExt = pExt->GetSiguiente();
-//	}
-//	return s.str();
-//}
 
 template<class T>
 string Lista<T>::obtenerFacturaPorCedula(string cedula) {
