@@ -26,7 +26,7 @@ public:
 	string FacturaDeCliente(string cedula);
 	bool actualizar(T*);
 	string CedulaMejoresVentas();
-	T* obtenerClientePorCedula(string cedula);
+	string obtenerFacturaPorCedula(string cedula);
 
 
 private:
@@ -227,30 +227,31 @@ string Lista<T>::CedulaMejoresVentas() {
 	return s.str();
 }
 
+//template<class T>
+//string Lista<T>::FacturaDeCliente(string cedula){
+//	stringstream s;
+//	Nodo<T>* pExt = primerNodo;
+//	while (pExt != NULL) {
+//		if (pExt->GetObj()->getVenta()->getClienteComprador()->getCedulaCliente() == cedula) {
+//			s << pExt->GetObj()->toString() << endl;
+//			s << "-------------------------------------" << endl;
+//		}
+//		pExt = pExt->GetSiguiente();
+//	}
+//	return s.str();
+//}
+
 template<class T>
-string Lista<T>::FacturaDeCliente(string cedula){
+string Lista<T>::obtenerFacturaPorCedula(string cedula) {
 	stringstream s;
 	Nodo<T>* pExt = primerNodo;
-	while (pExt != NULL) {
-		if (pExt->GetObj()->getVenta()->getClienteComprador()->getCedulaCliente() == cedula) {
-			s << pExt->GetObj()->toString() << endl;
-			s << "-------------------------------------" << endl;
+	while (pExt != nullptr) {
+		bool existe = pExt->GetObj()->buscarClientePorCedula(cedula);
+		if (existe == true) {
+			s << pExt->GetObj()->toString(); // Cliente encontrado
+			s << "-----------------------------" << endl;
 		}
 		pExt = pExt->GetSiguiente();
 	}
 	return s.str();
-}
-
-template<class T>
-T* Lista<T>::obtenerClientePorCedula(string cedula) {
-
-	Nodo<T>* pExt = primerNodo;
-	while (pExt != nullptr) {
-		Cliente* cliente = pExt->GetObj()->buscarClientePorCedula(cedula);
-		if (cliente != nullptr) {
-			return cliente; // Cliente encontrado
-		}
-		pExt = pExt->GetSiguiente();
-	}
-	return nullptr; // Cliente no encontrado en ninguna venta
 }

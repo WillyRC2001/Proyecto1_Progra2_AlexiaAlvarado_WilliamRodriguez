@@ -1,6 +1,7 @@
 #pragma once
 #include <exception> 
 #include <stdexcept> 
+#include <limits>
 
 #include "Excepciones_Clases.h"
 #include "Producto_Clases.h"
@@ -82,7 +83,7 @@ Producto* Controler::CrearModificarProducto(string cod) {
 		if (categ == "Abarrote" || categ == "abarrote") {
 			string nom_empresa;
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
-			cout << "Digite el Nombre de la empresa: "; getline(cin, nom_comercial);
+			cout << "Digite el Nombre de la empresa: "; getline(cin, nom_empresa);
 			Producto* prodAbarrote = new Abarrote(cod, nom_comercial, descrip, precio, categ, existe, limit, fechIng,fechVenc,nacional,peso,nom_empresa);
 			this->PausaAndClose();
 			return prodAbarrote;
@@ -112,7 +113,7 @@ Factura* Controler::CrearFactura(Decorador_Abstracto* productos) {
 	string nom, ced;
 	int d, m, a, num_factura;
 	Carrito* carrito = new Carrito();
-	
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
 	cout << "Digite un nuevo numero de factura: "; cin >> num_factura;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el búfer
 	cout << "Digite la cedula del cliente: "; getline(cin, ced);
@@ -126,7 +127,7 @@ Factura* Controler::CrearFactura(Decorador_Abstracto* productos) {
 		throw new ExcepcionFechaMes();
 	}
 	cout << "Digite el anio: "; cin >> a;
-	Cliente* clientenuevo = new Cliente(ced, nom);
+	Cliente* clientenuevo = new Cliente(nom, ced);
 	Fecha* fechanueva = new Fecha(d,m,a);
 	Venta* ventanueva = new Venta(clientenuevo, fechanueva, productos);
 	Factura* facturanueva = new Factura(ventanueva, num_factura);
@@ -278,13 +279,13 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 							if (producto != NULL) {	//Encontro el producto para agregar el primer elemento
 								system("cls");
 								Carrito* carrito = new Carrito();
-								if (producto->getCategoria() == "Conserva") {
+								if (producto->getCategoria() == "Conserva" || "conserva") {
 									Conserva* conserva = dynamic_cast<Conserva*>(producto);
 									Decorador_Conserva* dec = new Decorador_Conserva(carrito, conserva);
 									aux = dec;
 								}
 								else {
-									if (producto->getCategoria() == "Abarrote") {
+									if (producto->getCategoria() == "Abarrote" || "abarrote") {
 										Abarrote* abarrote = dynamic_cast<Abarrote*>(producto);
 										Decorador_Abarrote* dec = new Decorador_Abarrote(carrito, abarrote);
 										aux = dec;
@@ -338,14 +339,16 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 								retornarVentas = true;
 							}
 						}
-						if (opt == 2) {
-							this->PausaAndClose();
-							retornar = true;	//Retornar a menu 
-						}
 						else {
-							
-							throw  new ExcepcionFueraRango();
-							
+							if (opt == 2) {
+								this->PausaAndClose();
+								retornar = true;	//Retornar a menu 
+							}
+							else {
+
+								throw  new ExcepcionFueraRango();
+
+							}
 						}
 
 					} while (retornarVentas == true);
@@ -368,7 +371,7 @@ void Controler::VerMenus(MiniSuper* miniSuper)
 									retornarReportes = true;
 									break;
 								case 2:
-									cout << "Digite la categoria del producto que quieres reportar: "; cin >> categ;
+									cout << "Digite la categoria del producto que quieres reportar(Conserva/Abarrote/Embutido): "; cin >> categ;
 									cout << miniSuper->ProductoDeUnaCategoria(categ);
 									this->PausaAndClose();
 									retornarReportes = true;

@@ -26,6 +26,11 @@ void Factura::setVenta(Venta* ventanueva)
     venta = ventanueva;
 }
 
+bool Factura::buscarClientePorCedula(string cedula)
+{   
+    return venta->buscarClientePorCedula(cedula);
+}
+
 
 string Factura::toString()
 {

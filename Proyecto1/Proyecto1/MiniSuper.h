@@ -60,10 +60,11 @@ void MiniSuper::ActualizarFactura(int num_factura) {
 	Factura* factura = Cont_Factura->buscarNumeroFactura(num_factura);
 	if (factura != nullptr) {
 		int nuevoNumFactura;
-		cout << "Ingrese el nuevo número de factura: ";
+		cout << "Ingrese el nuevo numero de factura: ";
 		cin >> nuevoNumFactura;
 		factura->setNumeroFactura(nuevoNumFactura);
 		cout << "Factura actualizada correctamente." << endl;
+		cout << factura->toString();
 	}
 	else {
 		cout << "Error: La factura no se encontró en la lista." << endl;
@@ -111,7 +112,7 @@ string MiniSuper::CedulaDeLas5MejoresVentas(){
 }
 
 string MiniSuper::FacturasDeCliente(string cedula) {
-	return Cont_Factura->FacturaDeCliente(cedula);
+	return Cont_Factura->obtenerFacturaPorCedula(cedula);
 }
 
 void MiniSuper::guardar() { //archivos

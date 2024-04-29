@@ -24,7 +24,7 @@ public:
     void setClienteComprador(Cliente*);
     void setFechaCompra(Fecha*);
     void setProductoComprado(Decorador_Abstracto*);
-    Cliente* buscarClientePorCedula(string cedula);
+    bool buscarClientePorCedula(string cedula);
 
     string toString();
 

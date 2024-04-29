@@ -79,7 +79,7 @@ int main() {
 	Cliente* cliente2 = new Cliente("Maria Lopez", "0987654321");
 	Cliente* cliente3 = new Cliente("Benja", "1235389010");
 	Cliente* cliente4 = new Cliente("Andrea", "543566545");
-	Cliente* cliente5 = new Cliente("Luis", "1234567890");
+	Cliente* cliente5 = new Cliente("Luis", "1234567895");
 
 	// Creación de objeto Fecha para la venta
 	Fecha* fechaVenta1 = new Fecha(20, 4, 2024);

@@ -49,11 +49,11 @@ void Venta::setProductoComprado(Decorador_Abstracto* p)
     productoCompra = p;
 }
 
-Cliente* Venta::buscarClientePorCedula(string cedula) {
+bool Venta::buscarClientePorCedula(string cedula) {
     if (clienteCompra->getCedulaCliente() == cedula) {
-        return clienteCompra;
+        return true;
     }
-    return nullptr; // Cliente no encontrado
+    return false; // Cliente no encontrado
 }
 
 string Venta::toString() 

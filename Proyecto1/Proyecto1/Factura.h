@@ -12,6 +12,7 @@ public:
     Venta* getVenta();
     void setNumeroFactura(int);
     void setVenta(Venta*);
+    bool buscarClientePorCedula(string cedula);
 
     string toString();
 };
